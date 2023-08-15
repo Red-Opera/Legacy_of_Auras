@@ -96,6 +96,7 @@ public class CutSceneManager : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
         scriptCount++;
 
+        // 만약 마지막 텍스트에서 클릭할 경우 다른 씬으로 넘어감
         if (lastScriptNumber == scriptCount - 1)
             SceneManager.LoadScene("FirstMap");
 

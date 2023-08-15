@@ -16,7 +16,7 @@ public class SceneLoad : MonoBehaviour
 
     public void Start()
     {
-        StartCoroutine(fadeIn.FadeIn(fadeTime));
+        StartCoroutine(fadeIn.FadeIn(fadeTime, true));
     }
 
     // Update is called once per frame
