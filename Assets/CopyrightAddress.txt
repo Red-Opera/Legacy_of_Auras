@@ -3,3 +3,6 @@
 
 마녀 이미지 : https://pixabay.com/fi/photos/vieh%C3%A4tys-nainen-ihmiset-siluetti-70991/
 나머지 컷씬 이미지 : Imagine AI
+바닥 이미지 : https://opengameart.org/content/50-free-textures-5-with-normalmaps?page=1
+파괴된 모델 : https://opengameart.org/content/destroyed-walls-3d-models
+중세 집 모델 : https://opengameart.org/content/medieval-cottage

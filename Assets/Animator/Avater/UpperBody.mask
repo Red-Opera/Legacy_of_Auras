@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UpperBody
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Huntress:Hips
+    m_Weight: 0
+  - m_Path: Huntress:Hips/Huntress:LeftUpLeg
+    m_Weight: 0
+  - m_Path: Huntress:Hips/Huntress:LeftUpLeg/Huntress:LeftLeg
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:LeftUpLeg/Huntress:LeftLeg/Huntress:LeftFoot
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:LeftUpLeg/Huntress:LeftLeg/Huntress:LeftFoot/Huntress:LeftToeBase
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:LeftUpLeg/Huntress:LeftLeg/Huntress:LeftFoot/Huntress:LeftToeBase/Huntress:LeftToe_End
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:RightUpLeg
+    m_Weight: 0
+  - m_Path: Huntress:Hips/Huntress:RightUpLeg/Huntress:RightLeg
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:RightUpLeg/Huntress:RightLeg/Huntress:RightFoot
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:RightUpLeg/Huntress:RightLeg/Huntress:RightFoot/Huntress:RightToeBase
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:RightUpLeg/Huntress:RightLeg/Huntress:RightFoot/Huntress:RightToeBase/Huntress:RightToe_End
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:LeftShoulder
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:LeftShoulder/Huntress:LeftArm
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:LeftShoulder/Huntress:LeftArm/Huntress:LeftForeArm
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:LeftShoulder/Huntress:LeftArm/Huntress:LeftForeArm/Huntress:LeftHand
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:LeftShoulder/Huntress:LeftArm/Huntress:LeftForeArm/Huntress:LeftHand/Huntress:LeftHandIndex1
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:LeftShoulder/Huntress:LeftArm/Huntress:LeftForeArm/Huntress:LeftHand/Huntress:LeftHandIndex1/Huntress:LeftHandIndex2
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:LeftShoulder/Huntress:LeftArm/Huntress:LeftForeArm/Huntress:LeftHand/Huntress:LeftHandIndex1/Huntress:LeftHandIndex2/Huntress:LeftHandIndex3
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:LeftShoulder/Huntress:LeftArm/Huntress:LeftForeArm/Huntress:LeftHand/Huntress:LeftHandIndex1/Huntress:LeftHandIndex2/Huntress:LeftHandIndex3/Huntress:LeftHandIndex4
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:Neck
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:Neck/Huntress:Head
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:Neck/Huntress:Head/Huntress:HeadTop_End
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:RightShoulder
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:RightShoulder/Huntress:RightArm
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:RightShoulder/Huntress:RightArm/Huntress:RightForeArm
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:RightShoulder/Huntress:RightArm/Huntress:RightForeArm/Huntress:RightHand
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:RightShoulder/Huntress:RightArm/Huntress:RightForeArm/Huntress:RightHand/Huntress:RightHandIndex1
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:RightShoulder/Huntress:RightArm/Huntress:RightForeArm/Huntress:RightHand/Huntress:RightHandIndex1/Huntress:RightHandIndex2
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:RightShoulder/Huntress:RightArm/Huntress:RightForeArm/Huntress:RightHand/Huntress:RightHandIndex1/Huntress:RightHandIndex2/Huntress:RightHandIndex3
+    m_Weight: 1
+  - m_Path: Huntress:Hips/Huntress:Spine/Huntress:Spine1/Huntress:Spine2/Huntress:RightShoulder/Huntress:RightArm/Huntress:RightForeArm/Huntress:RightHand/Huntress:RightHandIndex1/Huntress:RightHandIndex2/Huntress:RightHandIndex3/Huntress:RightHandIndex4
+    m_Weight: 1
+  - m_Path: HuntressBeltStrap_L.001_HuntressBeltsUnwrap:Mesh.008
+    m_Weight: 0
+  - m_Path: HuntressBeltStrap_L.003_HuntressBeltsUnwrap:Mesh.020
+    m_Weight: 0
+  - m_Path: HuntressBeltStrap_L.004_HuntressBeltsUnwrap:Mesh.021
+    m_Weight: 0
+  - m_Path: HuntressBoots_L.001_HuntressBeltsUnwrap:Mesh.017
+    m_Weight: 0
+  - m_Path: HuntressCloak_L.001_HuntressClothesUnwrap1:Mesh.005
+    m_Weight: 0
+  - m_Path: HuntressCoat_L.001_HuntressClothesUnwrap1:Mesh.003
+    m_Weight: 0
+  - m_Path: HuntressEyelashes_L.001_HuntressFaceUnwrap:Mesh.024
+    m_Weight: 0
+  - m_Path: HuntressEyes_L.003_HuntressFaceUnwrap:Mesh.025
+    m_Weight: 0
+  - m_Path: HuntressHair_L.001_HuntressFaceUnwrap:Mesh.027
+    m_Weight: 0
+  - m_Path: HuntressPants_L.001_HuntressClothesUnwrap1:Mesh.000
+    m_Weight: 0
