@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -32,9 +33,12 @@ public class PlayerAttack : MonoBehaviour
         // 지속적으로 어떠한 무기를 갖고 있는지 확인
         weaponType = GetComponent<PlayerWeaponChanger>().weaponType;
 
-        // 활을 장착하고 있고 마우스를 누르고 있을동안 화살을 쏠 준비를 함
-        if (Input.GetMouseButton(0) && weaponType == WeaponType.BOW)
-            BowAttack();
+        // 활을 장착하고 있고 마우스를 누르고 있을동안 화살을 쏠 준비를 함 (단, 플레이어가 아직 NPC와 대화 중인 경우 공격할 수 없음)
+        if (ChatNPC.isEnd && Input.GetMouseButton(0) && weaponType == WeaponType.BOW)
+        {
+            if (!(isCameraMoving || animator.GetBool("ArrowReady")))     // 카메라가 이동 중이거나 화살이 준비되었을 때 중지
+                StartCoroutine(BowAttack());
+        }
 
         else if (weaponType == WeaponType.BOW)
             AttackCancel();
@@ -45,18 +49,20 @@ public class PlayerAttack : MonoBehaviour
     }
 
     // 화살 공격 메소드
-    private void BowAttack()
+    private IEnumerator BowAttack()
     {
-        // 카메라가 이동 중이거나 화살이 준비되었을 때 중지
-        if (isCameraMoving || animator.GetBool("ArrowReady"))
-            return;
-
         // 화살을 쏠 준비하는 애니메이션 실행
         animator.SetBool("ArrowReady", true);
         isReady = true;
 
         // 화살쏘는데 잘보이도록 카메라 이동
         CameraMove();
+
+        yield return new WaitForSeconds(1.0f);
+
+        GameObject newBow = Instantiate(arrow, bow.transform);
+        newBow.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        newBow.transform.localPosition = new Vector3(-1.25f, 7.5f, 1.75f);
     }
 
     private void AttackCancel()

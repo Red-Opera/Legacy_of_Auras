@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerRotate : MonoBehaviour
 {
@@ -40,7 +39,7 @@ public class PlayerRotate : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, currentRotation.x, 0));
 
         // 머리와 척추 위치 업데이트
-        headLookAt.transform.position = head.transform.position + camera.transform.forward * 10.0f;
-        spineLookAt.transform.position = spine.transform.position + camera.transform.forward * 10.0f;
+        headLookAt.transform.position = head.transform.position + camera.transform.forward * 50.0f + new Vector3(0.5f, 0, 0);
+        spineLookAt.transform.position = spine.transform.position + camera.transform.forward * 50.0f + new Vector3(0.5f, 0, 0);
     }
 }

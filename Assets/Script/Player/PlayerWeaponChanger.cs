@@ -34,7 +34,8 @@ public class PlayerWeaponChanger : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && !isChange)
+        // 화살 상태가 아니고 숫자 1를 눌렸을 때 활로 바꿈 (단, 만약 플레이어가 아직 대화 중인 경우 무기를 바꿀 수 없음)
+        if (ChatNPC.isEnd && Input.GetKeyDown(KeyCode.Alpha1) && !aniamtor.GetBool("ArrowReady") && !isChange)
             StartCoroutine(EquidUnEquidBow());
     }
 
@@ -73,9 +74,8 @@ public class PlayerWeaponChanger : MonoBehaviour
             // 손에 활 위치
             bow.transform.SetParent(hand.transform);
             bow.transform.localPosition = Vector3.zero;
-            bow.transform.localRotation = Quaternion.Euler(new Vector3(-180, 0, 0));
+            bow.transform.localRotation = Quaternion.Euler(new Vector3(-100, 0, 0));
         }
-
 
         // 무기 변하는 상태를 해제
         isChange = false;

@@ -29,8 +29,8 @@ public class PlayerMove : MonoBehaviour
         // 현재 점프 중인지 확인
         isJumpAnimation = animator.GetCurrentAnimatorStateInfo(0).IsName("Jumping");
 
-        // 만약 점프 키를 눌렸다면
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumpAnimation && isGrounded)
+        // 만약 점프 키를 눌렸을 때 NPC와 대화 중인 경우 점프를 하지 않았을 경우
+        if (ChatNPC.isEnd && Input.GetKeyDown(KeyCode.Space) && !isJumpAnimation && isGrounded && (animator.GetFloat("IdleMode") < 1))
             Jump();
 
         // 이동
@@ -46,6 +46,16 @@ public class PlayerMove : MonoBehaviour
 
     private void Move()
     {
+        // NPC와 대화 중인 경우 이동하지 않음
+        if (!ChatNPC.isEnd)
+        {
+            animator.SetFloat("PlayerFront", 0.0f);
+            animator.SetFloat("PlayerLeft", 0.0f);
+
+            animator.SetBool("isWalk", false);
+            return;
+        }
+
         // 이동 입력 키를 입력 받음
         float x = Input.GetAxis("Horizontal"), y = Input.GetAxis("Vertical");
 

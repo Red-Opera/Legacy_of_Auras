@@ -1,8 +1,13 @@
 나눔 고딕 : https://hangeul.naver.com/font/nanum
 타이틀 배경 이미지 : https://www.vecteezy.com/photo/22712442-beautiful-anime-background-countryside-day-outside-generat-ai
 
+플레이어 모델 : https://sketchfab.com/3d-models/gd52-mod2-saigebaker-59fefe29cf0a4c8682dc06696b2ca3a0
 마녀 이미지 : https://pixabay.com/fi/photos/vieh%C3%A4tys-nainen-ihmiset-siluetti-70991/
 나머지 컷씬 이미지 : Imagine AI
 바닥 이미지 : https://opengameart.org/content/50-free-textures-5-with-normalmaps?page=1
 파괴된 모델 : https://opengameart.org/content/destroyed-walls-3d-models
 중세 집 모델 : https://opengameart.org/content/medieval-cottage
+아이콘 : https://opengameart.org/content/rpg-inventory-icons
+커서 : https://opengameart.org/content/bw-ornamental-cursor-19x19
+우물 : https://opengameart.org/content/animated-well
+말풍선 이미지 : https://opengameart.org/content/2d-speech-bubbles
