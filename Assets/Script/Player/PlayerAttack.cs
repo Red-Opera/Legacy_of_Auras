@@ -98,6 +98,7 @@ public class PlayerAttack : MonoBehaviour
             camera.transform.position = Vector3.Lerp(defCameraTrans.position, camaraToMove.position, t * 2);
             camera.transform.rotation = Quaternion.Lerp(defCameraTrans.rotation, camaraToMove.rotation, t * 2);
         }
+
         
         else
         {

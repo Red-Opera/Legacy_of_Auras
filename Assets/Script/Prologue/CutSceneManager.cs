@@ -98,7 +98,7 @@ public class CutSceneManager : MonoBehaviour
 
         // 만약 마지막 텍스트에서 클릭할 경우 다른 씬으로 넘어감
         if (lastScriptNumber == scriptCount - 1)
-            SceneManager.LoadScene("FirstMap");
+            SceneManager.LoadScene("Village");
 
         // 다음 컷이 존재할 경우
         if (scriptCount - 1 != lastScriptNumber)

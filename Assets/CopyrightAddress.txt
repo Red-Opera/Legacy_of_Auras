@@ -11,3 +11,17 @@
 커서 : https://opengameart.org/content/bw-ornamental-cursor-19x19
 우물 : https://opengameart.org/content/animated-well
 말풍선 이미지 : https://opengameart.org/content/2d-speech-bubbles
+이동해야할 위치 이미지 : https://opengameart.org/content/glow-arrow
+도서관 의자 모델 : https://sketchfab.com/3d-models/medival-tavern-chair-488ae58b9ef74a84aa6e0bb3967cf196#download
+도서관 책상 모델 : https://sketchfab.com/3d-models/wood-table-acd6b17d09104f01b5d3da489ce04653
+도서관 촛불 모델 : https://sketchfab.com/3d-models/medieval-candle-holder-7fd2cf441c5044ebb005e68893f0882f#download
+도서관 촛불 불 모델 : https://sketchfab.com/3d-models/zippo-lighter-a3900690b1914f75b476d0d72253bd5d
+도서관 여인 모댈 : https://sketchfab.com/3d-models/carla-rigged-001-rigged-3d-business-women-acf520f450d14dd799f98a6fede3edf5
+대화창 이미지 : https://opengameart.org/content/4-svg-message-boxes
+전설 책 이미지 : https://opengameart.org/content/fantasy-book
+다음으로 넘기기 이펙트 : https://commons.wikimedia.org/wiki/File:Black_Arrow_Down.svg
+
+해야 할 일 : 마을 대화 구성, 마을 주민 구성, 마을 모습 구성, 플레이어가 이동해야 할 위치, 플레이어가 해야할 일 지정, 텔레포트, 플레이어 능력치 구성, 플레이어 사격 구성
+		    , 플레이어 앉는 모습, 책 읽는 모습 구성, 다른 책을 가져가는 모습
+
+완성 : 도서관 모습 구성

@@ -17,6 +17,8 @@ public class PlayerMove : MonoBehaviour
 
     public void Start()
     {
+        DontDestroyOnLoad(gameObject.transform.parent);
+
         rigid = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 

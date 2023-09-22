@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class ChatNPC : MonoBehaviour
 {
-    public Transform player;                    // 플레이어 위치
     public TextMeshProUGUI textDisplay;         // 텍스트를 출력할 객체
     public string[] sentences;                  // 텍스트를 출력할 문장
     public float typingSpeed = 0.1f;            // 출력 속도 (단위 : 초)
     public static bool isEnd = true;            // 텍스트 출력 여부
 
+    private GameObject player;                  // 플레이어 오브젝트
+    private NPCLookAtPlayer npcLookAtPlayer;    // 플레이어를 보게하는 클래스
     private int currentSentenceIndex = 0;       // 현재 출력 중인 문장
     private int currentCharacterIndex = 0;      // 현재 출력 중인 단어
     private bool isTyping = false;              // 출력 여부
@@ -19,7 +20,11 @@ public class ChatNPC : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        npcLookAtPlayer = GetComponent<NPCLookAtPlayer>();
         Debug.Assert(animator != null, "Error (Null Reference) : 애니메이터가 존재하지 않습니다.");
+        Debug.Assert(npcLookAtPlayer != null, "Error (Null Reference) : 플레이어를 보게하는 스크립트가 존재하지 않습니다.");
+
+        player = GameObject.Find("Model");
 
         textDisplay.transform.gameObject.transform.parent.gameObject.SetActive(false);
         textDisplay.gameObject.SetActive(false);
@@ -27,9 +32,9 @@ public class ChatNPC : MonoBehaviour
 
     private void Update()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-        if (isEnd || distanceToPlayer > NPCLookAtPlayer.interactionDistance)
+        if (isEnd || distanceToPlayer > npcLookAtPlayer.interactionDistance)
             return;
 
         if (Input.GetMouseButtonDown(0)) // 마우스 클릭 감지
@@ -50,9 +55,15 @@ public class ChatNPC : MonoBehaviour
         textDisplay.gameObject.SetActive(true);
         textDisplay.transform.gameObject.transform.parent.gameObject.SetActive(true);
 
+        currentCharacterIndex = 0;
+
         isTyping = true;                                    // 텍스트 문장 실행
         textDisplay.text = "";                              // 텍스트 초기화
         string sentence = sentences[currentSentenceIndex];  // 출력할 문자열 가져옴
+
+        // 이야기하는 애니메이션 실행
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Talking"))
+            animator.SetTrigger("PlayerTalk");
 
         // 모든 문자를 출력함
         while (currentCharacterIndex < sentence.Length)
@@ -86,10 +97,6 @@ public class ChatNPC : MonoBehaviour
             currentSentenceIndex++;
             currentCharacterIndex = 0;
 
-            // 이야기하는 애니메이션 실행
-            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Talking"))
-                animator.SetTrigger("PlayerTalk");
-
             // 문장 출력
             StartCoroutine(TypeSentence());
         }
@@ -99,6 +106,8 @@ public class ChatNPC : MonoBehaviour
             // 텍스트 모두 출력 여부를 참으로 설정
             isEnd = true;
             currentSentenceIndex = 0;
+
+            animator.SetTrigger("isEnd");
 
             // 모든 문장이 출력되면 텍스트 이미지를 비활성화
             textDisplay.transform.gameObject.transform.parent.gameObject.SetActive(false);

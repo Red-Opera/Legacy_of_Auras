@@ -9,13 +9,17 @@ public class PlayerRotate : MonoBehaviour
     public GameObject spine;            // 플레이어 척추 오브젝튼
     public GameObject camera;           // 카메라 오브젝트
 
-    public float sensitivity = 2.0f;    // 마우스 감도
-    public float maxYAngle = 80.0f;     // 위아래 각도 제한
+    public static float sensitivityX = 2.0f;    // 마우스 감도(X)
+    public static float sensitivityY = 2.0f;    // 마우스 감도(Y)
+    public float maxYAngle = 80.0f;             // 위아래 각도 제한
 
-    private Vector2 currentRotation = Vector2.zero;
+    public Vector2 currentRotation = Vector2.zero;
 
     public void Start()
     {
+        sensitivityX = GameManager.info.mouseSensitivityX;
+        sensitivityY = GameManager.info.mouseSensitivityY;
+
         Debug.Assert(headLookAt != null, "Error (Null Reference) : 목표지점이 존재하지 않습니다.");
         Debug.Assert(spineLookAt != null, "Error (Null Reference) : 목표지점이 존재하지 않습니다.");
         Debug.Assert(head != null, "Error (Null Reference) : 머리 오브젝트가 존재하지 않습니다.");
@@ -25,9 +29,13 @@ public class PlayerRotate : MonoBehaviour
 
     public void Update()
     {
+        // 마우스 감도 가져오기
+        sensitivityX = GameManager.info.mouseSensitivityX;
+        sensitivityY = GameManager.info.mouseSensitivityY;
+
         // 마우스 입력 받기
-        float mouseX = Input.GetAxis("Mouse X") * sensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
+        float mouseX = Input.GetAxis("Mouse X") * sensitivityX;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivityY;
 
         // 현재 회전 값 갱신
         currentRotation.x += mouseX;
