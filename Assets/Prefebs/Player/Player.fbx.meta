@@ -1,0 +1,581 @@
+fileFormatVersion: 2
+guid: e03a7cfcf1467fa4b8b4f53c299f93cd
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths:
+    - Huntress:Hips/Huntress:RightUpLeg/Huntress:RightLeg
+    - Huntress:Hips/Huntress:LeftUpLeg/Huntress:LeftLeg
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: mixamo.com
+      internalID: -203655887218126122
+      firstFrame: 0
+      lastFrame: 43
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: Huntress:Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:Spine2
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:LeftHandIndex1
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:LeftHandIndex2
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:LeftHandIndex3
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:RightHandIndex1
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:RightHandIndex2
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Huntress:RightHandIndex3
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Player(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:Hips
+      parentName: Player(Clone)
+      position: {x: -0.000004725269, y: 0.028186604, z: -0.00010535523}
+      rotation: {x: 0.009432213, y: -0.022016034, z: 0.003525838, w: 0.9997069}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:LeftUpLeg
+      parentName: Huntress:Hips
+      position: {x: -0.0035461027, y: -0.0012513256, z: -0.00026249158}
+      rotation: {x: -0.0649959, y: 0.1322542, z: 0.9889121, w: 0.018363262}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:LeftLeg
+      parentName: Huntress:LeftUpLeg
+      position: {x: 7.1246503e-12, y: 0.012836544, z: 7.777825e-12}
+      rotation: {x: -0.3422209, y: -0.015330337, z: -0.030044995, w: 0.93901396}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:LeftFoot
+      parentName: Huntress:LeftLeg
+      position: {x: 5.472391e-11, y: 0.012244212, z: 2.2809803e-11}
+      rotation: {x: 0.31796342, y: -0.32163793, z: -0.10742886, w: 0.88538545}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:LeftToeBase
+      parentName: Huntress:LeftFoot
+      position: {x: -2.0805082e-11, y: 0.0025905909, z: -5.0719956e-11}
+      rotation: {x: 0.34448463, y: 0.084445864, z: -0.017323589, w: 0.9348258}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:LeftToe_End
+      parentName: Huntress:LeftToeBase
+      position: {x: 4.490497e-12, y: 0.0009648289, z: -5.9574468e-12}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:RightUpLeg
+      parentName: Huntress:Hips
+      position: {x: 0.0035461027, y: -0.0012513256, z: 0.00022135077}
+      rotation: {x: 0.07060625, y: 0.06680251, z: 0.9943941, w: 0.041623607}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:RightLeg
+      parentName: Huntress:RightUpLeg
+      position: {x: 2.6111923e-12, y: 0.012826454, z: 4.026737e-14}
+      rotation: {x: -0.13642581, y: 0.06930544, z: 0.031565785, w: 0.9877188}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:RightFoot
+      parentName: Huntress:RightLeg
+      position: {x: -2.703211e-11, y: 0.012219444, z: 1.2822892e-11}
+      rotation: {x: 0.42869863, y: -0.06648685, z: 0.08440526, w: 0.89703554}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:RightToeBase
+      parentName: Huntress:RightFoot
+      position: {x: 2.0977015e-11, y: 0.0024324672, z: 4.099685e-11}
+      rotation: {x: 0.38779622, y: -0.06934157, z: 0.02009604, w: 0.9189135}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:RightToe_End
+      parentName: Huntress:RightToeBase
+      position: {x: 1.1467206e-11, y: 0.0010539513, z: 6.310305e-13}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:Spine
+      parentName: Huntress:Hips
+      position: {x: -0, y: 0.0022284745, z: -0.00012844706}
+      rotation: {x: -0.027709046, y: -0.0047597582, z: 0.007264645, w: 0.9995783}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:Spine1
+      parentName: Huntress:Spine
+      position: {x: -0, y: 0.0026042052, z: -3.7829054e-12}
+      rotation: {x: 0.0033856928, y: -0.0057670767, z: -0.0046962756, w: 0.9999666}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:Spine2
+      parentName: Huntress:Spine1
+      position: {x: -0, y: 0.0029762303, z: -1.0699224e-11}
+      rotation: {x: 0.0033856998, y: -0.0057671005, z: -0.0046962723, w: 0.9999666}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:LeftShoulder
+      parentName: Huntress:Spine2
+      position: {x: -0.0010975244, y: 0.0026447629, z: 0.00003223655}
+      rotation: {x: 0.6255942, y: -0.4081158, z: 0.5050674, w: 0.43241218}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:LeftArm
+      parentName: Huntress:LeftShoulder
+      position: {x: -4.102479e-12, y: 0.0022552996, z: 3.4775977e-11}
+      rotation: {x: -0.11667836, y: -0.06987633, z: 0.06559405, w: 0.98853475}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:LeftForeArm
+      parentName: Huntress:LeftArm
+      position: {x: -1.0433088e-12, y: 0.0073738634, z: 9.873423e-11}
+      rotation: {x: -0.018608928, y: -0.16110547, z: -0.020183356, w: 0.98655534}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:LeftHand
+      parentName: Huntress:LeftForeArm
+      position: {x: 1.9469944e-12, y: 0.007495462, z: 1.2671733e-10}
+      rotation: {x: -0.12885709, y: -0.16916424, z: -0.06796921, w: 0.97476125}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:LeftHandIndex1
+      parentName: Huntress:LeftHand
+      position: {x: -2.379501e-12, y: 0.0012836041, z: 1.5811708e-11}
+      rotation: {x: 0.014247136, y: 0.9841917, z: 0.06682635, w: -0.16339505}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:LeftHandIndex2
+      parentName: Huntress:LeftHandIndex1
+      position: {x: -3.0073682e-12, y: 0.0006053241, z: -7.6901836e-12}
+      rotation: {x: 0.111074805, y: 0.016977606, z: -0.10296123, w: 0.9883184}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:LeftHandIndex3
+      parentName: Huntress:LeftHandIndex2
+      position: {x: -0.00014851849, y: 0.0007069114, z: -0.000177034}
+      rotation: {x: -0.053065963, y: -0.037278045, z: -0.104230285, w: 0.9924366}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:LeftHandIndex4
+      parentName: Huntress:LeftHandIndex3
+      position: {x: -0.00013380234, y: 0.00029679906, z: -0.000038133465}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:Neck
+      parentName: Huntress:Spine2
+      position: {x: -0, y: 0.0033482623, z: 2.614481e-10}
+      rotation: {x: 0.028784934, y: 0.001225295, z: 0.0035522413, w: 0.9995786}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:Head
+      parentName: Huntress:Neck
+      position: {x: -0, y: 0.0017058945, z: 0.0005460925}
+      rotation: {x: 0.0000014402231, y: 0.0013270202, z: 0.0035155008, w: 0.99999297}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:HeadTop_End
+      parentName: Huntress:Head
+      position: {x: -0, y: 0.0058652638, z: 0.0018775933}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:RightShoulder
+      parentName: Huntress:Spine2
+      position: {x: 0.0010975244, y: 0.0026531257, z: -0.00011285206}
+      rotation: {x: 0.57874656, y: 0.43263355, z: -0.5665755, w: 0.39607188}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:RightArm
+      parentName: Huntress:RightShoulder
+      position: {x: -7.8663395e-12, y: 0.0022552996, z: -7.3735226e-11}
+      rotation: {x: -0.13613085, y: -0.0018889157, z: -0.018103806, w: 0.99052364}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:RightForeArm
+      parentName: Huntress:RightArm
+      position: {x: -3.4178035e-11, y: 0.0073745814, z: 2.3671324e-11}
+      rotation: {x: -0.0045519318, y: 0.11692864, z: 0.029274808, w: 0.9926983}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:RightHand
+      parentName: Huntress:RightForeArm
+      position: {x: 1.0878453e-12, y: 0.007471881, z: -1.9443551e-11}
+      rotation: {x: -0.057710115, y: 0.18884376, z: 0.04222273, w: 0.9794003}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:RightHandIndex1
+      parentName: Huntress:RightHand
+      position: {x: -5.498358e-12, y: 0.0014047237, z: -2.0575585e-11}
+      rotation: {x: 0.06991244, y: -0.03382795, z: 0.0005564604, w: 0.9969793}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:RightHandIndex2
+      parentName: Huntress:RightHandIndex1
+      position: {x: -6.3163694e-13, y: 0.0005124339, z: -1.5212653e-12}
+      rotation: {x: -0.049869325, y: -0.030326512, z: -0.13992445, w: 0.98844045}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:RightHandIndex3
+      parentName: Huntress:RightHandIndex2
+      position: {x: -0.00020008866, y: 0.0006949183, z: 0.00009893099}
+      rotation: {x: -0.036011223, y: -0.03075095, z: 0.14312796, w: 0.9885707}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Huntress:RightHandIndex4
+      parentName: Huntress:RightHandIndex3
+      position: {x: 0.0000041629382, y: 0.00024192203, z: 0.000052772328}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HuntressBeltStrap_L.001_HuntressBeltsUnwrap:Mesh.008
+      parentName: Player(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HuntressBeltStrap_L.003_HuntressBeltsUnwrap:Mesh.020
+      parentName: Player(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HuntressBeltStrap_L.004_HuntressBeltsUnwrap:Mesh.021
+      parentName: Player(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HuntressBoots_L.001_HuntressBeltsUnwrap:Mesh.017
+      parentName: Player(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HuntressCloak_L.001_HuntressClothesUnwrap1:Mesh.005
+      parentName: Player(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HuntressCoat_L.001_HuntressClothesUnwrap1:Mesh.003
+      parentName: Player(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HuntressEyelashes_L.001_HuntressFaceUnwrap:Mesh.024
+      parentName: Player(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HuntressEyes_L.003_HuntressFaceUnwrap:Mesh.025
+      parentName: Player(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HuntressHair_L.001_HuntressFaceUnwrap:Mesh.027
+      parentName: Player(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HuntressPants_L.001_HuntressClothesUnwrap1:Mesh.000
+      parentName: Player(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 0
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

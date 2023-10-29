@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: d821a3941285f2446bd25fb2f1e9129c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pirellDamage: {fileID: 8300000, guid: 18b1d1e0c1d2d484bbe5a0d275682110, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

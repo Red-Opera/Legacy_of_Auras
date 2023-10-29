@@ -3,7 +3,10 @@ guid: 20a5a94f3433b8048a9a4e52f770d909
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bloodEffect: {fileID: 64989884153106390, guid: f9d52e50fde7d3f44a40c1191644e0d6, type: 3}
+  - launchSound: {fileID: 8300000, guid: c94edbc9da2c3db409df8f4d061c702e, type: 3}
+  - hitSound: {fileID: 8300000, guid: 97b2ae64162073a40aa835692dbb7122, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

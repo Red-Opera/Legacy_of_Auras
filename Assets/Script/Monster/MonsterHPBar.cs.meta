@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 741061dc3ff5c4c4ba86cbbb3193d0ed
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - HPCanvas: {instanceID: 0}
+  - slider: {instanceID: 0}
+  - sliderColor: {instanceID: 0}
+  - remainText: {instanceID: 0}
+  - totalText: {instanceID: 0}
+  - state: {fileID: 11400000, guid: ed159cc9eabe9524b8c5d7aa5e2b534b, type: 2}
+  - damageUI: {instanceID: 0}
+  - HPChangeUI: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

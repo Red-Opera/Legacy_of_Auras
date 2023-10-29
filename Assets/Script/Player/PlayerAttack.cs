@@ -60,9 +60,13 @@ public class PlayerAttack : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
 
-        GameObject newBow = Instantiate(arrow, bow.transform);
-        newBow.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-        newBow.transform.localPosition = new Vector3(-1.25f, 7.5f, 1.75f);
+        GameObject newBow = Instantiate(arrow, bow.transform.GetChild(0).transform);
+        newBow.transform.localRotation = Quaternion.Euler(0.0f, 90.0f, 0.0f);
+        newBow.transform.localPosition = new Vector3(-6.5f, 0.5f, -0.5f);
+
+        // 소리 재생
+        AudioClip clip = bow.GetComponent<AudioSource>().clip;
+        bow.GetComponent<AudioSource>().PlayOneShot(clip);
     }
 
     private void AttackCancel()
@@ -95,15 +99,14 @@ public class PlayerAttack : MonoBehaviour
         if (ready)
         {
             // 시간에 따라서 자연스럽게 카메라 이동
-            camera.transform.position = Vector3.Lerp(defCameraTrans.position, camaraToMove.position, t * 2);
-            camera.transform.rotation = Quaternion.Lerp(defCameraTrans.rotation, camaraToMove.rotation, t * 2);
+            camera.transform.localPosition = Vector3.Lerp(defCameraTrans.localPosition, camaraToMove.localPosition, t * 2);
+            camera.transform.localRotation = Quaternion.Lerp(defCameraTrans.localRotation, camaraToMove.localRotation, t * 2);
         }
-
         
         else
         {
-            camera.transform.position = Vector3.Lerp(camaraToMove.position, defCameraTrans.position, t * 2);
-            camera.transform.rotation = Quaternion.Lerp(camaraToMove.rotation, defCameraTrans.rotation, t * 2);
+            camera.transform.localPosition = Vector3.Lerp(camaraToMove.localPosition, defCameraTrans.localPosition, t * 2);
+            camera.transform.localRotation = Quaternion.Lerp(camaraToMove.localRotation, defCameraTrans.localRotation, t * 2);
         }
 
         // 카메라가 이동완료한 경우 카메라 이동 중지

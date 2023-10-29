@@ -20,8 +20,19 @@
 대화창 이미지 : https://opengameart.org/content/4-svg-message-boxes
 전설 책 이미지 : https://opengameart.org/content/fantasy-book
 다음으로 넘기기 이펙트 : https://commons.wikimedia.org/wiki/File:Black_Arrow_Down.svg
+마을 플레이어 발소리 : https://freesound.org/people/morganpurkis/sounds/369778/
+도서관 플레이어 발소리 : https://freesound.org/people/VKProduktion/sounds/251788/
+도서관 배경 음악 : https://gongu.copyright.or.kr/gongu/wrt/wrt/view.do?wrtSn=13312584&menuNo=200020
+피렐의 모델 : https://sketchfab.com/3d-models/baphomet-151a369bf3c6417a988c282d71de9111
+피렐 도끼 모델 : https://sketchfab.com/3d-models/demon-axe-ce68232e989c4dcab67073e6a443cbc0
+사막 지형 이미지 : https://opengameart.org/content/hand-painted-sand-texture-0
+체력 바 이미지 : https://opengameart.org/content/simple-health-bars
+데미지 폰트 : https://fonts.google.com/specimen/Luckiest+Guy?preview.text=-150&preview.text_type=custom
+화살 준비 소리 : https://freesound.org/people/jzdnvdoosj/sounds/626262/
+화살 발사 소리 : https://freesound.org/people/saturdaysoundguy/sounds/394180/
+화살 맞는 소리 : https://freesound.org/people/LiamG_SFX/sounds/322222/
+피렐의 맞는 소리 : https://freesound.org/people/Michel88/sounds/76969/
 
-해야 할 일 : 마을 대화 구성, 마을 주민 구성, 마을 모습 구성, 플레이어가 이동해야 할 위치, 플레이어가 해야할 일 지정, 텔레포트, 플레이어 능력치 구성, 플레이어 사격 구성
-		    , 플레이어 앉는 모습, 책 읽는 모습 구성, 다른 책을 가져가는 모습
+해야 할 일 : 마을 대화 구성, 마을 주민 구성, 마을 모습 구성, 플레이어가 이동해야 할 위치, 플레이어가 해야할 일 지정, 플레이어 능력치 구성, 플레이어 사격 구성
 
-완성 : 도서관 모습 구성
+완성 : 도서관 모습 구성, 텔레포트, 책 읽는 모습 구성, 다른 책을 가져가는 모습

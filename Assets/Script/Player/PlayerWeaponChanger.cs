@@ -1,14 +1,16 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.Animations.Rigging;
 
 public enum WeaponType { NULL, BOW, GUN }
 
 public class PlayerWeaponChanger : MonoBehaviour
 {
-    public GameObject bow;          // 활 오브젝트
-    public GameObject spin;         // 활을 집어놓을 위치
-    public GameObject hand;         // 플레이어가 잡을 손 위치
+    public GameObject bow;              // 활 오브젝트
+    public GameObject spin;             // 활을 집어놓을 위치
+    public GameObject hand;             // 플레이어가 잡을 손 위치
+    public MultiAimConstraint rig;    
+    public RigBuilder arrowRig; // 활 리깅
    
     private Animator aniamtor;      // 플레이어 애니메이터
 
@@ -30,6 +32,8 @@ public class PlayerWeaponChanger : MonoBehaviour
 
         bowPosition = bow.transform.localPosition;
         bowRotation = bow.transform.localRotation.eulerAngles;
+
+        rig.weight = 0.0f;
     }
 
     public void Update()
@@ -67,6 +71,7 @@ public class PlayerWeaponChanger : MonoBehaviour
             bow.transform.SetParent(spin.transform);
             bow.transform.localPosition = bowPosition;
             bow.transform.localRotation = Quaternion.Euler(bowRotation);
+            rig.weight = 0.0f;
         }
 
         else
@@ -74,7 +79,8 @@ public class PlayerWeaponChanger : MonoBehaviour
             // 손에 활 위치
             bow.transform.SetParent(hand.transform);
             bow.transform.localPosition = Vector3.zero;
-            bow.transform.localRotation = Quaternion.Euler(new Vector3(-100, 0, 0));
+            bow.transform.localRotation = Quaternion.Euler(new Vector3(-110, 10, 0));
+            rig.weight = 1f;
         }
 
         // 무기 변하는 상태를 해제

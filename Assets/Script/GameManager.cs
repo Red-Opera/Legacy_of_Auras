@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     // 전체화면
     public bool isFullScreen = false;       // 전체화면 여부
 
+    // 플레이어
+    public PlayerState playerState;         // 플레이어 상태
+
     public void Awake()
     {
         if (gamemanager == null)

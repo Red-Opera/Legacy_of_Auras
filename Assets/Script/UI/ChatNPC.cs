@@ -48,7 +48,18 @@ public class ChatNPC : MonoBehaviour
         }
     }
 
-    public void StartChat() { StartCoroutine(TypeSentence()); }
+    public void StartChat() 
+    {
+        // 도서관에 있는 NPC와 대화 퀘스트를 통과할 경우
+        if (gameObject.name.Equals("LibWoman") && !(bool)PlayerQuest.quest.questList["chatLibWoman"])
+            PlayerQuest.quest.NextQuest();
+
+        // 마을에 있는 NPC와 대화 퀘스트를 통과할 경우
+        if (gameObject.name.Equals("NPC") && !(bool)PlayerQuest.quest.questList["chatNPC"])
+                PlayerQuest.quest.NextQuest();
+
+        StartCoroutine(TypeSentence()); 
+    }
 
     public IEnumerator TypeSentence()
     {

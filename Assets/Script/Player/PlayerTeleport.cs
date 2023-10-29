@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; // 씬 관리 기능을 사용하기 위한 네임스페이스 추가
+using UnityEngine.SceneManagement;
 
 public class PlayerTeleport : MonoBehaviour
 {

@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visitLib: 1
   readBook: 1
+  chatLibWoman: 1
+  chatNPC: 1
