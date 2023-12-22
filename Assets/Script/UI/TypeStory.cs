@@ -10,10 +10,13 @@ public class TypeStory : MonoBehaviour
     public float endUIMoveDistance = 10.0f;     // endUI의 이동 거리
     public float endUISinSpeed = 2.0f;          // endUI 이동 속도
 
-    public Text textComponent;                  // 출력하기 위한 텍스트 컴포넌트
-    public string[] sentences;                  // 텍스트를 출력할 문장 배열
-    public float typeSpeed = 0.1f;              // 텍스트를 출력하는 속도 (초 단위)
-    public bool hasActivatedCanvas = false;     // canvas가 활성화되었는지 여부
+    public Text textComponent;                      // 출력하기 위한 텍스트 컴포넌트
+    public string[] sentences;                      // 텍스트를 출력할 문장 배열
+    public float typeSpeed = 0.1f;                  // 텍스트를 출력하는 속도 (초 단위)
+    public static bool hasActivatedCanvas = false;  // canvas가 활성화되었는지 여부
+
+    public AudioClip openBookSound;             // 책 여는 소리
+    public AudioClip closeBookSound;            // 책 닫는 소리
 
     public float rotationSpeed = 0.5f;          // 회전하는데 걸리는 시간
     private Vector2 startRotation;              // 회전 시작 시의 플레이어의 회전
@@ -31,6 +34,11 @@ public class TypeStory : MonoBehaviour
     private Vector3 endUIOriginalPosition;      // endUI의 초기 위치
     private float endUIStartTime;               // endUI 이동 시작 시간
 
+    private ReadBookScenario scenario;          // 시나리오 스크립트
+    private bool isScenarioStarting = false;    // 현재 책이 펴지고 있는지 확인
+
+    private AudioSource audioSource;            // 스피커
+
     void Start()
     {
         player = GameObject.Find("Model");
@@ -41,32 +49,31 @@ public class TypeStory : MonoBehaviour
 
         endUI.SetActive(false);
         canvas.SetActive(false);
+
+        scenario = GetComponent<ReadBookScenario>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
         // E 키를 누르면 lookAtTarget을 바라보도록 설정
         if (isLookingAtTarget && Input.GetKeyDown(KeyCode.E))
-        {
-            if (!hasActivatedCanvas)
-            {
-                currentSentenceIndex = 0;   // 문장 인덱스 초기화
-                hasActivatedCanvas = true;  // canvas가 활성화되었다고 표시
-                canvas.SetActive(true);
-
-                if (!(bool)PlayerQuest.quest.questList["readBook"])
-                    PlayerQuest.quest.NextQuest();
-            }
-
-            LookAtTarget();
-        }
+            if (!isScenarioStarting)
+                StartCoroutine(IsStartStory());
 
         // canvas가 활성화되었다면 타이핑 시작
         if (hasActivatedCanvas)
         {
             // 문장이 모두 출력되지 않았고, 출력 중이 아니라면 타이핑을 시작합니다.
             if (currentSentenceIndex < sentences.Length && !isTyping)
-                StartTyping();
+            {
+                if (currentSentenceIndex == 0)
+                    StartTyping();
+
+                else if (currentSentenceIndex != 0 && (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButton(0) || Input.GetKeyDown(KeyCode.Space)))
+                    StartTyping();
+            }
         }
 
         if (!isTyping && Input.GetKeyDown(KeyCode.E))
@@ -87,6 +94,53 @@ public class TypeStory : MonoBehaviour
             float yOffset = Mathf.Sin(t) * endUIMoveDistance;
             endUI.transform.position = endUIOriginalPosition + new Vector3(0, yOffset, 0);
         }
+
+        else if (isTyping && canvas.activeSelf)
+        {
+            if (endUI.activeSelf)
+                endUI.SetActive(false);
+        }
+    }
+
+    private IEnumerator IsStartStory()
+    {
+        isScenarioStarting = true;
+
+        if (!hasActivatedCanvas)
+        {
+            currentSentenceIndex = 0;   // 문장 인덱스 초기화
+
+            if (scenario != null)
+            {
+                scenario.animator.speed = 2;
+                scenario.animator.SetTrigger("Exit");
+                scenario.animator.Play("BookOpen", 0, 0.0f);
+                scenario.animator.SetFloat("Speed", 1.0f);
+                yield return new WaitForSeconds(0.1f);
+
+                if (audioSource != null)
+                    audioSource.PlayOneShot(openBookSound);
+                
+                while (scenario.animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99)
+                    yield return null;
+
+                scenario.animator.speed = 0;
+            }
+
+            yield return null;
+
+            hasActivatedCanvas = true;  // canvas가 활성화되었다고 표시
+            canvas.SetActive(true);
+
+            if (!(bool)PlayerQuest.quest.questList["readBook"])
+                PlayerQuest.quest.NextQuest();
+        }
+
+        LookAtTarget();
+
+        player.GetComponent<Animator>().SetBool("isWalk", false);
+
+        isScenarioStarting = false;
     }
 
     // 텍스트를 한 글자씩 출력하는 함수
@@ -145,11 +199,13 @@ public class TypeStory : MonoBehaviour
     // 마우스 왼쪽 클릭을 통해 UI를 닫을 수 있도록 합니다.
     void LateUpdate()
     {
-        if (hasActivatedCanvas && !isTyping && Input.GetMouseButtonDown(0))
+        if (hasActivatedCanvas && !isTyping && currentSentenceIndex == sentences.Length && Input.GetMouseButtonDown(0))
         {
             hasActivatedCanvas = false;
             canvas.SetActive(false);
             endUI.SetActive(false);
+
+            StartCoroutine(CloseBook());
         }
     }
 
@@ -187,5 +243,26 @@ public class TypeStory : MonoBehaviour
 
         playerRotate.currentRotation = endRotation + new Vector2(-90, 0); // 목표 회전값으로 설정
         isRotating = false;
+    }
+
+    // 책을 닫는 이펙트 메소드
+    private IEnumerator CloseBook()
+    {
+        if (scenario != null)
+        {
+            scenario.animator.speed = 2;
+            scenario.animator.SetFloat("Speed", -1.0f);
+            scenario.animator.Play("BookOpen", 0, 0.0f);
+            scenario.animator.SetTrigger("Exit");
+            yield return new WaitForSeconds(0.1f);
+
+            if (audioSource != null)
+                audioSource.PlayOneShot(closeBookSound);
+
+            while (scenario.animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99)
+                yield return null;
+
+            scenario.animator.speed = 0;
+        }
     }
 }

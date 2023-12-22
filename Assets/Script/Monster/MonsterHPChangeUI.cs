@@ -25,6 +25,9 @@ public class MonsterHPChangeUI : MonoBehaviour
 
     public IEnumerator CreateChangeText(bool isDamage, int addHP)
     {
+        if (addHP < 0)
+            addHP = 0;
+
         GameObject text = Instantiate(resultText, transform);
         TextMeshProUGUI mesh = text.GetComponentInChildren<TextMeshProUGUI>();
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class GameManager : MonoBehaviour
 
     // 플레이어
     public PlayerState playerState;         // 플레이어 상태
+    public GameObject playerObj;            // 플레이어 오브젝트
+
+    // 씬
+    public string beforeSceneName = "Prologue";     // 이전 씬 이름
 
     public void Awake()
     {
@@ -37,10 +42,27 @@ public class GameManager : MonoBehaviour
 
         if (player != null)
             player.transform.GetChild(3).transform.GetChild(0).gameObject.SetActive(false);
+
+        SceneManager.sceneLoaded += LevelOnLoad;
     }
 
     public void Update()
     {
+
         
+    }
+
+    public void LevelOnLoad(Scene scene, LoadSceneMode mode)
+    {
+        GameObject player = GameObject.Find("player(Clone)");
+
+        if (player == null && playerObj != null && scene.name.Equals("Village"))
+        {
+            GameObject startLocation = GameObject.Find("StartLocation");
+            player = Instantiate(playerObj, startLocation.transform);
+            player.transform.SetParent(null);
+
+            player.transform.GetChild(3).transform.GetChild(0).gameObject.SetActive(false);
+        }
     }
 }

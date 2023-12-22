@@ -1,4 +1,7 @@
+using System;
 using System.Collections;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -6,9 +9,18 @@ public class PlayerAttack : MonoBehaviour
     public Camera camera;               // 플레이어 카메라
     public GameObject bow;              // 플레이어 활
     public GameObject arrow;            // 화살 오브젝트
+    public GameObject gun;              // 플레이어 총
+    public GameObject bullet;           // 총알 오브젝트
+    public GameObject emptyCartridge;   // 탄피 배출 이펙트
+    public PlayerGunShotUI gunUI;       // 총 UI을 관리하는 오브젝트
 
-    private Animator animator;          // 플레이어의 애니메이터
-    private WeaponType weaponType;      // 현재 소유하고 있는 무기
+    public TextMeshProUGUI currentGunText;      // 탄창에 남은 총알의 개수
+
+    public AudioClip gunSoundClip;              // 총 소리 클립
+    public AudioClip noRemainBullet;            // 총알이 없을때 나는 소리
+
+    private Animator animator;                  // 플레이어의 애니메이터
+    private WeaponType weaponType;              // 현재 소유하고 있는 무기
 
     public Transform camaraToMove;              // 카메라가 이동할 위치
     public Transform defCameraTrans;            // 기본 카메라 위치
@@ -18,6 +30,9 @@ public class PlayerAttack : MonoBehaviour
     private bool isCameraMoving = false;        // 카메라 이동 중인지 여부
     private bool isReady = false;               // 현재 화살을 준비하는지 여부
 
+    private ParticleSystem gunFlash;            // 총 쏠때 번쩍임
+    private PlayerGunReLoad reLoad;             // 총 로드 스크립트
+
     public void Start()
     {
         animator = GetComponent<Animator>();
@@ -25,7 +40,17 @@ public class PlayerAttack : MonoBehaviour
         Debug.Assert(GetComponent<PlayerWeaponChanger>() != null, "Error (Null Reference) : 플레이어 무기 변화 컴포넌트가 존재하지 않습니다.");
         Debug.Assert(animator != null, "Error (Null Reference) : 애니메이션 컴포넌트가 존재하지 않습니다.");
         Debug.Assert(bow != null, "Error (Null Reference) : 활이 존재하지 않습니다.");
+        Debug.Assert(gun != null, "Error (Null Reference) : 총이 존재하지 않습니다.");
         Debug.Assert(arrow != null, "Error (Null Reference) : 화살이 존재하지 않습니다.");
+        Debug.Assert(gunUI != null, "Error (Null Reference) : 총알 수를 관리하는 컴포넌트가 존재하지 않습니다.");
+
+        gunFlash = gun.transform.GetChild(0).GetComponent<ParticleSystem>();
+
+        Debug.Assert(gunFlash != null, "Error (Null Reference) : 총 번쩍 이펙트가 존재하지 않습니다.");
+        Debug.Assert(emptyCartridge != null, "Error (Null Reference) : 탄피 이펙트가 존재하지 않습니다.");
+
+        reLoad = GetComponent<PlayerGunReLoad>();
+        Debug.Assert(reLoad != null, "Error (Null Reference) : 플레이어의 총 로드 컴포넌트 존재하지 않습니다.");
     }
 
     public void Update()
@@ -42,6 +67,9 @@ public class PlayerAttack : MonoBehaviour
 
         else if (weaponType == WeaponType.BOW)
             AttackCancel();
+
+        else if (Input.GetMouseButtonDown(0) && weaponType == WeaponType.GUN)
+            GunAttack();
 
         // 카메라 이동할 수 있는지 확인하여 이동할 수 있을 경우 이동
         if (isCameraMoving)
@@ -67,6 +95,38 @@ public class PlayerAttack : MonoBehaviour
         // 소리 재생
         AudioClip clip = bow.GetComponent<AudioSource>().clip;
         bow.GetComponent<AudioSource>().PlayOneShot(clip);
+    }
+
+    // 총 공격 메소드
+    private void GunAttack()
+    {
+        if (reLoad.isReLoad)
+            return;
+
+        if (Int32.Parse(currentGunText.text.ToString()) <= 0)
+        {
+            gun.GetComponent<AudioSource>().PlayOneShot(noRemainBullet);
+            return;
+        }
+
+        StartCoroutine(gunUI.ReduceBullet());
+        animator.SetTrigger("FireGun");
+
+        GameObject newBullet = Instantiate(bullet, gun.transform.GetChild(0).transform);
+        newBullet.transform.localRotation = Quaternion.Euler(90.0f, 90.0f, 0.0f);
+        newBullet.transform.parent = null;
+        newBullet.transform.localScale = new Vector3(20.0f, 20.0f, 20.0f);
+
+        gun.GetComponent<AudioSource>().PlayOneShot(gunSoundClip);
+
+        if (gunFlash == null)
+            gunFlash = gun.transform.GetChild(0).GetComponent<ParticleSystem>();
+
+        gunFlash.Play();
+
+        GameObject newCartridge = Instantiate(emptyCartridge, gun.transform);
+        newCartridge.transform.localRotation = Quaternion.Euler(0.0f, 90.0f, 0.0f);
+        Destroy(newCartridge, 1.5f);
     }
 
     private void AttackCancel()

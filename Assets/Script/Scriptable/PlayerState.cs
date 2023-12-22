@@ -5,4 +5,7 @@ public class PlayerState : State
 {
     public int money;
     public int exp;
+
+    public int bulletCount;
+    public int bulletCurrentMax;
 }

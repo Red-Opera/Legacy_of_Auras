@@ -52,6 +52,9 @@ public class PlayerRotate : MonoBehaviour
 
     public void Update()
     {
+        if (TypeStory.hasActivatedCanvas)
+            return;
+
         // 마우스 감도 가져오기
         sensitivityX = GameManager.info.mouseSensitivityX;
         sensitivityY = GameManager.info.mouseSensitivityY;

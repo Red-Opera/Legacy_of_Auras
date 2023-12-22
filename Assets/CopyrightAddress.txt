@@ -32,7 +32,27 @@
 화살 발사 소리 : https://freesound.org/people/saturdaysoundguy/sounds/394180/
 화살 맞는 소리 : https://freesound.org/people/LiamG_SFX/sounds/322222/
 피렐의 맞는 소리 : https://freesound.org/people/Michel88/sounds/76969/
+총알 모델 : https://sketchfab.com/3d-models/762x39mm-bullet-0ecab5988fa643b8bfdc19862ac95688
+총 발사 소리 : https://freesound.org/people/deleted_user_13668154/sounds/616091/
+방어 소리 : https://freesound.org/people/FairCashew/sounds/684135/
+AK-47 UI 그림 : https://opengameart.org/content/10-pixel-weapons-0
+AK-47 사격 UI 그림 : https://opengameart.org/content/explosion-sheet
+남은 탄알 수 UI 폰트 : https://noonnu.cc/font_page/76
+총알이 없을 때 소리 : https://freesound.org/people/MATRIXXX_/sounds/448989/
+플레이어 하트 UI : https://www.pngegg.com/en/png-nymsb
+선인장 모델 : https://sketchfab.com/3d-models/cactus-3-2ca57ae2e5364ac199837c9cd24e463a
+선인장 모델 2 : https://sketchfab.com/3d-models/white-speckled-cactus-64e06ca2baae4ef6adc0b5f8e15b45c9
+선인장 모델 3 : https://sketchfab.com/3d-models/cactus-2bb7c79c178c4f40b60357b815052cc8
+사막 Bloom 효과 이미지 : https://docs.unrealengine.com/4.27/en-US/RenderingAndGraphics/PostProcessEffects/Bloom/
+사막 모래 밟는 소리 : https://freesound.org/people/orginaljun/sounds/157832/
+낡은 책 모델 : https://sketchfab.com/3d-models/grimoire-morphose-bbdf413cfc144fc79f1ea868166404ab
+책 여는 소리 : https://freesound.org/people/MATRIXXX_/sounds/397548/
+책 닫는 소리 : https://freesound.org/people/SpaceJoe/sounds/484892/ 
+피렐 땅 공격 이미지 : https://url.kr/rf1zy2
+피렐 땅 공격 이미지 2 : https://www.pinterest.co.kr/pin/858076535246418817/
+물 지나가는 소리 1 : https://freesound.org/people/LittleRobotSoundFactory/sounds/270424/
+물 지나가는 소리 2 : https://freesound.org/people/EminYILDIRIM/sounds/608663/
 
-해야 할 일 : 마을 대화 구성, 마을 주민 구성, 마을 모습 구성, 플레이어가 이동해야 할 위치, 플레이어가 해야할 일 지정, 플레이어 능력치 구성, 플레이어 사격 구성
+해야 할 일 : 마을 대화 구성, 마을 주민 구성, 마을 모습 구성, 플레이어가 이동해야 할 위치, 플레이어가 해야할 일 지정
 
-완성 : 도서관 모습 구성, 텔레포트, 책 읽는 모습 구성, 다른 책을 가져가는 모습
+완성 : 도서관 모습 구성, 텔레포트, 책 읽는 모습 구성, 다른 책을 가져가는 모습, 플레이어 사격 구성, 플레이어 능력치 구성

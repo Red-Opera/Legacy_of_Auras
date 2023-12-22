@@ -23,6 +23,7 @@ public class MonsterHPBar : MonoBehaviour
     private int maxHP;                      // 최대 체력
 
     private bool isDeath = false;           // 현재 이 몬스터가 사망했는지 확인하기 위한 변수
+    private bool isDestroy = false;         // 현재 이 몬스터가 제거되었는지 확인하는 변수
 
     public void Start()
     {
@@ -79,13 +80,14 @@ public class MonsterHPBar : MonoBehaviour
     private IEnumerator Death()
     {
         animator.SetTrigger("IsDeath");
+        isDeath = true;
 
         while (true)
         {
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Death") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95 && !isDeath)
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Death") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95 && !isDestroy)
             {
                 Destroy(gameObject, 5.0f);
-                isDeath = true;
+                isDestroy = true;
             }
 
             yield return null;
@@ -95,18 +97,24 @@ public class MonsterHPBar : MonoBehaviour
     // 체력 바의 데미지를 감소시키기 위한 메소드
     public void SetDamage(int damage)
     {
+        if (isDeath)
+            return;
+
         int realDamage = GameManager.info.playerState.attack + damage - state.def;
         StartCoroutine(HPChangeUI.CreateChangeText(true, realDamage));
 
         if (realDamage <= 0)
+        {
+            damageSound.DamageSound(realDamage);
             return;
+        }
 
         if (currentHP - realDamage > 0)
         {
             StartCoroutine(monsterControl.IdleRotationCoroutine(true));
             currentHP -= realDamage;
 
-            damageSound.DamageSound();
+            damageSound.DamageSound(realDamage);
         }
 
         else

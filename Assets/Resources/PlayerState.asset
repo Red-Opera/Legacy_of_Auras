@@ -19,3 +19,5 @@ MonoBehaviour:
   def: 5
   money: 0
   exp: 0
+  bulletCount: 180
+  bulletCurrentMax: 30

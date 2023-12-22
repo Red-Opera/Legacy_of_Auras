@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 50d1f5c95be0a8944afa5a8e28d445ac
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerState: {fileID: 11400000, guid: 15b7774971424ba4f97dff7ee762e783, type: 2}
+  - emptyCartridge: {fileID: 1838114916151622, guid: a12bdde7557f6a64cb021f6e2d55c7ed, type: 3}
+  - gunFire: {instanceID: 0}
+  - currentText: {instanceID: 0}
+  - remainText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

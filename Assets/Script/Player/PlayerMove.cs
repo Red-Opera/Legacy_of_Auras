@@ -28,6 +28,9 @@ public class PlayerMove : MonoBehaviour
 
     public void Update()
     {
+        if (TypeStory.hasActivatedCanvas)
+            return;
+
         // 현재 점프 중인지 확인
         isJumpAnimation = animator.GetCurrentAnimatorStateInfo(0).IsName("Jumping");
 

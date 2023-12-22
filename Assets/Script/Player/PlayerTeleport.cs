@@ -15,11 +15,12 @@ public class PlayerTeleport : MonoBehaviour
     public float animationDuration = 3.0f;  // 다음 맵 이동하는데 걸리는 시간
 
     public string toScene = "";             // 넘어갈 씬 이름
-    public string teleportTargetName = "";  // 대상 씬에서 찾을 TeleportTarget 오브젝트의 이름
 
     private Coroutine textDisplayCoroutine; // 현재 실행 중인 코루틴을 저장할 변수
     private int currentTextIndex = 0;       // 현재 텍스트를 출력하는 인덱스
     private bool isTeleport = false;        // 현재 텔레포트를 하고 있는지 여부
+
+    private GameObject targetObject = null;  // 대상 씬에서 TeleportTarget 오브젝트를 찾음
 
     private void Start()
     {
@@ -108,24 +109,42 @@ public class PlayerTeleport : MonoBehaviour
         }
     }
 
-    private void MoveToTeleportTarget()
+    private void MoveToTeleportTarget(Scene scene)
     {
-        GameObject targetObject = GameObject.Find(teleportTargetName);  // 대상 씬에서 TeleportTarget 오브젝트를 찾음
-        GameObject player = GameObject.Find("Model");                   // 텔레포트할 플레이어 객체를 가져옴
+        GameObject player = GameObject.Find("Model");
 
-        // 찾았는지 확인하고 플레이어를 이동시킴
-        if (targetObject != null)
+        if (scene.name.Equals("Village"))
+        {
+            if (GameManager.info.beforeSceneName.Equals("Prologue"))
+                targetObject = GameObject.Find("StartLocation");
+
+            else if (GameManager.info.beforeSceneName.Equals("Library"))
+                targetObject = GameObject.Find("LibExitLocation");
+        }
+
+        else if (scene.name.Equals("Library"))
+            targetObject = GameObject.Find("StartLocation");
+
+        else if (scene.name.Equals("Desert"))
+        {
+            if (GameManager.info.beforeSceneName.Equals("Village"))
+                targetObject = GameObject.Find("StartLocation");
+        }
+
+        if (player != null && targetObject != null)
+        {
             player.transform.position = targetObject.transform.position;
+            player.transform.rotation = targetObject.transform.rotation;
+        }
 
-        else
-            Debug.Assert(false, "TeleportTarget이 존재하지 않습니다.");
+        GameManager.info.beforeSceneName = scene.name;
     }
 
     // 씬이 로드되면 호출되는 이벤트 핸들러
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // 대상 씬이 로드되면 플레이어를 teleportTarget 위치로 이동
-        MoveToTeleportTarget();
+        MoveToTeleportTarget(scene);
     }
 
     private void OnEnable()

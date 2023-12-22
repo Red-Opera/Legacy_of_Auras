@@ -24146,6 +24146,9 @@ MonoBehaviour:
   delayBetweenText: 0.3
   loadingObject: {fileID: 5833412632427708120}
   slider: {fileID: 5864929944140509190}
+  animationDuration: 3
+  toScene: 
+  teleportTargetName: 
 --- !u!1 &100024
 GameObject:
   m_ObjectHideFlags: 0
@@ -57757,13 +57760,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Loading
       objectReference: {fileID: 0}
-    - target: {fileID: 1075293394716452145, guid: d83118f2cab066e4e885b193aa6e5b28, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 1005538324362341009, guid: d83118f2cab066e4e885b193aa6e5b28, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1075293394716452145, guid: d83118f2cab066e4e885b193aa6e5b28, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075293394716452145, guid: d83118f2cab066e4e885b193aa6e5b28, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1075680757528173937, guid: d83118f2cab066e4e885b193aa6e5b28, type: 3}
       propertyPath: m_Pivot.x
