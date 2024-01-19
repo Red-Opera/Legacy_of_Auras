@@ -1,6 +1,5 @@
 나눔 고딕 : https://hangeul.naver.com/font/nanum
 타이틀 배경 이미지 : https://www.vecteezy.com/photo/22712442-beautiful-anime-background-countryside-day-outside-generat-ai
-
 플레이어 모델 : https://sketchfab.com/3d-models/gd52-mod2-saigebaker-59fefe29cf0a4c8682dc06696b2ca3a0
 마녀 이미지 : https://pixabay.com/fi/photos/vieh%C3%A4tys-nainen-ihmiset-siluetti-70991/
 나머지 컷씬 이미지 : Imagine AI
@@ -52,6 +51,48 @@ AK-47 사격 UI 그림 : https://opengameart.org/content/explosion-sheet
 피렐 땅 공격 이미지 2 : https://www.pinterest.co.kr/pin/858076535246418817/
 물 지나가는 소리 1 : https://freesound.org/people/LittleRobotSoundFactory/sounds/270424/
 물 지나가는 소리 2 : https://freesound.org/people/EminYILDIRIM/sounds/608663/
+소형 골드 박스 오브젝트 : https://sketchfab.com/3d-models/coin-pouch-805e2a367e7f40dbba1ced88a48f297a
+중형 골드 박스 오브젝트 : https://sketchfab.com/3d-models/bitcoin-treasure-chest-9342645ff49948128b1ca2142bf68a85
+UI 알림 효과음 : https://freesound.org/people/plasterbrain/sounds/419493/
+타이틀 배경 음악 : https://www.chosic.com/download-audio/30485/
+상점 벽 랜턴 : https://sketchfab.com/3d-models/old-lantern-game-ready-asset-42d15b68713f4a9ba0554ea2ea7efed0
+상점 간판 : https://sketchfab.com/3d-models/sign-model-7762deab57a241f4a1e5df0d3e7f15de
+촛불 이미지 : https://www.pngitem.com/middle/Thwxbb_realistic-candle-flame-png-transparent-png-png-download/
+벽 촛불 오브젝트 : https://sketchfab.com/3d-models/wall-mount-candle-free-526645f841f6424da2c51915b505c20f
+상점 샹들리에 오브젝트 : https://sketchfab.com/3d-models/old-medieval-chandelier-98a999d3253145e3861f0a3be86786da
+상점 사인 소리 : https://freesound.org/people/NistuGgner/sounds/714197/
+상점 사인 소리 2 : https://freesound.org/people/soundofsong/sounds/647646/
+마을 배경음악 : https://www.chosic.com/download-audio/29424/
+상점 와인 배럴 : https://sketchfab.com/3d-models/wooden-barrel-9d79433fc0994a07a185e5ba1c7dbcdb
+상점 벽 선반 : https://sketchfab.com/3d-models/medieval-shelf-b022a8ae9dae4f039d3ee804fb993188
+상점 빨간 물약 포션 : https://sketchfab.com/3d-models/health-potion-837ed75d23b24bb9b2a7fdd9c0f1e4e2
+상점 파란 물약 포션 : https://sketchfab.com/3d-models/potion-mana-elixir-game-ready-asset-7a1f76f038534873a6a7fe631df2ca08
+상점 이상한 물약 포션 : https://sketchfab.com/3d-models/moon-potion-flask-c0ea9cfa198e4fb89d5fc5be3999be5b
+상점 판매대 : https://sketchfab.com/3d-models/wooden-table-31ab9f9ad2fa425aa75e8bb76cad8fc1
+상점 부서진 책상 : https://sketchfab.com/3d-models/table-c66be91a4290494cba32225a244597d3
+상점 판매대 책 : https://sketchfab.com/3d-models/medieval-book-stack-0ea43f7fdcb7411cb1123b987f297d41
+상점 판매대 잉크 : https://sketchfab.com/3d-models/inkwell-with-feather-pen-cdfc5e993a8040ef9bb3233c2bbe7179
+상점 판매대 종이 : https://sketchfab.com/3d-models/old-paper-cardboard-boxes-72a4804f8a4d4de18e59abb60b81c54ft
+아이템 상점 주인 : https://sketchfab.com/3d-models/fuse-woman-1-c6436897da494b4e8e1f8188aea620c6
+무기 상점 무기 1 : https://sketchfab.com/3d-models/leviathan-axe-09974baf271e498f94a92e284217d56e
+무기 상점 무기 2 : https://sketchfab.com/3d-models/chevalier-sword-b2662f2666a844e8a1bd0e7c4a7672d8
+무기 상점 모루 : https://sketchfab.com/3d-models/anvil-b3cd7c2e805a40d6b515031532bc3dec
+무기 상점 망치 : https://sketchfab.com/3d-models/hammer-game-ready-eb371236ff14403dabb065506ac124eb
+무기 상점 양동이 : https://sketchfab.com/3d-models/metal-bucket-b9f5d2a8320a47d9b85446574a5a874e
+무기 상점 상자 : https://sketchfab.com/3d-models/metal-box-7a78be45d1bc4c359b0d410484efa565
+무기 상점 책상 : https://sketchfab.com/3d-models/metal-table-asset-4e09a012318a4cd7822ae7776a576964
+무기 상점 주인 : https://sketchfab.com/3d-models/aenar-npc-14c9c371e5ce40b6a66a9fe8da41f450
+무기 상점 의자 : https://sketchfab.com/3d-models/chair-medieval-2022a7be624a4c3ea6cf2f9122d5dcad
+상점 부서진 의자 : https://sketchfab.com/3d-models/chair-78f12b2403d840deb057fa8309832293
+상점 의자 : https://sketchfab.com/3d-models/medieval-chair-45efb3865caa438680b45b392994b271
+플레이어 인벤토리 UI : https://opengameart.org/content/fantasy-ui-box
+아이템 상점 UI : https://opengameart.org/content/gui-elements
+아이템 상점 폰트 : http://uhbeefont.com/font/w/UhBeeZIGLE.html
+아이템 상점 체크 : https://opengameart.org/content/user-interface-element-pack-panels-buttons-sliders-tables-icons
+총 상자 오브젝트 : https://sketchfab.com/3d-models/open-treasure-chest-12b28dada2e742b9bfe431c33606e54e
+아이템 상점 구매 소리 : https://freesound.org/people/waldram/sounds/257518/
+아이템 상점 사인 이미지 : https://webartdevelopers.com/blog/animated-svg-signature/
+깃털 이미지 : https://gallery.yopriceville.com/Free-Clipart-Pictures/Decorative-Elements-PNG/White_Feather_PNG_Clip_Art_Image#.XJitMigzZPY
 
 해야 할 일 : 마을 대화 구성, 마을 주민 구성, 마을 모습 구성, 플레이어가 이동해야 할 위치, 플레이어가 해야할 일 지정
 

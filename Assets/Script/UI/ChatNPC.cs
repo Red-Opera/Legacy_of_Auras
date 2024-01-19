@@ -56,7 +56,7 @@ public class ChatNPC : MonoBehaviour
 
         // 마을에 있는 NPC와 대화 퀘스트를 통과할 경우
         if (gameObject.name.Equals("NPC") && !(bool)PlayerQuest.quest.questList["chatNPC"])
-                PlayerQuest.quest.NextQuest();
+            PlayerQuest.quest.NextQuest();
 
         StartCoroutine(TypeSentence()); 
     }
@@ -87,7 +87,7 @@ public class ChatNPC : MonoBehaviour
             currentCharacterIndex++;
 
             // .문자가 올경우 엔터키를 누름
-            if (currentChar == '.')
+            if (currentChar == '.' || currentChar == '~')
             {
                 textDisplay.text += '\n';
                 currentCharacterIndex++;
@@ -116,6 +116,7 @@ public class ChatNPC : MonoBehaviour
         {
             // 텍스트 모두 출력 여부를 참으로 설정
             isEnd = true;
+            isTyping = true;
             currentSentenceIndex = 0;
 
             animator.SetTrigger("isEnd");

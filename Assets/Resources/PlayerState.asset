@@ -17,7 +17,9 @@ MonoBehaviour:
   attack: 10
   attackSpeed: 0
   def: 5
-  money: 0
+  money: 4750
   exp: 0
   bulletCount: 180
   bulletCurrentMax: 30
+  playTotalTime: 1281.908
+  kills: 1

@@ -6,6 +6,7 @@ public class StartButton : MonoBehaviour
 {
     public SpriteRenderer titleImg;
     private CanvasGroup canvas;
+    private AudioSource backgroundSound;
 
     private float fadeTime = 1f;
 
@@ -20,6 +21,9 @@ public class StartButton : MonoBehaviour
 
         if (titleImg == null)
             Debug.Assert(false, "Error (Null Reference) : 배경이미지가 존재하지 않습니다.");
+
+        backgroundSound = GetComponent<AudioSource>();
+        Debug.Assert(backgroundSound != null, "Error (Null Reference) : 배경음악이 존재하지 않습니다.");
     }
 
     private void Update()
@@ -47,6 +51,7 @@ public class StartButton : MonoBehaviour
             // 시간에 따라 투명도를 조절
             float t = elapsedTime / fadeTime;
 
+            backgroundSound.volume = Mathf.Lerp(1.0f, 0.0f, t);
             canvas.alpha = Mathf.Lerp(startAlpha, 0f, t);
             titleImg.color = Color.Lerp(color, toColor, t);
 

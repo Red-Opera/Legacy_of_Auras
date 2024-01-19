@@ -48,7 +48,8 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-
+        // 전체 플레이한 시간을 측정함
+        playerState.playTotalTime += Time.deltaTime;
         
     }
 

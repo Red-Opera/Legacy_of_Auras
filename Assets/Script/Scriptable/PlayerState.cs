@@ -8,4 +8,7 @@ public class PlayerState : State
 
     public int bulletCount;
     public int bulletCurrentMax;
+
+    public float playTotalTime;
+    public int kills;
 }

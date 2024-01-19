@@ -53,7 +53,7 @@ public class PlayerWeaponChanger : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1) && !aniamtor.GetBool("ArrowReady") && weaponType != WeaponType.GUN)
             StartCoroutine(EquidUnEquidBow());
 
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && weaponType != WeaponType.BOW)
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && weaponType != WeaponType.BOW && gun.activeSelf)
             EquidUnEquidGun();
     }
 

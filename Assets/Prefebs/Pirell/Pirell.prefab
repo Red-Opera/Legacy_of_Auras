@@ -1182,12 +1182,12 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 100
   m_Drag: 10
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.5
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!82 &7490327228717953465
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1373,6 +1373,7 @@ MonoBehaviour:
   damageUI: {fileID: 8746329230228796452}
   HPChangeUI: {fileID: 5034204815221054782}
   monsterControl: {fileID: 4410918207402308409}
+  playerState: {fileID: 11400000, guid: 15b7774971424ba4f97dff7ee762e783, type: 2}
   currentHP: 0
 --- !u!114 &3447188127706166745
 MonoBehaviour:
@@ -1403,11 +1404,11 @@ MonoBehaviour:
   lookAtDis: 25
   lookAtAngle: 120
   attackDistance: 5
-  moveSpeed: 2
+  moveSpeed: 2.5
   rotationSpeed: 5
   waitMinTime: 1
   waitMaxTime: 5
-  maxAttackType: 2
+  maxAttackType: 3
   idleTurnAngleMin: -120
   idleTurnAngleMax: 120
   idleTurnAngleCurrent: 0
@@ -1428,12 +1429,33 @@ MonoBehaviour:
   leftAXE: {fileID: 4253340258956946536}
   rightAXE: {fileID: 9083810947357898353}
   effect: {fileID: 6274950090860474873, guid: 10c37ef2095819e4eb69c1d11b717c82, type: 3}
+  fireAXE: {fileID: 2238059122593327253, guid: f0a71917e848d5246b233e9b003f5d19, type: 3}
+--- !u!114 &8213251510157843444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8383958228068342680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b71c1f256899d748a11b5b9f160d71c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldBoxs:
+  - {fileID: 7655531019743315160, guid: 7fe3eaa2cb63b6f448704b8b8b09d2b8, type: 3}
+  - {fileID: 7255221254838807361, guid: 2f3866aab700dd748bed05a4411d8e32, type: 3}
+  dropItems: []
+  dropItemRange: 8
+  yUpDrop: 1
+  dropMoneyRange: 20
+  monsterState: {fileID: 11400000, guid: ed159cc9eabe9524b8c5d7aa5e2b534b, type: 2}
 --- !u!1 &8578243314650239417 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1122714205601920880, guid: 6e6e8573730b29b40920653661fbcfe1, type: 3}
   m_PrefabInstance: {fileID: 8689876108003714761}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &774919286988100111
+--- !u!64 &1112636636538295760
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1445,7 +1467,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: -1
+  m_CookingOptions: 30
   m_Mesh: {fileID: -6424376221143359818, guid: 6e6e8573730b29b40920653661fbcfe1, type: 3}
 --- !u!4 &9074929821787392214 stripped
 Transform:

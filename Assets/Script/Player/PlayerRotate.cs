@@ -52,7 +52,7 @@ public class PlayerRotate : MonoBehaviour
 
     public void Update()
     {
-        if (TypeStory.hasActivatedCanvas)
+        if (TypeStory.hasActivatedCanvas || ItemShopOpenClose.isShopOpen)
             return;
 
         // 마우스 감도 가져오기

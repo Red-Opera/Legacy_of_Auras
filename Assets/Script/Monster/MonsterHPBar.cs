@@ -15,11 +15,13 @@ public class MonsterHPBar : MonoBehaviour
     public GameObject damageUI;             // 몬스터의 데미지 UI를 넣기 위한 오브젝트
     public MonsterHPChangeUI HPChangeUI;    // 몬스터 데미지를 출력하기 위한 스크립트
     public MonsterControl monsterControl;   // 몬스터의 상태를 제어할 수 있는 스크립트
+    public PlayerState playerState;         // 플레이어 상태
     public int currentHP;                   // 현재 체력
 
     private GameObject player;              // 플레이어 오브젝트
     private Animator animator;              // 몬스터의 애니메이션
     private MonsterDamageSound damageSound; // 몬스터 데미지 사운트
+    private MonsterDropItem dropItem;       // 몬스터 드랍 아이템 스크립트
     private int maxHP;                      // 최대 체력
 
     private bool isDeath = false;           // 현재 이 몬스터가 사망했는지 확인하기 위한 변수
@@ -43,6 +45,11 @@ public class MonsterHPBar : MonoBehaviour
 
         damageSound = GetComponent<MonsterDamageSound>();
         Debug.Assert(damageSound != null, "Error (Null Reference) : 소리를 출력할 컴포넌트가 존재하지 않습니다.");
+
+        dropItem = GetComponent<MonsterDropItem>();
+        Debug.Assert(dropItem != null, "Error (Null Reference) : 아이템 드랍 컴포넌트가 존재하지 않습니다.");
+
+        Debug.Assert(playerState != null, "Error (Null Reference): 플레이어 상태가 존재하지 않습니다.");
 
         // 슬라이더 반영
         ApplyHp();
@@ -86,6 +93,10 @@ public class MonsterHPBar : MonoBehaviour
         {
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Death") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95 && !isDestroy)
             {
+                dropItem.DropItem();
+                CreateMonster.nowCount--;
+                playerState.kills++;
+
                 Destroy(gameObject, 5.0f);
                 isDestroy = true;
             }

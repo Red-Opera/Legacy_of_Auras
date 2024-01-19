@@ -21,6 +21,7 @@ public class PlayerTeleport : MonoBehaviour
     private bool isTeleport = false;        // 현재 텔레포트를 하고 있는지 여부
 
     private GameObject targetObject = null;  // 대상 씬에서 TeleportTarget 오브젝트를 찾음
+    private bool isEnter = false;            // 현재 텔레포트 안에 있는지 확인
 
     private void Start()
     {
@@ -31,6 +32,8 @@ public class PlayerTeleport : MonoBehaviour
     // 플레이어가 텔레포트에 들어왔을 때 실행하는 메소드
     private void OnTriggerEnter(Collider other)
     {
+        isEnter = true;
+
         if (other.CompareTag("Player"))
         {
             loadingObject.SetActive(true); // 플레이어가 트리거에 진입하면 Loading 오브젝트를 활성화합니다.
@@ -48,6 +51,8 @@ public class PlayerTeleport : MonoBehaviour
     // 플레이어가 텔레포트에서 나간 경우 실행하는 메소드
     private void OnTriggerExit(Collider other)
     {
+        isEnter = false;
+
         if (other.CompareTag("Player"))
         {
             isTeleport = false;
@@ -88,6 +93,8 @@ public class PlayerTeleport : MonoBehaviour
             if (toScene == "Library" && !(bool)PlayerQuest.quest.questList["visitLib"])
                 PlayerQuest.quest.NextQuest();
 
+            slider.value = 0;
+
             SceneManager.LoadScene(toScene);    // 해당 씬으로 이동함
         }
     }
@@ -112,6 +119,13 @@ public class PlayerTeleport : MonoBehaviour
     private void MoveToTeleportTarget(Scene scene)
     {
         GameObject player = GameObject.Find("Model");
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 4.0f);
+
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("Player"))
+                isEnter = true;
+        }
 
         if (scene.name.Equals("Village"))
         {
@@ -120,6 +134,12 @@ public class PlayerTeleport : MonoBehaviour
 
             else if (GameManager.info.beforeSceneName.Equals("Library"))
                 targetObject = GameObject.Find("LibExitLocation");
+
+            else if (GameManager.info.beforeSceneName.Equals("Village") && gameObject.name == "InStoreTele" && isEnter)
+                targetObject = GameObject.Find("OutStoreExit");
+
+            else if (GameManager.info.beforeSceneName.Equals("Village") && gameObject.name == "OutStoreTele" && isEnter)
+                targetObject = GameObject.Find("InStoreExit");
         }
 
         else if (scene.name.Equals("Library"))

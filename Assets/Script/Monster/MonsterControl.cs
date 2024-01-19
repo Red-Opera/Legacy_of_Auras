@@ -7,11 +7,11 @@ public class MonsterControl : MonoBehaviour
     public float lookAtDis = 25.0f;             // 플레이어를 인식할 수 있는 거리
     public float lookAtAngle = 120.0f;          // 몬스터가 바라보는 각도 범위
     public float attackDistance = 5.0f;         // 공격 가능한 거리
-    public float moveSpeed = 2.0f;              // 몬스터의 이동 속도
+    public float moveSpeed = 2.5f;              // 몬스터의 이동 속도
     public float rotationSpeed = 5.0f;          // 몬스터의 회전 속도
     public float waitMinTime = 1.0f;            // 공격 후 최소 대기시간
     public float waitMaxTime = 5.0f;            // 공격 후 최대 대기시간
-    public int maxAttackType = 2;               // 공격 타입의 개수
+    public int maxAttackType = 3;               // 공격 타입의 개수
     public int idleTurnAngleMin = -120;         // Idle 상태에서 회전하는 방향의 최소 값 (단위 : 도)
     public int idleTurnAngleMax = 120;          // Idle 상태에서 회전하는 방향의 최대 값 (단위 : 도)
     public int idleTurnAngleCurrent = 0;        // 현재 Idle 상태에서 회전하는 방향
@@ -20,6 +20,7 @@ public class MonsterControl : MonoBehaviour
 
     private GameObject player;              // 플레이어 오브젝트
     private Animator animator;              // 이 오브젝트의 애니메이터
+    private Rigidbody rigidbody;            // 물리 컴포넌트
 
     private bool isAttacking = false;       // 공격 중인지 여부를 나타내는 변수
 
@@ -31,13 +32,30 @@ public class MonsterControl : MonoBehaviour
         player = GameObject.Find("Model");
         Debug.Assert(player != null, "Error (Null Reference): 플레이어가 존재하지 않습니다.");
 
+        rigidbody = GetComponent<Rigidbody>();
+        Debug.Assert(rigidbody != null, "Error (Null Reference): 리지드 바디가 존재하지 않습니다.");
+
         StartCoroutine(AttackCoroutine());          // 공격할 수 있을 때 대기시간에 걸쳐 공격을 실행하기 위한 메소드
         StartCoroutine(IdleRotationCoroutine());    // Idle 상태에서 일정한 시간이 지나면 돌기 위한 메소드
     }
 
     public void Update()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+        AnimatorStateInfo nowState = animator.GetCurrentAnimatorStateInfo(0);
+
+        if (!nowState.IsName("Run") && !nowState.IsName("GroundStrike"))
+        {
+            rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+            animator.applyRootMotion = false;
+        }
+
+        else
+        {
+            rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+            animator.applyRootMotion = true;
+        }
+
+        if (nowState.IsName("Death"))
             return;
 
         // 플레이어와 몬스터의 위치를 얻음

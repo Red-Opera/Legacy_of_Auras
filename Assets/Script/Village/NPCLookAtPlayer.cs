@@ -8,6 +8,8 @@ public class NPCLookAtPlayer : MonoBehaviour
     public float interactionDistance = 3.0f;        // 대화하기 위해 필요한 거리
     public bool isSitting = false;                  // 주민이 앉아 있는지 여부를 나타내는 변수
 
+    public float distanceToPlayer;                  // 플레이어와 주민과의 거리
+
     private Transform player;                       // 플레이어의 위치
     private Transform originalLookDirection;        // 원래 바라보는 위치
     private ChatNPC chatNPC;                        // 대화하기 위한 클래스
@@ -36,7 +38,7 @@ public class NPCLookAtPlayer : MonoBehaviour
 
     private void Update()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         // 플레이어와 일정 거리 안에 있고 E 키를 누르면 상호작용 시작
         if (distanceToPlayer < interactionDistance && ChatNPC.isEnd && Input.GetKeyDown(KeyCode.E) && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))

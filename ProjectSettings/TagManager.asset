@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - Monster
   - MonsterWeapon
+  - MoneyBox
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Water
   - UI
   - PlayerUI
-  - 
+  - StoreUI
   - 
   - 
   - 

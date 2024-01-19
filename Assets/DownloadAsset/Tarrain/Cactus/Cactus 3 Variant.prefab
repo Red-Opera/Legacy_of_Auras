@@ -12,6 +12,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: acb7f1467c4e153468ba6096b2f9bcc1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: acb7f1467c4e153468ba6096b2f9bcc1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: acb7f1467c4e153468ba6096b2f9bcc1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: acb7f1467c4e153468ba6096b2f9bcc1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
@@ -51,19 +63,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: acb7f1467c4e153468ba6096b2f9bcc1, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: acb7f1467c4e153468ba6096b2f9bcc1, type: 3}
       propertyPath: m_Name
       value: Cactus 3 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acb7f1467c4e153468ba6096b2f9bcc1, type: 3}
+--- !u!23 &7350786192440727348 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: acb7f1467c4e153468ba6096b2f9bcc1, type: 3}
+  m_PrefabInstance: {fileID: 8197299785882143664}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9008256335227729633 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: acb7f1467c4e153468ba6096b2f9bcc1, type: 3}
   m_PrefabInstance: {fileID: 8197299785882143664}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &9075753056384607689
-MeshCollider:
+--- !u!136 &1210034130122296914
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -72,7 +93,30 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4711208715938537054, guid: acb7f1467c4e153468ba6096b2f9bcc1, type: 3}
+  m_Radius: 1.1362574
+  m_Height: 3.6636217
+  m_Direction: 1
+  m_Center: {x: -0.016059697, y: 1.7540466, z: 0.11284267}
+--- !u!205 &3661712006779785941
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9008256335227729633}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.016059756, y: 1.7540467, z: 0.11284268}
+  m_Size: 3.663622
+  m_FadeMode: 1
+  m_AnimateCrossFading: 1
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.41314462
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7350786192440727348}
+  - screenRelativeHeight: 0.08842675
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7350786192440727348}
+  m_Enabled: 1
