@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Level: 1
   HP: 100
-  attack: 10
+  attack: 25
   attackSpeed: 0
   def: 5
-  money: 4750
+  money: 7402
   exp: 0
-  bulletCount: 180
+  bulletCount: 1800
   bulletCurrentMax: 30
-  playTotalTime: 1281.908
-  kills: 1
+  playTotalTime: 12006.87
+  kills: 692

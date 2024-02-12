@@ -93,6 +93,14 @@ UI 알림 효과음 : https://freesound.org/people/plasterbrain/sounds/419493/
 아이템 상점 구매 소리 : https://freesound.org/people/waldram/sounds/257518/
 아이템 상점 사인 이미지 : https://webartdevelopers.com/blog/animated-svg-signature/
 깃털 이미지 : https://gallery.yopriceville.com/Free-Clipart-Pictures/Decorative-Elements-PNG/White_Feather_PNG_Clip_Art_Image#.XJitMigzZPY
+현신의 날개 오브젝트 : https://sketchfab.com/3d-models/low-poly-animated-phoenix-wings-aef3d79e8b5046b6869860ed3d836bb1
+현신 오브젝트 : https://sketchfab.com/3d-models/grim-reaper-f9f1c51f5bd74a01a721a88c278c3baa
+현신의 낫 오브젝트 : https://sketchfab.com/3d-models/the-watcher-series-scythe-free-but-read-15a2458514944d1198e675a6833add6a
+현신 쉴드 금 : https://kr.freepik.com/free-vector/abstract-background-with-a-cracked-grunge-texture_16080158.htm
+현신 부하 오브젝트 : https://sketchfab.com/3d-models/zombie-female-1-ce037bf3c08e40eea92df46e4ec32b16
+현신 좀비 대미지 사운드 : https://freesound.org/people/SkinnySoundGuy/sounds/172004/
+현신 좀비 죽는 사운드 : https://freesound.org/people/zglar/sounds/232289/
+현신의 오라의 화살 : https://sketchfab.com/3d-models/arrow-b3267d7bf1bf48748f335c294d57a916
 
 해야 할 일 : 마을 대화 구성, 마을 주민 구성, 마을 모습 구성, 플레이어가 이동해야 할 위치, 플레이어가 해야할 일 지정
 

@@ -33,7 +33,7 @@ public class MoveInventory : MonoBehaviour, IPointerDownHandler, IDragHandler, I
     public void OnPointerUp(PointerEventData eventData)
     {
         canvas.overrideSorting = false;
-        canvas.sortingOrder = 1;
+        canvas.sortingOrder = 2;
 
         transform.localPosition = Vector3.zero;
     }

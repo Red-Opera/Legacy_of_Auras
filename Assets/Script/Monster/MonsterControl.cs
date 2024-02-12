@@ -45,13 +45,14 @@ public class MonsterControl : MonoBehaviour
 
         if (!nowState.IsName("Run") && !nowState.IsName("GroundStrike"))
         {
-            rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+            rigidbody.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX |
+                RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionX;
             animator.applyRootMotion = false;
         }
 
         else
         {
-            rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+            rigidbody.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
             animator.applyRootMotion = true;
         }
 
@@ -115,7 +116,7 @@ public class MonsterControl : MonoBehaviour
     }
 
     // 일정시간 동안 대기한 후 공격을 할 수 있게 해주는 메소드
-    public IEnumerator AttackCoroutine()
+    private IEnumerator AttackCoroutine()
     {
         while (true)
         {

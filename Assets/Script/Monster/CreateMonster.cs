@@ -30,8 +30,12 @@ public class CreateMonster : MonoBehaviour
         float terrainWidth = terrain.terrainData.size.x;
         float terrainHeight = terrain.terrainData.size.z;
 
+        int failStack = 0;
         for (int i = nowCount; i < maxCreateMonster; i++)
         {
+            if (failStack >= maxCreateMonster * 2)
+                break;
+
             // Terrain 가로와 세로의 80% 범위 내에서 랜덤한 위치 계산
             float randomX = Random.Range(0.1f * terrainWidth, 0.9f * terrainWidth);
             float randomZ = Random.Range(0.1f * terrainHeight, 0.9f * terrainHeight);
@@ -39,20 +43,27 @@ public class CreateMonster : MonoBehaviour
             // Terrain의 위치에 랜덤한 오프셋을 더한 스폰 위치 계산
             Vector3 spawnPosition = terrain.transform.position + new Vector3(randomX, 50f, randomZ);
 
-            // 스폰 위치에 몬스터 오브젝트 생성
-            GameObject monsterObject = Instantiate(createMonster, spawnPosition, Quaternion.identity);
-
             // 몬스터 아래 방향으로 레이캐스트하여 지면 또는 다른 오브젝트 찾기
             RaycastHit hit;
-            if (Physics.Raycast(monsterObject.transform.position, Vector3.down, out hit))
+            if (Physics.Raycast(spawnPosition, Vector3.down, out hit))
             {
                 // 레이가 충돌한 오브젝트가 몬스터 자체인 경우
                 if (hit.collider.gameObject == gameObject)
                 {
                     // 몬스터의 y축 값을 레이 충돌 지점의 y축 값으로 설정
-                    monsterObject.transform.position = new Vector3(monsterObject.transform.position.x, hit.point.y, monsterObject.transform.position.z);
+                    spawnPosition = new Vector3(spawnPosition.x, hit.point.y, spawnPosition.z);
+                }
+
+                else
+                {
+                    i--;
+                    failStack++;
+                    continue;
                 }
             }
+
+            // 스폰 위치에 몬스터 오브젝트 생성
+            Instantiate(createMonster, spawnPosition, Quaternion.identity);
         }
 
         nowCount = maxCreateMonster;

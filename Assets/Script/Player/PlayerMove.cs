@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -37,19 +39,22 @@ public class PlayerMove : MonoBehaviour
         // 현재 점프 중인지 확인
         isJumpAnimation = animator.GetCurrentAnimatorStateInfo(0).IsName("Jumping");
 
+        CheckIsGround();
+
         // 만약 점프 키를 눌렸을 때 NPC와 대화 중인 경우 점프를 하지 않았을 경우
         if (ChatNPC.isEnd && Input.GetKeyDown(KeyCode.Space) && !isJumpAnimation && isGrounded && (animator.GetFloat("IdleMode") < 1))
             Jump();
 
         // 이동
-        Move();
+        if (isGrounded && !isJumpAnimation)
+            Move();
     }
 
     private void Jump()
     {
-        animator.SetTrigger("Jump");                                    // 점프 트리거 발생
-        rigid.AddForce(transform.up * jumpPower, ForceMode.Impulse);    // 위로 점프력만큼 위로 올림
-        isGrounded = false;                                             // 현재 캐릭터가 땅에 있지 않음을 표시
+        animator.SetTrigger("Jump");                // 점프 트리거 발생
+        rigid.AddForce(transform.up * jumpPower);   // 위로 점프력만큼 위로 올림
+        isGrounded = false;                         // 현재 캐릭터가 땅에 있지 않음을 표시
     }
 
     private void Move()
@@ -90,11 +95,13 @@ public class PlayerMove : MonoBehaviour
             Vector3 moveDirection = new Vector3(x, 0, y);
             moveDirection = transform.TransformDirection(moveDirection); // 캐릭터 로컬 좌표계 기준으로 이동 방향 변환
             moveDirection *= currentSpeed;
-            moveDirection.y = 0;                // 공중으로 이동 금지
+            moveDirection.y = Physics.gravity.y;        // 공중으로 이동 금지
+
+            if (SceneManager.GetActiveScene().name == "Forest")
+                moveDirection.y /= 10;
 
             // 해당 방향으로 움직임
             rigid.velocity = moveDirection;
-            rigid.AddForce(Physics.gravity);    // 중력은 따로 처리
         }
 
         // 만약 입력 키를 누르지 않았다면 Idle 상태로 돌아감
@@ -103,9 +110,8 @@ public class PlayerMove : MonoBehaviour
                 animator.SetBool("isWalk", false);
     }
 
-    public void OnCollisionEnter(Collision collision)
+    private void CheckIsGround()
     {
-        if (collision.gameObject.tag == "Terrain")
-            isGrounded = true;
+        isGrounded = PlayerIsGround.isGround;
     }
 }

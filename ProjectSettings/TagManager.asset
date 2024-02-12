@@ -9,6 +9,8 @@ TagManager:
   - Monster
   - MonsterWeapon
   - MoneyBox
+  - PlayerAttack
+  - Shield
   layers:
   - Default
   - TransparentFX

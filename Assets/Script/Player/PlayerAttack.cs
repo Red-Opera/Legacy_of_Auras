@@ -87,6 +87,9 @@ public class PlayerAttack : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
 
+        if (!Input.GetMouseButton(0))
+            yield break;
+
         GameObject newBow = Instantiate(arrow, bow.transform.GetChild(0).transform);
         newBow.transform.localRotation = Quaternion.Euler(0.0f, 90.0f, 0.0f);
         newBow.transform.localPosition = new Vector3(-6.5f, 0.5f, -0.5f);

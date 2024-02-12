@@ -33,7 +33,7 @@ public class PlayerBullet : MonoBehaviour
     public void Update()
     {
         // 마우스를 땔 경우 화살이 발사됨
-        if (Input.GetMouseButtonUp(0) && !isStart)
+        if (((Input.GetMouseButtonUp(0) && gameObject.name.StartsWith("Arrow")) || !gameObject.name.StartsWith("Arrow")) && !isStart)
             Shoot();
 
         // 화살이 발사할 경우
@@ -84,8 +84,21 @@ public class PlayerBullet : MonoBehaviour
         // 화살이 몬스터에게 맞은 경우
         if (collision.gameObject.CompareTag("Monster"))
         {
+            if (collision.gameObject.transform.parent != null)
+            {
+                for (int i = 0; i < collision.gameObject.transform.parent.childCount; i++)
+                {
+                    Transform child = collision.gameObject.transform.parent.GetChild(i);
+                    if (child.name == "Sheld" && child.gameObject.activeSelf)
+                        return;
+                }
+            }
+
             // 충돌한 객체가 Monster 태그를 가진 경우
             MonsterHPBar monsterHPBar = collision.gameObject.GetComponent<MonsterHPBar>();
+
+            if (monsterHPBar == null)
+                monsterHPBar = collision.gameObject.transform.parent.GetComponent<MonsterHPBar>();
 
             // MonsterHPBar 컴포넌트가 있다면 SetDamage을 실행
             if (monsterHPBar != null)

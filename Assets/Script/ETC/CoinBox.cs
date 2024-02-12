@@ -38,7 +38,7 @@ public class CoinBox : MonoBehaviour
             playerState.money += dropMoney;
 
             alert.PushAlert(dropMoney.ToString() + "G¸¦ È¹µæ Çß½À´Ï´Ù. (ÇöÀç °ñµå : " + playerState.money.ToString() + ")");
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 }

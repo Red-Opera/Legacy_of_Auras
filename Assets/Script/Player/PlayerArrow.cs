@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.VFX;
 
 public class PlayerArrow : MonoBehaviour
@@ -20,6 +19,8 @@ public class PlayerArrow : MonoBehaviour
     private List<Vector3> moveCourse;       // 총알이 이동한 위치를 담을 변수
 
     private Rigidbody rigid;
+
+    private bool isDestoryed = false;
 
     public void Start()
     {
@@ -95,11 +96,17 @@ public class PlayerArrow : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (isDestoryed)
+            return;
+
         // 화살이 몬스터에게 맞은 경우
         if (collision.gameObject.CompareTag("Monster"))
         {
             // 충돌한 객체가 Monster 태그를 가진 경우
             MonsterHPBar monsterHPBar = collision.gameObject.GetComponent<MonsterHPBar>();
+
+            if (monsterHPBar == null)
+                monsterHPBar = collision.gameObject.transform.parent.GetComponent<MonsterHPBar>();
 
             // MonsterHPBar 컴포넌트가 있다면 SetDamage을 실행
             if (monsterHPBar != null)
@@ -121,6 +128,7 @@ public class PlayerArrow : MonoBehaviour
 
             // 화살 오브젝트 제거
             Destroy(gameObject, 0.4f);
+            isDestoryed = true;
         }
     }
 }

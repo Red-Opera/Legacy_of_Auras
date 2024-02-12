@@ -29,6 +29,8 @@ public class PlayerGetGun : MonoBehaviour
             if (gun.activeSelf || !animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
                 return;
 
+            other.GetComponent<BoxCollider>().enabled = false;
+
             StartCoroutine(GetGun(other.transform));
         }
     }
@@ -69,6 +71,7 @@ public class PlayerGetGun : MonoBehaviour
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95)
             {
                 gun.SetActive(true);
+                targetTransform.GetComponent<BoxCollider>().enabled = true;
                 yield break;
             }
 

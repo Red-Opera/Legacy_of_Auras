@@ -30,11 +30,11 @@ public class InventroyPosition : MonoBehaviour
         for (int i = 0; i < displayData.Count; i++)
         {
             // 아이템의 위치을 각각 오브젝트별로 알려줌
-            displayData[i].GetComponent<MoveInventory>().displayIndex = i;
+            displayPos[i].GetComponent<MoveInventory>().displayIndex = i;
 
             // 오브젝트를 차례대로 인벤토리에 넣음
-            displayData[i].transform.SetParent(displayPos[i]);
-            displayData[i].transform.localPosition = Vector3.zero;
+            displayPos[i].transform.SetParent(displayPos[i]);
+            displayPos[i].transform.localPosition = Vector3.zero;
         }
 
         sprites = new Dictionary<string, Sprite>();

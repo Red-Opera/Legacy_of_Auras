@@ -17,12 +17,14 @@ public class MonsterHPBar : MonoBehaviour
     public MonsterControl monsterControl;   // 몬스터의 상태를 제어할 수 있는 스크립트
     public PlayerState playerState;         // 플레이어 상태
     public int currentHP;                   // 현재 체력
+    public int maxHP;                       // 최대 체력
+
+    public SkinnedMeshRenderer skinnedRenderer; // 해당 몬스터 스킨 렌더러
 
     private GameObject player;              // 플레이어 오브젝트
     private Animator animator;              // 몬스터의 애니메이션
     private MonsterDamageSound damageSound; // 몬스터 데미지 사운트
     private MonsterDropItem dropItem;       // 몬스터 드랍 아이템 스크립트
-    private int maxHP;                      // 최대 체력
 
     private bool isDeath = false;           // 현재 이 몬스터가 사망했는지 확인하기 위한 변수
     private bool isDestroy = false;         // 현재 이 몬스터가 제거되었는지 확인하는 변수
@@ -81,6 +83,13 @@ public class MonsterHPBar : MonoBehaviour
         // 슬라이더에 현재 체력 비율을 표시
         float hpRatio = (float)currentHP / maxHP;
         slider.value = hpRatio;
+
+        if (skinnedRenderer != null)
+        {
+            for (int i = 0; i < skinnedRenderer.materials.Length; i++)
+                if (skinnedRenderer.materials[i].HasFloat("_currentHP"))
+                    skinnedRenderer.materials[i].SetFloat("_currentHP", hpRatio);
+        }
     }
 
     // 죽을 때 실행되는 메소드
@@ -97,7 +106,8 @@ public class MonsterHPBar : MonoBehaviour
                 CreateMonster.nowCount--;
                 playerState.kills++;
 
-                Destroy(gameObject, 5.0f);
+                if (gameObject.name != "Philosopher")
+                    Destroy(gameObject, 5.0f);
                 isDestroy = true;
             }
 
@@ -122,7 +132,9 @@ public class MonsterHPBar : MonoBehaviour
 
         if (currentHP - realDamage > 0)
         {
-            StartCoroutine(monsterControl.IdleRotationCoroutine(true));
+            if (monsterControl != null)
+                StartCoroutine(monsterControl.IdleRotationCoroutine(true));
+
             currentHP -= realDamage;
 
             damageSound.DamageSound(realDamage);
@@ -133,6 +145,22 @@ public class MonsterHPBar : MonoBehaviour
             currentHP = 0;
             StartCoroutine(Death());
         }
+
+        ApplyHp();
+    }
+
+    // 체력 회복할 때 발생되는 메소드
+    public void Heal(int value)
+    {
+        if (isDeath) 
+            return;
+
+        // 체력 변경 UI 생성
+        StartCoroutine(HPChangeUI.CreateChangeText(false, value));
+
+        currentHP += value;
+        if (currentHP > maxHP)
+            currentHP = maxHP;
 
         ApplyHp();
     }

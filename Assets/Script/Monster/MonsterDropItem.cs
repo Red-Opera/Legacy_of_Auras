@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MonsterDropItem : MonoBehaviour
 {
@@ -26,17 +27,20 @@ public class MonsterDropItem : MonoBehaviour
         );
 
         int monsterMoney = monsterState.dropMoney;
-        int randomGold = (int)Random.Range(monsterMoney * (1 + ((float)dropMoneyRange * 0.5f) / 100), monsterMoney * (1 + (float)dropMoneyRange / 100));
+        int randomGold = (int)Random.Range(monsterMoney * (1 - (dropMoneyRange * 0.5f) / 100), monsterMoney * (1 + dropMoneyRange * 0.5f / 100));
 
         GameObject goldBox;
 
-        if (randomGold < monsterMoney * (1 + (dropMoneyRange * 0.5) / 100))
+        if (randomGold < monsterMoney * (1 + (dropMoneyRange * 0.25) / 100))
             goldBox = Instantiate(goldBoxs[0], randomPosition, Quaternion.identity);
 
         else
             goldBox = Instantiate(goldBoxs[1], randomPosition, Quaternion.identity);
 
         goldBox.transform.GetChild(0).GetComponent<CoinBox>().SetDropGold(randomGold);
+
+        if (SceneManager.GetActiveScene().name == "Forest")
+            goldBox.transform.localScale *= 0.3f;
 
         // 아이템을 생성하고 위치를 랜덤으로 조정
         foreach (GameObject dropItemPrefab in dropItems)
