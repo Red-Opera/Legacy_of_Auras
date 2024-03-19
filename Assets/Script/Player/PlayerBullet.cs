@@ -79,7 +79,7 @@ public class PlayerBullet : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         // 화살이 몬스터에게 맞은 경우
         if (collision.gameObject.CompareTag("Monster"))
@@ -94,15 +94,23 @@ public class PlayerBullet : MonoBehaviour
                 }
             }
 
-            // 충돌한 객체가 Monster 태그를 가진 경우
-            MonsterHPBar monsterHPBar = collision.gameObject.GetComponent<MonsterHPBar>();
+            LassBossHpBar lassBossHpBar = collision.transform.GetComponent<LassBossHpBar>();
 
-            if (monsterHPBar == null)
-                monsterHPBar = collision.gameObject.transform.parent.GetComponent<MonsterHPBar>();
+            if (lassBossHpBar == null)
+            {
+                // 충돌한 객체가 Monster 태그를 가진 경우
+                MonsterHPBar monsterHPBar = collision.gameObject.GetComponent<MonsterHPBar>();
 
-            // MonsterHPBar 컴포넌트가 있다면 SetDamage을 실행
-            if (monsterHPBar != null)
-                monsterHPBar.SetDamage(addDamage);
+                if (monsterHPBar == null)
+                    monsterHPBar = collision.gameObject.transform.parent.GetComponent<MonsterHPBar>();
+
+                // MonsterHPBar 컴포넌트가 있다면 SetDamage을 실행
+                if (monsterHPBar != null)
+                    monsterHPBar.SetDamage(addDamage);
+            }
+            
+            else
+                lassBossHpBar.SetDamage(addDamage);
 
             GetComponent<AudioSource>().PlayOneShot(hitSound);
             GetComponent<MeshCollider>().enabled = false;

@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e4c625d1878458c47b8f32c81d80fab5, type: 3}
@@ -63,12 +64,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e4c625d1878458c47b8f32c81d80fab5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e4c625d1878458c47b8f32c81d80fab5, type: 3}
       propertyPath: m_Name
       value: Cactus2 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e4c625d1878458c47b8f32c81d80fab5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e4c625d1878458c47b8f32c81d80fab5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3451118302482216456, guid: e4c625d1878458c47b8f32c81d80fab5, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e4c625d1878458c47b8f32c81d80fab5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5961146334144715869}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e4c625d1878458c47b8f32c81d80fab5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -9087539222428337294}
   m_SourcePrefab: {fileID: 100100000, guid: e4c625d1878458c47b8f32c81d80fab5, type: 3}
 --- !u!1 &3149472313149748015 stripped
 GameObject:
@@ -83,8 +105,17 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3149472313149748015}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 1.2164361
   m_Height: 6.8707714
   m_Direction: 1
@@ -97,17 +128,17 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3149472313149748015}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: 0.28309667, y: 3.421071, z: -0.00016963482}
-  m_Size: 6.8707714
+  m_LocalReferencePoint: {x: 0.28309667, y: 3.421072, z: -0.00016963482}
+  m_Size: 6.8707733
   m_FadeMode: 1
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.19913849
+  - screenRelativeHeight: 0.5038476
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 3509940259823047418}
-  - screenRelativeHeight: 0.01892285
+  - screenRelativeHeight: 0.05396669
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 3509940259823047418}

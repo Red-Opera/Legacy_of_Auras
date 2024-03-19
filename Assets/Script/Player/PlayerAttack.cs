@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -10,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject arrow;            // 화살 오브젝트
     public GameObject gun;              // 플레이어 총
     public GameObject bullet;           // 총알 오브젝트
+    public GameObject aurasArrow;       // 오라의 화살
     public GameObject emptyCartridge;   // 탄피 배출 이펙트
     public PlayerGunShotUI gunUI;       // 총 UI을 관리하는 오브젝트
 
@@ -31,6 +31,11 @@ public class PlayerAttack : MonoBehaviour
 
     private ParticleSystem gunFlash;            // 총 쏠때 번쩍임
     private PlayerGunReLoad reLoad;             // 총 로드 스크립트
+
+    public float spawnRadius = 3f;              // 스폰 범위
+    public float spawnDelay = 0.1f;             // 스폰 딜레이
+
+    private bool isAurasAttack = false;         // 현재 오라의 공격하고 있는지 여부
 
     public void Start()
     {
@@ -54,6 +59,10 @@ public class PlayerAttack : MonoBehaviour
 
     public void Update()
     {
+        // 현재 아직 최종보스 영화가 끝나지 않은 경우
+        if (!BossSceneFilm.isFilmEnd)
+            return;
+
         // 지속적으로 어떠한 무기를 갖고 있는지 확인
         weaponType = GetComponent<PlayerWeaponChanger>().weaponType;
 
@@ -69,6 +78,9 @@ public class PlayerAttack : MonoBehaviour
 
         else if (Input.GetMouseButtonDown(0) && weaponType == WeaponType.GUN)
             GunAttack();
+
+        else if (Input.GetMouseButtonDown(0) && weaponType == WeaponType.AURAS && !isAurasAttack)
+            StartCoroutine(AurasAttack());
 
         // 카메라 이동할 수 있는지 확인하여 이동할 수 있을 경우 이동
         if (isCameraMoving)
@@ -105,7 +117,7 @@ public class PlayerAttack : MonoBehaviour
         if (reLoad.isReLoad)
             return;
 
-        if (Int32.Parse(currentGunText.text.ToString()) <= 0)
+        if (int.Parse(currentGunText.text.ToString()) <= 0)
         {
             gun.GetComponent<AudioSource>().PlayOneShot(noRemainBullet);
             return;
@@ -129,6 +141,51 @@ public class PlayerAttack : MonoBehaviour
         GameObject newCartridge = Instantiate(emptyCartridge, gun.transform);
         newCartridge.transform.localRotation = Quaternion.Euler(0.0f, 90.0f, 0.0f);
         Destroy(newCartridge, 1.5f);
+    }
+
+    // 오라의 화살 공격
+    private IEnumerator AurasAttack()
+    {
+        isAurasAttack = true;
+        animator.SetTrigger("CreateAuras");
+
+        // 화살 개수만큼 반복
+        for (int i = 0; i < 40; i++)
+        {
+            float randomX, randomY, randomZ;
+
+            // 생성할 위치를 지정함
+            Vector3 createPosition;
+            while (true)
+            {
+                randomX = Random.Range(0, spawnRadius);
+                randomY = Random.Range(-1, spawnRadius);
+                randomZ = Random.Range(-spawnRadius, spawnRadius);
+
+                createPosition = new Vector3(
+                transform.position.x + randomX,
+                transform.position.y + randomY,
+                transform.position.z + randomZ);
+
+                if ((createPosition - transform.position).magnitude > 1)
+                    break;
+            }
+
+            // 화살 생성
+            GameObject newArrow = Instantiate(aurasArrow, createPosition, Quaternion.identity);
+            newArrow.GetComponent<ArrowTrace>().enabled = false;
+            newArrow.GetComponent<PlayerAurasArrow>().SetTarget();
+            newArrow.tag = "PlayerAttack";
+
+            newArrow.transform.localScale *= 0.5f;
+
+            Destroy(newArrow, 20.0f);
+
+            // 다음 화살을 생성할 때까지 대기
+            yield return new WaitForSeconds(spawnDelay);
+        }
+
+        isAurasAttack = false;
     }
 
     private void AttackCancel()

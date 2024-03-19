@@ -101,6 +101,10 @@ UI 알림 효과음 : https://freesound.org/people/plasterbrain/sounds/419493/
 현신 좀비 대미지 사운드 : https://freesound.org/people/SkinnySoundGuy/sounds/172004/
 현신 좀비 죽는 사운드 : https://freesound.org/people/zglar/sounds/232289/
 현신의 오라의 화살 : https://sketchfab.com/3d-models/arrow-b3267d7bf1bf48748f335c294d57a916
+최종 보스 오브젝트 : https://desirefx.me/3d_models/demon-3-with-wings/
+최종 보스 날개 오브젝트 : https://sketchfab.com/3d-models/demon-wings-11-low-poly-animated-8ef7580f1f1a48c488a8bbcf61067bc5
+최종 보스 등장 씬 : https://freesound.org/people/JalynCatbtg/sounds/618192/
+최종 보스 체력바 이미지 : https://opengameart.org/content/gold-skull
 
 해야 할 일 : 마을 대화 구성, 마을 주민 구성, 마을 모습 구성, 플레이어가 이동해야 할 위치, 플레이어가 해야할 일 지정
 

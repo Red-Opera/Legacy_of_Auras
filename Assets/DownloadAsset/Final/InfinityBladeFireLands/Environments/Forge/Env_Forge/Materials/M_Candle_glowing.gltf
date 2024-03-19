@@ -1,0 +1,185 @@
+{
+	"asset":
+	{
+		"version": "2.0",
+		"generator": "Unreal Engine 5.3.2"
+	},
+	"scene": 0,
+	"accessors": [
+		{
+			"bufferView": 0,
+			"count": 11904,
+			"type": "SCALAR",
+			"componentType": 5123
+		},
+		{
+			"bufferView": 1,
+			"count": 2333,
+			"type": "VEC3",
+			"componentType": 5126,
+			"min": [ -1.5999999, -1.5999999, -1.5999999 ],
+			"max": [ 1.5999999, 1.5999999, 1.5999999 ]
+		},
+		{
+			"bufferView": 2,
+			"count": 2333,
+			"type": "VEC3",
+			"componentType": 5126
+		},
+		{
+			"bufferView": 3,
+			"count": 2333,
+			"type": "VEC4",
+			"componentType": 5126
+		},
+		{
+			"bufferView": 4,
+			"count": 2333,
+			"type": "VEC2",
+			"componentType": 5126
+		},
+		{
+			"bufferView": 5,
+			"count": 2333,
+			"type": "VEC2",
+			"componentType": 5126
+		}
+	],
+	"buffers": [
+		{
+			"uri": "M_Candle_glowing.bin",
+			"byteLength": 154456
+		}
+	],
+	"bufferViews": [
+		{
+			"buffer": 0,
+			"byteLength": 23808,
+			"target": 34963
+		},
+		{
+			"buffer": 0,
+			"byteLength": 27996,
+			"byteOffset": 23808,
+			"target": 34962
+		},
+		{
+			"buffer": 0,
+			"byteLength": 27996,
+			"byteOffset": 51804,
+			"target": 34962
+		},
+		{
+			"buffer": 0,
+			"byteLength": 37328,
+			"byteOffset": 79800,
+			"target": 34962
+		},
+		{
+			"buffer": 0,
+			"byteLength": 18664,
+			"byteOffset": 117128,
+			"target": 34962
+		},
+		{
+			"buffer": 0,
+			"byteLength": 18664,
+			"byteOffset": 135792,
+			"target": 34962
+		}
+	],
+	"images": [
+		{
+			"uri": "M_Candle_glowing_MetallicRoughness.png"
+		},
+		{
+			"uri": "M_Candle_glowing_Emissive.png"
+		},
+		{
+			"uri": "T_Forge_MapTable_Candles_D.png"
+		}
+	],
+	"materials": [
+		{
+			"name": "M_Candle_glowing",
+			"pbrMetallicRoughness":
+			{
+				"baseColorTexture":
+				{
+					"index": 0
+				},
+				"metallicRoughnessTexture":
+				{
+					"index": 1
+				}
+			},
+			"emissiveTexture":
+			{
+				"index": 2
+			},
+			"emissiveFactor": [ 1, 1, 1 ],
+			"extensions":
+			{
+				"KHR_materials_emissive_strength":
+				{
+					"emissiveStrength": 5
+				}
+			}
+		}
+	],
+	"meshes": [
+		{
+			"name": "EditorSphere",
+			"primitives": [
+				{
+					"attributes":
+					{
+						"POSITION": 1,
+						"NORMAL": 2,
+						"TANGENT": 3,
+						"TEXCOORD_0": 4,
+						"TEXCOORD_1": 5
+					},
+					"indices": 0,
+					"material": 0
+				}
+			]
+		}
+	],
+	"nodes": [
+		{
+			"mesh": 0
+		}
+	],
+	"samplers": [
+		{
+			"minFilter": 9987,
+			"magFilter": 9729
+		}
+	],
+	"scenes": [
+		{
+			"nodes": [ 0 ]
+		}
+	],
+	"textures": [
+		{
+			"name": "T_Forge_MapTable_Candles_D",
+			"sampler": 0,
+			"source": 2
+		},
+		{
+			"name": "M_Candle_glowing_MetallicRoughness",
+			"sampler": 0,
+			"source": 0
+		},
+		{
+			"name": "M_Candle_glowing_Emissive",
+			"sampler": 0,
+			"source": 1
+		}
+	],
+	"extensionsUsed": [
+		"KHR_materials_emissive_strength"
+	]
+}

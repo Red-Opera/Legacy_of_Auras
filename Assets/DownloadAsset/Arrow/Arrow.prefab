@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5461728822545304918}
+  - component: {fileID: 6930582495661341825}
   - component: {fileID: 8091171607558346826}
+  - component: {fileID: -4707868540302827244}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -33,6 +35,27 @@ Transform:
   - {fileID: 4660838617850241062}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6930582495661341825
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978101608873170448}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3, y: 0.3, z: 1.9}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8091171607558346826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,6 +70,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accelerationRate: 4
   maxSpeed: 30
+--- !u!114 &-4707868540302827244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978101608873170448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f2c0155014bc44c8b07fd5713e9c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addDamage: 50
+  range: 3000
+  rotationTime: 1
+  maxSpeed: 10
+  maxSpeedTime: 2
+  bloodEffect: {fileID: 3434352477262869023, guid: 6abd34016e2518740905c592e863e2d2, type: 3}
 --- !u!1001 &4195791327504922554
 PrefabInstance:
   m_ObjectHideFlags: 0

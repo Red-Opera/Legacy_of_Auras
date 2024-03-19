@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3620407a37fa0214288c2168ece4b59e, type: 3}
@@ -67,7 +68,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cactus Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3620407a37fa0214288c2168ece4b59e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3620407a37fa0214288c2168ece4b59e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5669000644578285047}
   m_SourcePrefab: {fileID: 100100000, guid: 3620407a37fa0214288c2168ece4b59e, type: 3}
 --- !u!1 &5292782025603164205 stripped
 GameObject:
@@ -85,14 +96,14 @@ LODGroup:
   m_LocalReferencePoint: {x: 0.000479592, y: 0.026259426, z: 0.0023213457}
   m_Size: 5
   m_FadeMode: 1
-  m_AnimateCrossFading: 1
+  m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.41314462
+  - screenRelativeHeight: 0.7001057
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 5941164100373023224}
-  - screenRelativeHeight: 0.04132962
+  - screenRelativeHeight: 0.114404865
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 5941164100373023224}

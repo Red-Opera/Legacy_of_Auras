@@ -10,13 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1988025617893250342}
   - component: {fileID: 6759055787200995927}
-  - component: {fileID: 4975927859072221188}
   m_Layer: 0
   m_Name: PT_Fruit_Tree_01_dead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1988025617893250342
 Transform:
@@ -63,29 +62,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4772830539911952586}
   m_Enabled: 1
---- !u!136 &4975927859072221188
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215182899609276316}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.69
-  m_Height: 2.92
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.56, z: 0}
 --- !u!1 &2110101974054781677
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +78,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &1799755330681518831
 Transform:
@@ -185,7 +161,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &7117508975715571117
 Transform:
@@ -268,7 +244,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &355686686542058714
 Transform:

@@ -59,7 +59,8 @@ public class MonsterHPBar : MonoBehaviour
 
     public void Update()
     {
-        LookAtPlayer();
+        if (gameObject.name != "LastBoss")
+            LookAtPlayer();
     }
 
     // 체력 바가 플레이어를 바라보도록 해주는 메소드

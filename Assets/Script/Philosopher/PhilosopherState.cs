@@ -184,6 +184,7 @@ public class PhilosopherState : MonoBehaviour
                 newZombie.transform.position = spawnPosition;
 
                 ray = new Ray(newZombie.transform.position, Vector3.down);
+                failCount++;
             }
         }
     }
@@ -218,7 +219,8 @@ public class PhilosopherState : MonoBehaviour
             }
 
             // 화살 생성
-            Instantiate(arrow, createPosition, Quaternion.identity);
+            GameObject newArrow = Instantiate(arrow, createPosition, Quaternion.identity);
+            newArrow.GetComponent<PlayerAurasArrow>().enabled = false;
 
             // 다음 화살을 생성할 때까지 대기
             yield return new WaitForSeconds(spawnDelay);

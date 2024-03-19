@@ -14,6 +14,7 @@ public class ShieldEffect : MonoBehaviour
 
     private GameObject playerCam;
     private MonsterHPBar hpBar;             // 체력을 관리하는 스크립트
+    private LassBossHpBar lastBossHpBar;    // 체력을 관리하는 스크립트
 
     private int shieldMaxHp;                // 최대 쉴드 체력
     private int currentShieldHP;            // 현재 쉴드 체력
@@ -25,7 +26,16 @@ public class ShieldEffect : MonoBehaviour
         renderer = GetComponent<MeshRenderer>();
 
         hpBar = transform.parent.GetComponent<MonsterHPBar>();
-        shieldMaxHp = (int)(hpBar.maxHP * createShieldHPPersent);
+
+        if (hpBar == null)
+            lastBossHpBar = transform.parent.GetComponent<LassBossHpBar>();
+
+        if (hpBar != null)
+            shieldMaxHp = (int)(hpBar.maxHP * createShieldHPPersent);
+
+        else
+            shieldMaxHp = (int)(lastBossHpBar.maxHP * createShieldHPPersent);
+
         currentShieldHP = shieldMaxHp;
 
         gameObject.SetActive(false);
@@ -128,7 +138,13 @@ public class ShieldEffect : MonoBehaviour
             int addDamage = 0;
 
             if (other.name.StartsWith("Arrow"))
-                addDamage = other.GetComponent<PlayerArrow>().addDamage;
+            {
+                if (other.GetComponent<PlayerArrow>() != null)
+                    addDamage = other.GetComponent<PlayerArrow>().addDamage;
+
+                else if (other.GetComponent<PlayerAurasArrow>() != null)
+                    addDamage = other.GetComponent<PlayerAurasArrow>().addDamage;
+            }
 
             else if (other.name.StartsWith("bullet"))
                 addDamage = other.GetComponent<PlayerBullet>().addDamage;
@@ -151,7 +167,12 @@ public class ShieldEffect : MonoBehaviour
 
     public void FillShieldHp()
     {
-        shieldMaxHp = (int)(hpBar.maxHP * createShieldHPPersent);
+        if (hpBar != null)
+            shieldMaxHp = (int)(hpBar.maxHP * createShieldHPPersent);
+
+        else
+            shieldMaxHp = (int)(lastBossHpBar.maxHP * createShieldHPPersent);
+
         currentShieldHP = shieldMaxHp;
     }
 

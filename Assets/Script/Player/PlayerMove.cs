@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
@@ -30,7 +29,7 @@ public class PlayerMove : MonoBehaviour
 
     public void Update()
     {
-        if (TypeStory.hasActivatedCanvas || ItemShopOpenClose.isShopOpen)
+        if (TypeStory.hasActivatedCanvas || ItemShopOpenClose.isShopOpen || PlayerGetAurasArrow.isGetting)
         {
             animator.SetBool("isWalk", false);
             return;
@@ -71,10 +70,16 @@ public class PlayerMove : MonoBehaviour
 
         // 이동 입력 키를 입력 받음
         float x = Input.GetAxis("Horizontal"), y = Input.GetAxis("Vertical");
+        float idleMode = animator.GetFloat("IdleMode");
 
+        
         // 달리는 키를 눌렸을 때 목표 속도를 지정함
         toSpeed = defaultSpeed;
-        if (Input.GetKey(KeyCode.LeftShift) && (animator.GetFloat("IdleMode") != 1.0f))
+
+        if (SceneManager.GetActiveScene().name == "Forest")
+            toSpeed *= 0.3f;
+
+        if (Input.GetKey(KeyCode.LeftShift) && (idleMode != 1.0f) && !(idleMode > 2.9f && idleMode < 3.1f))
             toSpeed *= runMulti;
 
         // 걷는 속도와 달리는 속도에서 순간적인 부분을 부드럽게 수정
@@ -88,8 +93,17 @@ public class PlayerMove : MonoBehaviour
                 animator.SetBool("isWalk", true);
 
             // 해당 방향에 맞는 애니메이션이 실행하도록 변수 조정
-            animator.SetFloat("PlayerFront", (x * currentSpeed) / defaultSpeed);
-            animator.SetFloat("PlayerLeft", (y * currentSpeed) / defaultSpeed);
+            if (SceneManager.GetActiveScene().name != "Forest")
+            {
+                animator.SetFloat("PlayerFront", (x * currentSpeed) / defaultSpeed);
+                animator.SetFloat("PlayerLeft", (y * currentSpeed) / defaultSpeed);
+            }
+
+            else
+            {
+                animator.SetFloat("PlayerFront", (x * currentSpeed) / (defaultSpeed * 0.3f));
+                animator.SetFloat("PlayerLeft", (y * currentSpeed) / (defaultSpeed * 0.3f));
+            }
 
             // 키보드 입력 방향으로 움직임
             Vector3 moveDirection = new Vector3(x, 0, y);

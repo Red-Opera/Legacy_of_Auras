@@ -895,6 +895,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6e6e8573730b29b40920653661fbcfe1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4958762136997183505}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6e6e8573730b29b40920653661fbcfe1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 606507304891819880}
     - targetCorrespondingSourceObject: {fileID: 1122714205601920880, guid: 6e6e8573730b29b40920653661fbcfe1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1112636636538295760}
@@ -1123,6 +1126,7 @@ MonoBehaviour:
   monsterControl: {fileID: 4410918207402308409}
   playerState: {fileID: 11400000, guid: 15b7774971424ba4f97dff7ee762e783, type: 2}
   currentHP: 0
+  maxHP: 0
   skinnedRenderer: {fileID: 377701604899434124}
 --- !u!114 &3447188127706166745
 MonoBehaviour:
@@ -1212,6 +1216,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infoUI: {fileID: 6119753798261043976}
+--- !u!65 &606507304891819880
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8383958228068342680}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.72, y: 17, z: 4.16}
+  m_Center: {x: 0, y: 8, z: 0}
 --- !u!1 &8578243314650239417 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1122714205601920880, guid: 6e6e8573730b29b40920653661fbcfe1, type: 3}

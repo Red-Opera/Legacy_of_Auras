@@ -65,7 +65,7 @@ public class MonsterHPChangeUI : MonoBehaviour
 
         // 데미지인지 아닌지 판단 후 출력할 색깔를 정규화 함
         if (isDamage)
-            damagePercentage = 50 - ((float)damage * 100 / state.HP)  / 2f;
+            damagePercentage = 50 - ((float)damage * 100 / state.HP) / 2f;
 
         else
             damagePercentage = 50 + ((float)damage * 100 / state.HP) / 2f;

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class ZombieMove : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class ZombieMove : MonoBehaviour
         Debug.Assert(player != null, "Error (Null Reference) : 플레이어가 존재하지 않습니다.");
 
         agent.enabled = false;
+
+        if (SceneManager.GetActiveScene().name == "Final")
+            speed *= 3.0f;
     }
 
     void Update()

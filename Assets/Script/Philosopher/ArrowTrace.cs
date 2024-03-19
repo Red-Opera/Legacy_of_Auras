@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ArrowTrace : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class ArrowTrace : MonoBehaviour
     {
         if (player == null)
             player = GameObject.Find("MonsterTarget");
+
+        if (SceneManager.GetActiveScene().name == "Final")
+            transform.localScale *= 3.0f;
     }
 
     void Update()

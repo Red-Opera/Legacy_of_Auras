@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterDamageSound : MonoBehaviour
 {
-    public AudioClip pirellDamage;
+    public AudioClip damageSound;
     public AudioClip zeroDamage;
 
     private AudioSource audio;
@@ -24,6 +22,6 @@ public class MonsterDamageSound : MonoBehaviour
         }
 
         if (name.Contains("Pirell"))
-            audio.PlayOneShot(pirellDamage);
+            audio.PlayOneShot(damageSound);
     }
 }

@@ -149,7 +149,31 @@ public class PlayerTeleport : MonoBehaviour
         {
             if (GameManager.info.beforeSceneName.Equals("Village"))
                 targetObject = GameObject.Find("StartLocation");
+
+            else if (GameManager.info.beforeSceneName.Equals("Forest"))
+                targetObject = GameObject.Find("ForestExit");
         }
+
+        else if (scene.name.Equals("Forest"))
+        {
+            if (GameManager.info.beforeSceneName.Equals("Desert"))
+                targetObject = GameObject.Find("StartLocation");
+
+            else if (GameManager.info.beforeSceneName.Equals("Final"))
+                targetObject = GameObject.Find("FinalExit");
+        }
+
+        else if (scene.name.Equals("Final"))
+        {
+            if (GameManager.info.beforeSceneName.Equals("Forest"))
+                targetObject = GameObject.Find("StartLocation");
+        }    
+
+        if (scene.name.Equals("Forest"))
+            GameObject.Find("Model").transform.localScale = new Vector3(30.0f, 30.0f, 30.0f);
+
+        else
+            GameObject.Find("Model").transform.localScale = new Vector3(75.0f, 75.0f, 75.0f);
 
         if (player != null && targetObject != null)
         {

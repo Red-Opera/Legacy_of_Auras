@@ -48,8 +48,20 @@ public class PlayerGunReLoad : MonoBehaviour
 
         isReLoad = true;
 
+        // 총알 장전하는 애니메이션을 실행 
         animator.SetTrigger("Reload");
+        while (true)
+        {
+            // 현재 애니메이션이 장전하는 모습하고 있을 경우 무한히 같은 모습하는 것을 방지
+            if (animator.GetNextAnimatorStateInfo(1).IsName("ReloadGun"))
+            {
+                animator.SetBool("Reloading", true);
+                break;
+            }
 
+            yield return null;
+        }
+        
         yield return new WaitForSeconds(3.3f);
 
         // 갖고 있는 총알의 수가 탄창 크기보다 작은 경우
@@ -68,6 +80,9 @@ public class PlayerGunReLoad : MonoBehaviour
             remainText.SetText((remain - moveCount).ToString());
             shotUI.SetTextColor();
         }
+
+        // 다시 총을 잡고 있는 형태로 만듬
+        animator.SetBool("Reloading", false);
 
         isReLoad = false;
     }
