@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 7098908873445643701}
   - component: {fileID: 112105051170775810}
   - component: {fileID: 1477962926183001071}
+  - component: {fileID: 2343282968200540443}
   m_Layer: 0
   m_Name: PT_Ore_Rock_01_split_LOD0
   m_TagString: Untagged
@@ -145,6 +146,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2343282968200540443
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868188171543214933}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5360276, y: 0.28156668, z: 1.7269897}
+  m_Center: {x: -0.025762975, y: 0.11027803, z: 0.08431944}
 --- !u!1 &1947748849874849025
 GameObject:
   m_ObjectHideFlags: 0

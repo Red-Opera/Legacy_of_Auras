@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
 using UnityEngine.SceneManagement;
 
 public class LastBossAction : MonoBehaviour
@@ -160,7 +159,7 @@ public class LastBossAction : MonoBehaviour
         {
             AnimatorStateInfo nowState = animator.GetCurrentAnimatorStateInfo(0);
 
-            if (nowState.normalizedTime >= 0.8f && !isChange)
+            if (nowState.normalizedTime >= 0.8f && !isChange || nowState.normalizedTime >= waitMaxTime)
             {
                 // 0부터 공격 개수 - 1까지의 랜덤한 AttackType 설정
                 int randomAttackType = Random.Range(0, maxAttackType);
@@ -263,7 +262,7 @@ public class LastBossAction : MonoBehaviour
 
             // 화살 생성
             GameObject newArrow = Instantiate(arrow, createPosition, Quaternion.identity);
-            newArrow.GetComponent<PlayerAurasArrow>().enabled = false;
+            Destroy(newArrow.GetComponent<PlayerAurasArrow>());
 
             // 다음 화살을 생성할 때까지 대기
             yield return new WaitForSeconds(spawnDelay);
@@ -424,6 +423,8 @@ public class LastBossAction : MonoBehaviour
         Vector3 lookAtPlayer = player.transform.position - transform.position;
         animator.speed = 0;
 
+        wing.isFlying = false;
+
         while (true)
         {
             float distance = (transform.position - player.transform.position).magnitude;
@@ -436,6 +437,7 @@ public class LastBossAction : MonoBehaviour
             yield return null;
         }
         animator.speed = 1;
+        wing.isFlying = true;
     }
 
     public void OnTriggerEnter(Collider other)

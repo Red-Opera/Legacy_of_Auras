@@ -6,13 +6,14 @@ using UnityEngine.VFX;
 
 public class PlayerAurasArrow : MonoBehaviour
 {
-    [SerializeField] public int addDamage = 20;            // 화살의 추가 공격력
+    public int addDamage = 20;            // 화살의 추가 공격력
 
     [SerializeField] private float range = 30.0f;
     [SerializeField] private float rotationTime = 10.0f;
     [SerializeField] private float maxSpeed = 10.0f;
     [SerializeField] private float maxSpeedTime = 2.0f;
     [SerializeField] private GameObject bloodEffect;        // 피격 이펙트
+
     private GameObject player;
     private Transform targetTransform;
 
@@ -104,7 +105,7 @@ public class PlayerAurasArrow : MonoBehaviour
             if (targetTransform.IsDestroyed())
                 yield break;
 
-            Vector3 lookAtTransform = targetTransform.position - transform.position;
+            Vector3 lookAtTransform = targetTransform.position - transform.position + Vector3.up;
             Quaternion lookAt = Quaternion.LookRotation(lookAtTransform);
             transform.rotation = Quaternion.Lerp(transform.rotation, lookAt, rotationTime * Time.deltaTime);
 

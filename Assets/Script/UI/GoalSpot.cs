@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 public class GoalSpot : MonoBehaviour
 {
-    public float amplitude = 1.0f;      // 곡선의 진폭 (높이)
-    public float frequency = 1.0f;      // 곡선의 주파수 (반복 횟수)
-    public float speed = 1.0f;          // 이동 속도
+    [SerializeField] private float amplitude = 1.0f;      // 곡선의 진폭 (높이)
+    [SerializeField] private float frequency = 1.0f;      // 곡선의 주파수 (반복 횟수)
+    [SerializeField] private float speed = 1.0f;          // 이동 속도
 
-    public string whatQuest = "";       // 화살표를 실행하는데 어떠한 조건이 필요한지 알려주는 변수
+    [SerializeField] private string whatQuest = "";       // 화살표를 실행하는데 어떠한 조건이 필요한지 알려주는 변수
 
     private Vector3 initialPosition;    // 처음 위치
     private Image image;                // 투명하게 바꾸기 위한 변수

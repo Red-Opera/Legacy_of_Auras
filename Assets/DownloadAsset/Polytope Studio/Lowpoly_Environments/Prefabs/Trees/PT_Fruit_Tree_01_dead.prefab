@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 1799755330681518831}
   - component: {fileID: 3631142874527198405}
   - component: {fileID: 4772830539911952586}
+  - component: {fileID: 2172157621114477407}
   m_Layer: 0
   m_Name: PT_Fruit_Tree_01_dead_LOD2
   m_TagString: Untagged
@@ -145,6 +146,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &2172157621114477407
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110101974054781677}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.47
+  m_Height: 7.29
+  m_Direction: 1
+  m_Center: {x: 0.05, y: 2.4729548, z: -0.04}
 --- !u!1 &7875350929978274829
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +180,7 @@ GameObject:
   - component: {fileID: 7117508975715571117}
   - component: {fileID: 4919535853178116811}
   - component: {fileID: 4520285889721809477}
+  - component: {fileID: 4438772870690529552}
   m_Layer: 0
   m_Name: PT_Fruit_Tree_01_dead_LOD1
   m_TagString: Untagged
@@ -228,6 +253,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &4438772870690529552
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7875350929978274829}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.47
+  m_Height: 7.29
+  m_Direction: 1
+  m_Center: {x: 0.05, y: 2.4729548, z: -0.04}
 --- !u!1 &9055391635337348157
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +287,7 @@ GameObject:
   - component: {fileID: 355686686542058714}
   - component: {fileID: 7275367467134081096}
   - component: {fileID: 1814185510865685987}
+  - component: {fileID: 2790668331239402206}
   m_Layer: 0
   m_Name: PT_Fruit_Tree_01_dead_LOD0
   m_TagString: Untagged
@@ -311,3 +360,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &2790668331239402206
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9055391635337348157}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.47
+  m_Height: 7.29
+  m_Direction: 1
+  m_Center: {x: 0.05, y: 2.4729548, z: -0.04}

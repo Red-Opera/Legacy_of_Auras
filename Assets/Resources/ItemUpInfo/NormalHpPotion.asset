@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57779c8a35f0cb45a52f8c2513506ee, type: 3}
+  m_Name: NormalHpPotion
+  m_EditorClassIdentifier: 
+  Level: 0
+  HP: 10
+  attack: 0
+  attackSpeed: 0
+  def: 0
+  money: 0
+  exp: 0
+  bulletCount: 0
+  bulletCurrentMax: 0
+  playTotalTime: 0
+  kills: 0

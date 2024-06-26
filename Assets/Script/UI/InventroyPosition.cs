@@ -7,7 +7,8 @@ using TMPro;
 public class InventroyPosition : MonoBehaviour
 {
     public GameObject itemDisplay;              // 아이템을 전시하기 위한 오브젝트
-    public static float swithTime = 0.1f;       // 두 아이템들이 바뀌는데 걸리는 시간
+    public static float switchTime = 0.1f;      // 두 아이템들이 바뀌는데 걸리는 시간
+    public bool isSwitch = false;               // 현재 두 아이템이 바뀌는 여부
 
     private List<GameObject> displayData;       // 현재 전시중인 아이템
     private Transform[] displayPos;             // 아이템을 전시할 수 있는 오브젝트
@@ -17,7 +18,9 @@ public class InventroyPosition : MonoBehaviour
     public List<Sprite> spriteData = new List<Sprite>();
     private Dictionary<string, Sprite> sprites;
 
-    public void Awake()
+    private bool isOn = true;
+
+    private void Awake()
     {
         instance = this;
 
@@ -45,15 +48,29 @@ public class InventroyPosition : MonoBehaviour
         OnAddItem += AddItem;
     }
 
-    public void Update()
+    private void Update()
     {
+        if (isOn && !BossSceneFilm.isFilmEnd)
+        {
+            isOn = false;
+            
+            for (int i = 0; i < transform.childCount; i++)
+                transform.GetChild(i).gameObject.SetActive(false);
+        }
 
+        else if (!isOn && BossSceneFilm.isFilmEnd)
+        {
+            isOn = true;
+
+            for (int i = 0; i < transform.childCount; i++)
+                transform.GetChild(i).gameObject.SetActive(true);
+        }
     }
 
     public void ChangePos(int displayIndex, int dragIndex)
     {
         // 같은 장소로 이동하는 경우 중지
-        if (displayIndex == dragIndex)
+        if (displayIndex == dragIndex || isSwitch)
             return;
 
         // 인벤토리의 범위를 넘긴 경우
@@ -99,18 +116,20 @@ public class InventroyPosition : MonoBehaviour
     // 아이템 위치를 정상적인 위치로 천천히 이동시키는 메소드
     private IEnumerator UpdateDisplayPositions(int moveIndex)
     {
+        isSwitch = true;
+
         if (displayPos[moveIndex].childCount <= 0)
             yield break;
 
         float elapsedTime = 0f;
         Vector3 initialPosition = displayPos[moveIndex].GetChild(0).localPosition;
 
-        while (elapsedTime < swithTime)
+        while (elapsedTime < switchTime)
         {
             if (displayPos[moveIndex].childCount <= 0)
                 yield break;
 
-            displayPos[moveIndex].GetChild(0).localPosition = Vector3.Lerp(initialPosition, Vector3.zero, elapsedTime / swithTime);
+            displayPos[moveIndex].GetChild(0).localPosition = Vector3.Lerp(initialPosition, Vector3.zero, elapsedTime / switchTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -118,6 +137,8 @@ public class InventroyPosition : MonoBehaviour
         if (displayPos[moveIndex].childCount <= 0)
             yield break;
         displayPos[moveIndex].GetChild(0).localPosition = Vector3.zero; // 보장을 위해 최종 위치 설정
+
+        isSwitch = false;
     }
 
     // 아이템을 추가하거나 생성하는 함수

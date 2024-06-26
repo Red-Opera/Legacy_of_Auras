@@ -11,8 +11,8 @@ public class PlayerMenu : MonoBehaviour
 
     private int nowMenuIndex = 0;       // 현재 활성화되어 있는 메뉴의 인덱스
 
+    public static bool isMenu = false;  // 현재 Menu UI가 열려 있는지 여부
     private bool isSettings = false;    // 현재 Settings UI가 열려 있는지 여부
-    private bool isMenu = false;        // 현재 Menu UI가 열려 있는지 여부
 
     void Start()
     {
@@ -33,7 +33,7 @@ public class PlayerMenu : MonoBehaviour
     void Update()
     {
         // ESC 버튼을 누를 경우
-        if (Input.GetKeyDown(KeyCode.Escape) && !isMenu)
+        if (Input.GetKeyDown(KeyCode.Escape) && !isMenu && !ItemShopOpenClose.isShopOpen)
         {
             isSettings = true;
             ClickESC();
@@ -45,12 +45,14 @@ public class PlayerMenu : MonoBehaviour
             isMenu = true;
             ClickQ();
         }
-
     }
 
     // ESC 버튼을 누를 때 발생하는 메소드
     public void ClickESC()
     {
+        if (ItemShopOpenClose.isShopOpen)
+            return;
+
         if (!settingsUI.activeSelf)
             OpenMenu();
 

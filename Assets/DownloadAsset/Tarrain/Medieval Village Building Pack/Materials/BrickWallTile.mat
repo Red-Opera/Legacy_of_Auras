@@ -164,7 +164,9 @@ Material:
     m_Floats:
     - _AO: 0.935
     - _AlphaClip: 0
+    - _AlphaToMask: 0
     - _Blend: 0
+    - _BlendModePreserveSpecular: 1
     - _BulgeScale: 0.2
     - _BulgeShape: 5
     - _BumpScale: 1
@@ -180,6 +182,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _Divisions: 0.563
     - _DstBlend: 0
+    - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
     - _Gloss: 0
     - _GlossMapScale: 1
@@ -206,10 +209,11 @@ Material:
     - _ReverseHighMap: 0
     - _Rotation: 0
     - _Roughness: 1
-    - _Smoothness: 0.5
+    - _Smoothness: 0.1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _SrcBlendAlpha: 1
     - _Surface: 0
     - _Test: 0
     - _UVSec: 0

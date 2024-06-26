@@ -105,7 +105,12 @@ UI 알림 효과음 : https://freesound.org/people/plasterbrain/sounds/419493/
 최종 보스 날개 오브젝트 : https://sketchfab.com/3d-models/demon-wings-11-low-poly-animated-8ef7580f1f1a48c488a8bbcf61067bc5
 최종 보스 등장 씬 : https://freesound.org/people/JalynCatbtg/sounds/618192/
 최종 보스 체력바 이미지 : https://opengameart.org/content/gold-skull
+씬 이름 출력 폰트 : https://www.1001freefonts.com/adine-kirnberg.font
+퀘스트 UI : https://opengameart.org/content/rpg-ui-1
+퀘스트 코인 UI 이미지 : https://iconduck.com/icons/313561/gold-coin
+퀘스트 경험치 UI 이미지 : https://opengameart.org/content/fantasy-xp-icon-animated
+퀘스트 체크 UI 이미지 : https://www.hiclipart.com/free-transparent-background-png-clipart-divvi/download
 
-해야 할 일 : 마을 대화 구성, 마을 주민 구성, 마을 모습 구성, 플레이어가 이동해야 할 위치, 플레이어가 해야할 일 지정
+해야 할 일 : 마을 대화 구성, 마을 주민 구성, 마을 모습 구성, 플레이어가 해야할 일 지정
 
-완성 : 도서관 모습 구성, 텔레포트, 책 읽는 모습 구성, 다른 책을 가져가는 모습, 플레이어 사격 구성, 플레이어 능력치 구성
+완성 : 도서관 모습 구성, 텔레포트, 책 읽는 모습 구성, 다른 책을 가져가는 모습, 플레이어 사격 구성, 플레이어 능력치 구성, 플레이어가 이동해야 할 위치

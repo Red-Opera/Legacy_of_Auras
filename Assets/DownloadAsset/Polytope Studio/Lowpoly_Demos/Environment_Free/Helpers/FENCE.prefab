@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4190526806813514198}
   - component: {fileID: 6144549249073257468}
   - component: {fileID: 994471538821886068}
-  - component: {fileID: 1511688077479678590}
+  - component: {fileID: 6537931180165136361}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_04 (7)
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1511688077479678590
-MeshCollider:
+--- !u!65 &6537931180165136361
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,10 +102,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: faaede3d1773ae2488a568c13e10cee4, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002316, y: 1.7378767, z: 0.24500176}
+  m_Center: {x: 0.9506523, y: 0.70772517, z: 0.028456965}
 --- !u!1 &609756017720356325
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +116,7 @@ GameObject:
   - component: {fileID: 3826363195613660346}
   - component: {fileID: 2290454760562443915}
   - component: {fileID: 5090057803609229386}
-  - component: {fileID: 7354138276890551730}
+  - component: {fileID: 6082743496669466535}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_04 (18)
   m_TagString: Untagged
@@ -190,8 +189,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7354138276890551730
-MeshCollider:
+--- !u!65 &6082743496669466535
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -208,10 +207,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: faaede3d1773ae2488a568c13e10cee4, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.200231, y: 1.7378767, z: 0.2450017}
+  m_Center: {x: 0.950736, y: 0.70772517, z: 0.028556142}
 --- !u!1 &945387740487448954
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +221,7 @@ GameObject:
   - component: {fileID: 3489048297371788019}
   - component: {fileID: 4326967233763771582}
   - component: {fileID: 7091984823121864305}
-  - component: {fileID: 7808096658160408545}
+  - component: {fileID: 5552196405393658682}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_02 (24)
   m_TagString: Untagged
@@ -296,8 +294,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7808096658160408545
-MeshCollider:
+--- !u!65 &5552196405393658682
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -314,10 +312,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b67d2b761d3397348831d776dbb33e03, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.200231, y: 1.7378767, z: 0.2450017}
+  m_Center: {x: 0.95072836, y: 0.70772517, z: 0.028434072}
 --- !u!1 &1374362558744202955
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +326,7 @@ GameObject:
   - component: {fileID: 4430275092663365426}
   - component: {fileID: 8124426125595884708}
   - component: {fileID: 6272967322109033485}
-  - component: {fileID: 2500049704962345137}
+  - component: {fileID: 5148271562740796565}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_02 (20)
   m_TagString: Untagged
@@ -402,8 +399,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2500049704962345137
-MeshCollider:
+--- !u!65 &5148271562740796565
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -420,10 +417,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b67d2b761d3397348831d776dbb33e03, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002313, y: 1.7378765, z: 0.24500172}
+  m_Center: {x: 0.9507628, y: 0.7077251, z: 0.028342526}
 --- !u!1 &1523164329085119895
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +431,7 @@ GameObject:
   - component: {fileID: 8234271764373083658}
   - component: {fileID: 8167987535039136608}
   - component: {fileID: 8405406176939499280}
-  - component: {fileID: 7632263698490536593}
+  - component: {fileID: 1126890775932300795}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_01 (14)
   m_TagString: Untagged
@@ -508,8 +504,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7632263698490536593
-MeshCollider:
+--- !u!65 &1126890775932300795
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -526,10 +522,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ed920bad5318ee347ad3e34dd82e273f, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002323, y: 1.7378765, z: 0.24500182}
+  m_Center: {x: 0.950767, y: 0.70772487, z: 0.028312014}
 --- !u!1 &1561209266917040469
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,7 +536,7 @@ GameObject:
   - component: {fileID: 1375686486182646666}
   - component: {fileID: 6884372378742752371}
   - component: {fileID: 2701931858784503865}
-  - component: {fileID: 5866335971525324436}
+  - component: {fileID: 1431512220991204194}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_02 (11)
   m_TagString: Untagged
@@ -614,8 +609,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5866335971525324436
-MeshCollider:
+--- !u!65 &1431512220991204194
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -632,10 +627,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b67d2b761d3397348831d776dbb33e03, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.200231, y: 1.7378767, z: 0.2450017}
+  m_Center: {x: 0.950633, y: 0.70772517, z: 0.028376851}
 --- !u!1 &1915117356962340943
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +641,7 @@ GameObject:
   - component: {fileID: 3078391308524767747}
   - component: {fileID: 6475686779495932950}
   - component: {fileID: 187581351495463318}
-  - component: {fileID: 8095613885724313612}
+  - component: {fileID: 1045690457811681803}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_01 (17)
   m_TagString: Untagged
@@ -720,8 +714,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8095613885724313612
-MeshCollider:
+--- !u!65 &1045690457811681803
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -738,10 +732,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ed920bad5318ee347ad3e34dd82e273f, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002308, y: 1.7378767, z: 0.24500167}
+  m_Center: {x: 0.9507473, y: 0.70772517, z: 0.028510362}
 --- !u!1 &1997449620860163676
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +829,7 @@ GameObject:
   - component: {fileID: 7087934559104316899}
   - component: {fileID: 2154705375535455120}
   - component: {fileID: 7272389663771021863}
-  - component: {fileID: 6990894236982284037}
+  - component: {fileID: 3364922951949870725}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_03
   m_TagString: Untagged
@@ -909,8 +902,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6990894236982284037
-MeshCollider:
+--- !u!65 &3364922951949870725
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -927,10 +920,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 955f7ab7f12013b42b2aa2e494846f3a, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.200231, y: 1.7378767, z: 0.2450017}
+  m_Center: {x: 0.95072454, y: 0.70772517, z: 0.028235707}
 --- !u!1 &2677124822427839638
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,7 +934,7 @@ GameObject:
   - component: {fileID: 3023249892514557693}
   - component: {fileID: 7978129962351172889}
   - component: {fileID: 5774921956236232121}
-  - component: {fileID: 2626966819541481871}
+  - component: {fileID: 1916780907040854029}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_04 (15)
   m_TagString: Untagged
@@ -1015,8 +1007,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2626966819541481871
-MeshCollider:
+--- !u!65 &1916780907040854029
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1033,10 +1025,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: faaede3d1773ae2488a568c13e10cee4, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002318, y: 1.7378765, z: 0.24500185}
+  m_Center: {x: 0.9507287, y: 0.70772415, z: 0.028311983}
 --- !u!1 &2814578447203211885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,7 +1039,7 @@ GameObject:
   - component: {fileID: 8293088008407445375}
   - component: {fileID: 2970905611816709499}
   - component: {fileID: 290409432874301333}
-  - component: {fileID: 5184266520470681396}
+  - component: {fileID: 7777858869517135732}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_02 (3)
   m_TagString: Untagged
@@ -1121,8 +1112,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5184266520470681396
-MeshCollider:
+--- !u!65 &7777858869517135732
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1139,10 +1130,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b67d2b761d3397348831d776dbb33e03, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002323, y: 1.7378767, z: 0.24500182}
+  m_Center: {x: 0.9506106, y: 0.70772517, z: 0.02836542}
 --- !u!1 &2981633096607501629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,7 +1144,7 @@ GameObject:
   - component: {fileID: 6349920575438161647}
   - component: {fileID: 132998541720752177}
   - component: {fileID: 2641520959613958399}
-  - component: {fileID: 1187513752782064891}
+  - component: {fileID: 7781069522193905096}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_04
   m_TagString: Untagged
@@ -1227,8 +1217,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1187513752782064891
-MeshCollider:
+--- !u!65 &7781069522193905096
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1245,10 +1235,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: faaede3d1773ae2488a568c13e10cee4, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002316, y: 1.7378767, z: 0.24500176}
+  m_Center: {x: 0.95074004, y: 0.70772517, z: 0.028342525}
 --- !u!1 &3032652061304598207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,7 +1249,7 @@ GameObject:
   - component: {fileID: 2917219865980533882}
   - component: {fileID: 2140393664225490375}
   - component: {fileID: 6816666450342108714}
-  - component: {fileID: 2143407771234974037}
+  - component: {fileID: 2614444499089739418}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_01 (1)
   m_TagString: Untagged
@@ -1333,8 +1322,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2143407771234974037
-MeshCollider:
+--- !u!65 &2614444499089739418
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1351,10 +1340,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ed920bad5318ee347ad3e34dd82e273f, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.200231, y: 1.7378767, z: 0.2450017}
+  m_Center: {x: 0.95070165, y: 0.70772517, z: 0.028350148}
 --- !u!1 &3123459812554633591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,7 +1354,7 @@ GameObject:
   - component: {fileID: 8077091563784070444}
   - component: {fileID: 6766181167746402628}
   - component: {fileID: 357793172817506915}
-  - component: {fileID: 4817662039482155077}
+  - component: {fileID: 1971914076345199496}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_04 (2)
   m_TagString: Untagged
@@ -1439,8 +1427,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4817662039482155077
-MeshCollider:
+--- !u!65 &1971914076345199496
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1457,10 +1445,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: faaede3d1773ae2488a568c13e10cee4, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002318, y: 1.7378767, z: 0.2450018}
+  m_Center: {x: 0.950702, y: 0.70772517, z: 0.028399749}
 --- !u!1 &3771830406470014704
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,6 +1459,7 @@ GameObject:
   - component: {fileID: 8944277138130971584}
   - component: {fileID: 8531994075807671912}
   - component: {fileID: 4098207523429194333}
+  - component: {fileID: 8317717018078858760}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Gate_01_left_moblie
   m_TagString: Untagged
@@ -1544,6 +1532,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8317717018078858760
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3771830406470014704}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.4887562, y: 1.0313656, z: 0.24500182}
+  m_Center: {x: -1.2277825, y: 0.52592564, z: -0.012988976}
 --- !u!1 &4828763379710830298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,7 +1635,7 @@ GameObject:
   - component: {fileID: 175543255712178836}
   - component: {fileID: 8979181842504415738}
   - component: {fileID: 780493962266665977}
-  - component: {fileID: 1182572445740229803}
+  - component: {fileID: 6262873548487207435}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_01 (19)
   m_TagString: Untagged
@@ -1699,8 +1708,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1182572445740229803
-MeshCollider:
+--- !u!65 &6262873548487207435
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1717,10 +1726,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ed920bad5318ee347ad3e34dd82e273f, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002308, y: 1.7378767, z: 0.24500167}
+  m_Center: {x: 0.9506729, y: 0.70772517, z: 0.028544694}
 --- !u!1 &4877340187712397299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,7 +1740,7 @@ GameObject:
   - component: {fileID: 1277328660615455645}
   - component: {fileID: 2145725720750969674}
   - component: {fileID: 7032633462664320592}
-  - component: {fileID: 6464777104679503}
+  - component: {fileID: 9118204193110934478}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_01 (3)
   m_TagString: Untagged
@@ -1805,8 +1813,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6464777104679503
-MeshCollider:
+--- !u!65 &9118204193110934478
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1823,10 +1831,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ed920bad5318ee347ad3e34dd82e273f, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002316, y: 1.7378767, z: 0.24500176}
+  m_Center: {x: 0.9506561, y: 0.70772517, z: 0.028407374}
 --- !u!1 &5179313932521323255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,7 +1845,7 @@ GameObject:
   - component: {fileID: 6374646709204080587}
   - component: {fileID: 579399843034776648}
   - component: {fileID: 1489258723586811920}
-  - component: {fileID: 6933267053407275462}
+  - component: {fileID: 1867645894628930697}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_02 (22)
   m_TagString: Untagged
@@ -1911,8 +1918,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6933267053407275462
-MeshCollider:
+--- !u!65 &1867645894628930697
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1929,10 +1936,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b67d2b761d3397348831d776dbb33e03, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002313, y: 1.7378767, z: 0.24500173}
+  m_Center: {x: 0.95072466, y: 0.70772517, z: 0.02850274}
 --- !u!1 &5229349018642295891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,7 +1950,7 @@ GameObject:
   - component: {fileID: 7813133666804250380}
   - component: {fileID: 6207808757286219813}
   - component: {fileID: 3750760618907943193}
-  - component: {fileID: 6962734991691374102}
+  - component: {fileID: 2670095981061695741}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_02 (25)
   m_TagString: Untagged
@@ -2017,8 +2023,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6962734991691374102
-MeshCollider:
+--- !u!65 &2670095981061695741
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2035,10 +2041,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b67d2b761d3397348831d776dbb33e03, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002313, y: 1.7378767, z: 0.24500173}
+  m_Center: {x: 0.9507018, y: 0.70772517, z: 0.028529443}
 --- !u!1 &5257269208054815404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,7 +2055,7 @@ GameObject:
   - component: {fileID: 2712316440301277363}
   - component: {fileID: 7492751489091306756}
   - component: {fileID: 7025323623807070371}
-  - component: {fileID: 1965018320067027363}
+  - component: {fileID: 8668281497649188442}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_02 (28)
   m_TagString: Untagged
@@ -2123,8 +2128,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1965018320067027363
-MeshCollider:
+--- !u!65 &8668281497649188442
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2141,10 +2146,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b67d2b761d3397348831d776dbb33e03, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.200231, y: 1.7378767, z: 0.2450017}
+  m_Center: {x: 0.9506101, y: 0.70772517, z: 0.02833489}
 --- !u!1 &5316768339426785772
 GameObject:
   m_ObjectHideFlags: 0
@@ -2156,7 +2160,7 @@ GameObject:
   - component: {fileID: 5737043941933320441}
   - component: {fileID: 3510577249883970400}
   - component: {fileID: 376847399079360002}
-  - component: {fileID: 1842339543031410862}
+  - component: {fileID: 5182631420859364687}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_01 (13)
   m_TagString: Untagged
@@ -2229,8 +2233,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1842339543031410862
-MeshCollider:
+--- !u!65 &5182631420859364687
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2247,10 +2251,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ed920bad5318ee347ad3e34dd82e273f, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002313, y: 1.7378767, z: 0.2450017}
+  m_Center: {x: 0.95077807, y: 0.7077261, z: 0.028502736}
 --- !u!1 &5449774393678851048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2262,7 +2265,7 @@ GameObject:
   - component: {fileID: 7019340265122819889}
   - component: {fileID: 2404417514997231679}
   - component: {fileID: 1740044153003547528}
-  - component: {fileID: 7244388691818053741}
+  - component: {fileID: 8941007462743771869}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_01 (15)
   m_TagString: Untagged
@@ -2335,8 +2338,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7244388691818053741
-MeshCollider:
+--- !u!65 &8941007462743771869
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2353,10 +2356,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ed920bad5318ee347ad3e34dd82e273f, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002316, y: 1.7378767, z: 0.24500176}
+  m_Center: {x: 0.9507515, y: 0.70772517, z: 0.028342525}
 --- !u!1 &5581948382792311487
 GameObject:
   m_ObjectHideFlags: 0
@@ -2368,7 +2370,7 @@ GameObject:
   - component: {fileID: 3057443524530615743}
   - component: {fileID: 2347394290141247542}
   - component: {fileID: 3869536620230148579}
-  - component: {fileID: 5120658659759789981}
+  - component: {fileID: 1497409466183954915}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_04 (14)
   m_TagString: Untagged
@@ -2441,8 +2443,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5120658659759789981
-MeshCollider:
+--- !u!65 &1497409466183954915
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2459,10 +2461,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: faaede3d1773ae2488a568c13e10cee4, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002306, y: 1.7378765, z: 0.24500187}
+  m_Center: {x: 0.9508159, y: 0.70772463, z: 0.028357858}
 --- !u!1 &5860413586993043992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2474,7 +2475,7 @@ GameObject:
   - component: {fileID: 1728773400993077689}
   - component: {fileID: 5326808861575987066}
   - component: {fileID: 3491206012651197971}
-  - component: {fileID: 3814240734828600607}
+  - component: {fileID: 713848523756149149}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_02 (13)
   m_TagString: Untagged
@@ -2547,8 +2548,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3814240734828600607
-MeshCollider:
+--- !u!65 &713848523756149149
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2565,10 +2566,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b67d2b761d3397348831d776dbb33e03, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.200231, y: 1.7378767, z: 0.24500181}
+  m_Center: {x: 0.95085806, y: 0.70772564, z: 0.028430298}
 --- !u!1 &6177768770785342271
 GameObject:
   m_ObjectHideFlags: 0
@@ -2580,7 +2580,7 @@ GameObject:
   - component: {fileID: 2089576838841274367}
   - component: {fileID: 4930993571358900372}
   - component: {fileID: 7365084536621519417}
-  - component: {fileID: 1762218138740506911}
+  - component: {fileID: 3578820002334434940}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_02 (4)
   m_TagString: Untagged
@@ -2653,8 +2653,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1762218138740506911
-MeshCollider:
+--- !u!65 &3578820002334434940
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2671,10 +2671,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b67d2b761d3397348831d776dbb33e03, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.200231, y: 1.7378767, z: 0.2450017}
+  m_Center: {x: 0.9505262, y: 0.70772517, z: 0.028361592}
 --- !u!1 &6234443268096991424
 GameObject:
   m_ObjectHideFlags: 0
@@ -2686,7 +2685,7 @@ GameObject:
   - component: {fileID: 2131727005433817098}
   - component: {fileID: 3344551549928635629}
   - component: {fileID: 4138531335843269991}
-  - component: {fileID: 6804238502910643136}
+  - component: {fileID: 2246387792231391201}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_02 (26)
   m_TagString: Untagged
@@ -2759,8 +2758,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6804238502910643136
-MeshCollider:
+--- !u!65 &2246387792231391201
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2777,10 +2776,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b67d2b761d3397348831d776dbb33e03, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.200231, y: 1.7378767, z: 0.2450017}
+  m_Center: {x: 0.95074743, y: 0.70772517, z: 0.028441701}
 --- !u!1 &6327748466542290382
 GameObject:
   m_ObjectHideFlags: 0
@@ -2792,7 +2790,7 @@ GameObject:
   - component: {fileID: 3876679617051642717}
   - component: {fileID: 4419846596639621780}
   - component: {fileID: 4019780153783146733}
-  - component: {fileID: 1643123251001202849}
+  - component: {fileID: 6579738743164854493}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_02 (18)
   m_TagString: Untagged
@@ -2865,8 +2863,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1643123251001202849
-MeshCollider:
+--- !u!65 &6579738743164854493
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2883,10 +2881,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b67d2b761d3397348831d776dbb33e03, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002313, y: 1.7378767, z: 0.2450017}
+  m_Center: {x: 0.9507857, y: 0.7077261, z: 0.028355869}
 --- !u!1 &6612357596455610831
 GameObject:
   m_ObjectHideFlags: 0
@@ -2898,7 +2895,7 @@ GameObject:
   - component: {fileID: 3998114766259742550}
   - component: {fileID: 4487106170755888053}
   - component: {fileID: 2472526450052507861}
-  - component: {fileID: 5849302044254469142}
+  - component: {fileID: 4634933106922113899}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_04 (4)
   m_TagString: Untagged
@@ -2971,8 +2968,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5849302044254469142
-MeshCollider:
+--- !u!65 &4634933106922113899
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2989,10 +2986,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: faaede3d1773ae2488a568c13e10cee4, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002316, y: 1.7378767, z: 0.24500176}
+  m_Center: {x: 0.9505722, y: 0.70772517, z: 0.028441707}
 --- !u!1 &6691463428100839530
 GameObject:
   m_ObjectHideFlags: 0
@@ -3004,7 +3000,7 @@ GameObject:
   - component: {fileID: 5431082423780741620}
   - component: {fileID: 6342909597472319076}
   - component: {fileID: 1255388398176616410}
-  - component: {fileID: 3543374350097899679}
+  - component: {fileID: 2557945957703617301}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_02 (21)
   m_TagString: Untagged
@@ -3077,8 +3073,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3543374350097899679
-MeshCollider:
+--- !u!65 &2557945957703617301
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3095,10 +3091,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b67d2b761d3397348831d776dbb33e03, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.200231, y: 1.7378767, z: 0.2450017}
+  m_Center: {x: 0.95067114, y: 0.70772517, z: 0.028476033}
 --- !u!1 &6865256409435463512
 GameObject:
   m_ObjectHideFlags: 0
@@ -3110,6 +3105,7 @@ GameObject:
   - component: {fileID: 8877571294085732461}
   - component: {fileID: 338666035114663693}
   - component: {fileID: 363029757620402802}
+  - component: {fileID: 7090472597700857331}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Gate_01_right_mobile
   m_TagString: Untagged
@@ -3182,6 +3178,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7090472597700857331
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6865256409435463512}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.488757, y: 1.0313656, z: 0.24500188}
+  m_Center: {x: 1.2278131, y: 0.52592564, z: -0.012952739}
 --- !u!1 &7056880059245332611
 GameObject:
   m_ObjectHideFlags: 0
@@ -3191,7 +3208,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5077679614392261339}
-  - component: {fileID: 8042326386121493622}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Gate_01
   m_TagString: Untagged
@@ -3217,28 +3233,6 @@ Transform:
   - {fileID: 8877571294085732461}
   m_Father: {fileID: 529876361894922179}
   m_LocalEulerAnglesHint: {x: 0, y: -129.153, z: 0}
---- !u!64 &8042326386121493622
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7056880059245332611}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &7215778828177276567
 GameObject:
   m_ObjectHideFlags: 0
@@ -3250,7 +3244,7 @@ GameObject:
   - component: {fileID: 98303990304373466}
   - component: {fileID: 4315117308163343443}
   - component: {fileID: 3499567624536510334}
-  - component: {fileID: 4204524443487501658}
+  - component: {fileID: 3323192907710723777}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_02 (19)
   m_TagString: Untagged
@@ -3323,8 +3317,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4204524443487501658
-MeshCollider:
+--- !u!65 &3323192907710723777
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3341,10 +3335,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b67d2b761d3397348831d776dbb33e03, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002313, y: 1.7378767, z: 0.2450017}
+  m_Center: {x: 0.9508391, y: 0.70772636, z: 0.028401645}
 --- !u!1 &7279959119392452241
 GameObject:
   m_ObjectHideFlags: 0
@@ -3356,7 +3349,7 @@ GameObject:
   - component: {fileID: 6907951032010938128}
   - component: {fileID: 5770256208138130157}
   - component: {fileID: 6367598539957854340}
-  - component: {fileID: 8318547738269713163}
+  - component: {fileID: 8891365836058067471}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_01 (7)
   m_TagString: Untagged
@@ -3429,8 +3422,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8318547738269713163
-MeshCollider:
+--- !u!65 &8891365836058067471
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3447,10 +3440,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ed920bad5318ee347ad3e34dd82e273f, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002316, y: 1.7378767, z: 0.24500176}
+  m_Center: {x: 0.9506256, y: 0.70772517, z: 0.028392116}
 --- !u!1 &7565713880609333336
 GameObject:
   m_ObjectHideFlags: 0
@@ -3462,7 +3454,7 @@ GameObject:
   - component: {fileID: 6017772224458522580}
   - component: {fileID: 7570374869212208486}
   - component: {fileID: 2450382639342973926}
-  - component: {fileID: 1969746351160729557}
+  - component: {fileID: 4996339762249306162}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_01 (12)
   m_TagString: Untagged
@@ -3535,8 +3527,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1969746351160729557
-MeshCollider:
+--- !u!65 &4996339762249306162
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3553,10 +3545,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ed920bad5318ee347ad3e34dd82e273f, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.200231, y: 1.7378767, z: 0.24500187}
+  m_Center: {x: 0.95077795, y: 0.70772684, z: 0.028443556}
 --- !u!1 &7587580295509249833
 GameObject:
   m_ObjectHideFlags: 0
@@ -3568,7 +3559,7 @@ GameObject:
   - component: {fileID: 1432475541279230581}
   - component: {fileID: 6036671447454677646}
   - component: {fileID: 3188007371765554922}
-  - component: {fileID: 2713506827145610766}
+  - component: {fileID: 6433695862303996184}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_04 (19)
   m_TagString: Untagged
@@ -3641,8 +3632,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2713506827145610766
-MeshCollider:
+--- !u!65 &6433695862303996184
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3659,10 +3650,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: faaede3d1773ae2488a568c13e10cee4, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.200231, y: 1.7378767, z: 0.2450017}
+  m_Center: {x: 0.9506673, y: 0.70772517, z: 0.028495107}
 --- !u!1 &7682876404111286690
 GameObject:
   m_ObjectHideFlags: 0
@@ -3674,7 +3664,7 @@ GameObject:
   - component: {fileID: 5158175175245963772}
   - component: {fileID: 2762211910524007146}
   - component: {fileID: 8619523430321549056}
-  - component: {fileID: 6632795682054355812}
+  - component: {fileID: 1667330284411993502}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_04 (9)
   m_TagString: Untagged
@@ -3747,8 +3737,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6632795682054355812
-MeshCollider:
+--- !u!65 &1667330284411993502
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3765,10 +3755,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: faaede3d1773ae2488a568c13e10cee4, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002313, y: 1.7378767, z: 0.24500181}
+  m_Center: {x: 0.9507857, y: 0.7077266, z: 0.028514119}
 --- !u!1 &8608133304061493642
 GameObject:
   m_ObjectHideFlags: 0
@@ -3780,7 +3769,7 @@ GameObject:
   - component: {fileID: 9041292913411370234}
   - component: {fileID: 3255042652992660696}
   - component: {fileID: 2735860717689522753}
-  - component: {fileID: 121956368860627147}
+  - component: {fileID: 3460619482314096332}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_01 (9)
   m_TagString: Untagged
@@ -3853,8 +3842,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &121956368860627147
-MeshCollider:
+--- !u!65 &3460619482314096332
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3871,10 +3860,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ed920bad5318ee347ad3e34dd82e273f, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002313, y: 1.7378767, z: 0.24500178}
+  m_Center: {x: 0.95077425, y: 0.7077254, z: 0.028525652}
 --- !u!1 &8768375387946030304
 GameObject:
   m_ObjectHideFlags: 0
@@ -3886,7 +3874,7 @@ GameObject:
   - component: {fileID: 2034390157161244639}
   - component: {fileID: 3232882085077168485}
   - component: {fileID: 7816509458607821781}
-  - component: {fileID: 737757104167910844}
+  - component: {fileID: 2355486337958058093}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_01 (2)
   m_TagString: Untagged
@@ -3959,8 +3947,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &737757104167910844
-MeshCollider:
+--- !u!65 &2355486337958058093
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3977,10 +3965,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ed920bad5318ee347ad3e34dd82e273f, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002316, y: 1.7378767, z: 0.24500176}
+  m_Center: {x: 0.9506256, y: 0.70772517, z: 0.028357783}
 --- !u!1 &8933570296909178667
 GameObject:
   m_ObjectHideFlags: 0
@@ -3992,7 +3979,7 @@ GameObject:
   - component: {fileID: 2603431446240685809}
   - component: {fileID: 7755328271037277555}
   - component: {fileID: 3434310107481571472}
-  - component: {fileID: 3025064262575181744}
+  - component: {fileID: 1772853111225323194}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_02 (2)
   m_TagString: Untagged
@@ -4065,8 +4052,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3025064262575181744
-MeshCollider:
+--- !u!65 &1772853111225323194
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4083,10 +4070,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b67d2b761d3397348831d776dbb33e03, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002316, y: 1.7378767, z: 0.24500176}
+  m_Center: {x: 0.9507782, y: 0.70772517, z: 0.028357783}
 --- !u!1 &9009809861089358182
 GameObject:
   m_ObjectHideFlags: 0
@@ -4098,7 +4084,7 @@ GameObject:
   - component: {fileID: 7082702856977265316}
   - component: {fileID: 6750754311525793663}
   - component: {fileID: 2445515596084951512}
-  - component: {fileID: 9134608266374804440}
+  - component: {fileID: 2090056492007306584}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_04 (17)
   m_TagString: Untagged
@@ -4171,8 +4157,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &9134608266374804440
-MeshCollider:
+--- !u!65 &2090056492007306584
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4189,10 +4175,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: faaede3d1773ae2488a568c13e10cee4, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.200231, y: 1.7378767, z: 0.2450017}
+  m_Center: {x: 0.95069784, y: 0.70772517, z: 0.028479848}
 --- !u!1 &9011984365130867917
 GameObject:
   m_ObjectHideFlags: 0
@@ -4204,7 +4189,7 @@ GameObject:
   - component: {fileID: 392026693797540117}
   - component: {fileID: 1352251645945787782}
   - component: {fileID: 976870169993364713}
-  - component: {fileID: 6088520597610341407}
+  - component: {fileID: 829971943236026776}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_02
   m_TagString: Untagged
@@ -4277,8 +4262,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6088520597610341407
-MeshCollider:
+--- !u!65 &829971943236026776
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4295,10 +4280,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b67d2b761d3397348831d776dbb33e03, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002316, y: 1.7378767, z: 0.24500176}
+  m_Center: {x: 0.95077056, y: 0.70772517, z: 0.028342525}
 --- !u!1 &9067060075027816748
 GameObject:
   m_ObjectHideFlags: 0
@@ -4310,7 +4294,7 @@ GameObject:
   - component: {fileID: 8080221301003760826}
   - component: {fileID: 3273783206270611025}
   - component: {fileID: 7599610710903973239}
-  - component: {fileID: 1764299933315229603}
+  - component: {fileID: 823361038982113921}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_04 (13)
   m_TagString: Untagged
@@ -4383,8 +4367,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1764299933315229603
-MeshCollider:
+--- !u!65 &823361038982113921
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4401,10 +4385,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: faaede3d1773ae2488a568c13e10cee4, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002313, y: 1.7378767, z: 0.24500176}
+  m_Center: {x: 0.9507552, y: 0.7077261, z: 0.028416878}
 --- !u!1 &9098095782387036315
 GameObject:
   m_ObjectHideFlags: 0
@@ -4416,7 +4399,7 @@ GameObject:
   - component: {fileID: 8673212332769728624}
   - component: {fileID: 29211914822797249}
   - component: {fileID: 7536419070387037735}
-  - component: {fileID: 3106057571632114080}
+  - component: {fileID: 7383950160371614931}
   m_Layer: 0
   m_Name: PT_Medieval_Village_Fence_01 (18)
   m_TagString: Untagged
@@ -4489,8 +4472,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3106057571632114080
-MeshCollider:
+--- !u!65 &7383950160371614931
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4507,7 +4490,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ed920bad5318ee347ad3e34dd82e273f, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.2002308, y: 1.7378767, z: 0.24500167}
+  m_Center: {x: 0.9507244, y: 0.70772517, z: 0.028548509}

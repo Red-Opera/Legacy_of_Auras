@@ -84,7 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   addDamage: 50
   range: 3000
-  rotationTime: 1
+  rotationTime: 2.5
   maxSpeed: 10
   maxSpeedTime: 2
   bloodEffect: {fileID: 3434352477262869023, guid: 6abd34016e2518740905c592e863e2d2, type: 3}

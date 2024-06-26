@@ -32,6 +32,8 @@ public class Alert : MonoBehaviour
 
         remainAlertTime = new Dictionary<GameObject, float>();
         alerts = new Queue<GameObject>();
+
+        GameManager.info.alert = this;
     }
 
     public void Update()

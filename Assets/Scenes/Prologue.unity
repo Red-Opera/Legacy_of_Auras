@@ -1660,6 +1660,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3200872870453506825, guid: 0f34e886ebcc27843ad1175891de5568, type: 3}
+      propertyPath: questData
+      value: 
+      objectReference: {fileID: 11400000, guid: f1f03579d4b3f01498e14c5c9e628695, type: 2}
     - target: {fileID: 3200872870453506839, guid: 0f34e886ebcc27843ad1175891de5568, type: 3}
       propertyPath: m_Name
       value: PlayerQuest

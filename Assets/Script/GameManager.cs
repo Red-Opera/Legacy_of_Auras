@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     // 플레이어
     public PlayerState playerState;         // 플레이어 상태
     public GameObject playerObj;            // 플레이어 오브젝트
+    public Alert alert;                     // 알람 시스템
 
     // 씬
     public string beforeSceneName = "Prologue";     // 이전 씬 이름
@@ -64,6 +65,22 @@ public class GameManager : MonoBehaviour
             player.transform.SetParent(null);
 
             player.transform.GetChild(3).transform.GetChild(0).gameObject.SetActive(false);
+        }
+
+        if (scene.name == "Desert" && PlayerQuest.quest.nowQuest == "visitDesert")
+        {
+            PlayerQuest.quest.NextQuest();
+            alert.PushAlert("\"첫발을 디딘 모험\" 퀘스트 클리어!", true);
+        }
+
+        else if (scene.name == "Forest" && PlayerQuest.quest.nowQuest == "visitForest")
+        {
+            PlayerQuest.quest.NextQuest();
+
+            if (alert == null)
+                return;
+
+            alert.PushAlert("\"신선한 산책\" 퀘스트 클리어!", true);
         }
     }
 }

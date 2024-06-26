@@ -72,10 +72,16 @@ public class PlayerGetGun : MonoBehaviour
             {
                 gun.SetActive(true);
                 targetTransform.GetComponent<BoxCollider>().enabled = true;
-                yield break;
+                break;
             }
 
             yield return null;
+        }
+
+        if (PlayerQuest.quest.nowQuest == "getGun")
+        {
+            GameManager.info.alert.PushAlert("\"ÃÖ½Å½Ä Àåºñ È¹µæ\" Äù½ºÆ® Å¬¸®¾î!", true);
+            PlayerQuest.quest.NextQuest();
         }
     }
 }

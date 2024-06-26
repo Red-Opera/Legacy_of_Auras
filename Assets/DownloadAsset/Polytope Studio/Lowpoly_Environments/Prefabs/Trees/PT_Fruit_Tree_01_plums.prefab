@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8254891333303301210}
   - component: {fileID: 8222655170643054932}
   - component: {fileID: 1414196137617344592}
+  - component: {fileID: 687180754433985624}
   m_Layer: 0
   m_Name: PT_Fruit_Tree_01_plums_LOD1
   m_TagString: Untagged
@@ -84,6 +85,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &687180754433985624
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3503747439877303717}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.61
+  m_Height: 6.86
+  m_Direction: 1
+  m_Center: {x: -0.05178237, y: 2.63, z: -0.05}
 --- !u!1 &7296054959696050501
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +181,7 @@ GameObject:
   - component: {fileID: 3661800321207667961}
   - component: {fileID: 9204582415525613151}
   - component: {fileID: 1987643193280244065}
+  - component: {fileID: 8043224202316774665}
   m_Layer: 0
   m_Name: PT_Fruit_Tree_01_plums_LOD0
   m_TagString: Untagged
@@ -230,6 +255,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &8043224202316774665
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389196695646074697}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.61
+  m_Height: 6.86
+  m_Direction: 1
+  m_Center: {x: -0.05178237, y: 2.63, z: -0.05}
 --- !u!1 &7626970178412452963
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +289,7 @@ GameObject:
   - component: {fileID: 6965208583826785942}
   - component: {fileID: 4352938707021388631}
   - component: {fileID: 6140726643089354878}
+  - component: {fileID: 7351250102947421001}
   m_Layer: 0
   m_Name: PT_Fruit_Tree_01_plums_LOD2
   m_TagString: Untagged
@@ -314,3 +363,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &7351250102947421001
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7626970178412452963}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.61
+  m_Height: 6.86
+  m_Direction: 1
+  m_Center: {x: -0.05178237, y: 2.63, z: -0.05}

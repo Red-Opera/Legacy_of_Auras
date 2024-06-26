@@ -11,15 +11,18 @@ public class PlayerQuest : MonoBehaviour
     public Dictionary<string, object> questList;                    // 변수명에 대응하는 bool값을 반환하는 배열
     private bool visitLib = false;                                  // 처음 도서관 방문 여부
     private bool readBook = false;                                  // 전설 서적 읽은 여부
-    private bool chatLibWoman = false;
+    private bool chatLibWoman = false;                              // 도서관 NPC와 대화
     private bool chatNPC = false;                                   // NPC와 대화한 여부
+    private bool visitDesert = false;                               // 사막 지형으로 이동한 여부
+    private bool getGun = false;                                    // 총을 얻은 경우
+    private bool visitForest = false;                               // 숲 지형으로 이동한 여부
 
     public string nowQuest = "";                                    // 현재 진행하고 있는 퀘스트 이름
     private int nowQuestIndex = 0;                                  // 현재 진행하고 있는 퀘스트의 인덱스
 
     private string[] questOrder = 
     { 
-        "visitLib", "readBook", "chatLibWoman", "chatNPC"
+        "visitLib", "readBook", "chatLibWoman", "chatNPC", "visitDesert", "getGun", "visitForest"
     };       // 퀘스트 이름
 
     public void Awake()
@@ -35,11 +38,14 @@ public class PlayerQuest : MonoBehaviour
             Destroy(this);
 
         // 클리어한 퀘스트를 가져와서 퀘스트 반영
-        questData = Resources.Load<QuestComplete>("QuestData");
+        questData = Resources.Load<QuestComplete>("Quest/QuestData");
         visitLib = questData.visitLib;
         readBook = questData.readBook;
         chatLibWoman = questData.chatLibWoman;
         chatNPC = questData.chatNPC;
+        visitDesert = questData.visitDesert;
+        getGun = questData.getGun;
+        visitForest = questData.visitForest;
 
         // 변수명에 대응하는 bool값을 초기화 함
         questList = new Dictionary<string, object>
@@ -47,7 +53,10 @@ public class PlayerQuest : MonoBehaviour
             { nameof(visitLib), visitLib },
             { nameof(readBook), readBook },
             { nameof(chatLibWoman),chatLibWoman },
-            { nameof(chatNPC), chatNPC }
+            { nameof(chatNPC), chatNPC },
+            { nameof(visitDesert), visitDesert },
+            { nameof(getGun), getGun },
+            { nameof(visitForest), visitForest },
         };
 
         // 해당 맵에 퀘스트를 저장함
@@ -66,7 +75,7 @@ public class PlayerQuest : MonoBehaviour
     // 다음 퀘스트로 넘어가기 위한 메소드
     public void NextQuest()
     {
-        // 현재 퀘스트를 true로 변겨
+        // 현재 퀘스트를 true로 변경
         questList[nowQuest] = true;
 
         if (nowQuest == "visitLib")
@@ -77,9 +86,18 @@ public class PlayerQuest : MonoBehaviour
 
         else if (nowQuest == "chatLibWoman")
             questData.chatLibWoman = true;
-        
+
         else if (nowQuest == "chatNPC")
             questData.chatNPC = true;
+
+        else if (nowQuest == "visitDesert")
+            questData.visitDesert = true;
+
+        else if (nowQuest == "getGun")
+            questData.getGun = true;
+
+        else if (nowQuest == "visitForest")
+            questData.getGun = true;
 
         // 다음 퀘스트로 넘어감
         if (questOrder.Length > nowQuestIndex + 1)

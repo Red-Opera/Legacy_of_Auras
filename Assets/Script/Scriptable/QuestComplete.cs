@@ -7,4 +7,7 @@ public class QuestComplete : ScriptableObject
     public bool readBook = false;
     public bool chatLibWoman = false;
     public bool chatNPC = false;
+    public bool visitDesert = false;
+    public bool getGun = false;
+    public bool visitForest = false;
 }

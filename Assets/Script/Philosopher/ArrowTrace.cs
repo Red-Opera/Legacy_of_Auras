@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class ArrowTrace : MonoBehaviour
 {
-    public float accelerationRate = 4.0f;   // 가속도 비율
-    public float maxSpeed = 30.0f;          // 화살 속도
+    [SerializeField] private float accelerationRate = 4.0f;   // 가속도 비율
+    [SerializeField] private float maxSpeed = 30.0f;          // 화살 속도
 
     private static GameObject player;
     private float currentSpeed;

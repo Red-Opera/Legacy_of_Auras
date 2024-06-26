@@ -5,7 +5,7 @@ public class NPCLookAtPlayer : MonoBehaviour
     public Transform headTransform;                 // 주민의 머리를 나타내는 Transform
     public float rotationSpeed = 5.0f;              // 플레이어를 바라보는데 걸리는 시간
     public float resetLookDelay = 3.0f;             // 다시 원래대로 돌아가는데 걸리는 시간
-    public float interactionDistance = 3.0f;        // 대화하기 위해 필요한 거리
+    public float interactionDistance;               // 대화하기 위해 필요한 거리
     public bool isSitting = false;                  // 주민이 앉아 있는지 여부를 나타내는 변수
 
     public float distanceToPlayer;                  // 플레이어와 주민과의 거리

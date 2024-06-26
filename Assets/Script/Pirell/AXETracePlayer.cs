@@ -7,13 +7,19 @@ public class AXETracePlayer : MonoBehaviour
     public float acceleration = 10.0f;
     public float maxSpeed = 20.0f;
 
-    private GameObject player;
+    private static GameObject player;
+    private static SkinnedMeshRenderer playerCenter;
     private bool isTrace = false;
     private float currentSpeed = 0.0f;
 
     private void Start()
     {
-        player = GameObject.Find("Model");
+        if (player == null)
+        {
+            player = GameObject.Find("Model");
+            playerCenter = player.transform.Find("HuntressCoat_L.001_HuntressClothesUnwrap1:Mesh.003").GetComponent<SkinnedMeshRenderer>();
+        }
+
         StartCoroutine(DestroyObject());
         StartCoroutine(WaitAXE());
     }
@@ -27,7 +33,7 @@ public class AXETracePlayer : MonoBehaviour
             transform.position += transform.forward * currentSpeed * Time.deltaTime;
 
             // 플레이어 쪽을 바라보기
-            transform.LookAt(player.transform);
+            transform.LookAt(playerCenter.bounds.center);
         }
     }
 

@@ -6,28 +6,40 @@ using UnityEngine.SceneManagement;
 
 public class PlayerTeleport : MonoBehaviour
 {
-    public TextMeshProUGUI textUI;          // 텍스트를 표시할 UI 텍스트
-    public string[] textToDisplay;          // 출력할 텍스트 배열
-    public float delayBetweenText = 0.3f;   // 텍스트가 넘어가는 데 걸리는 시간 간격
+    public TextMeshProUGUI textUI;              // 텍스트를 표시할 UI 텍스트
+    public string[] textToDisplay;              // 출력할 텍스트 배열
+    public float delayBetweenText = 0.3f;       // 텍스트가 넘어가는 데 걸리는 시간 간격
 
-    public GameObject loadingObject;        // Loading 오브젝트
-    public Slider slider;                   // 슬라이더 바
-    public float animationDuration = 3.0f;  // 다음 맵 이동하는데 걸리는 시간
+    public GameObject loadingObject;            // Loading 오브젝트
+    public Slider slider;                       // 슬라이더 바
+    public float animationDuration = 3.0f;      // 다음 맵 이동하는데 걸리는 시간
+    private static float coolTime = 1.0f;       // 다음 텔레포트까지 걸리는 시간
+    private static float currentCoolTime = 1.0f;// 현재 쿨타임
 
-    public string toScene = "";             // 넘어갈 씬 이름
+    public string toScene = "";                 // 넘어갈 씬 이름
 
-    private Coroutine textDisplayCoroutine; // 현재 실행 중인 코루틴을 저장할 변수
-    private int currentTextIndex = 0;       // 현재 텍스트를 출력하는 인덱스
-    private bool isTeleport = false;        // 현재 텔레포트를 하고 있는지 여부
+    private Coroutine textDisplayCoroutine;     // 현재 실행 중인 코루틴을 저장할 변수
+    private int currentTextIndex = 0;           // 현재 텍스트를 출력하는 인덱스
+    private bool isTeleport = false;            // 현재 텔레포트를 하고 있는지 여부
 
-    private GameObject targetObject = null;  // 대상 씬에서 TeleportTarget 오브젝트를 찾음
-    private bool isEnter = false;            // 현재 텔레포트 안에 있는지 확인
+    private GameObject targetObject = null;     // 대상 씬에서 TeleportTarget 오브젝트를 찾음
+    private bool isEnter = false;               // 현재 텔레포트 안에 있는지 확인
 
     private void Start()
     {
-        loadingObject.SetActive(false);     // 처음에는 로딩 UI가 출력되지 않게 설정
-        slider.value = 0f;                  // 슬라이더 바 초기화
-    } 
+        loadingObject.SetActive(false);         // 처음에는 로딩 UI가 출력되지 않게 설정
+        slider.value = 0f;                      // 슬라이더 바 초기화
+
+        currentCoolTime = coolTime;
+
+        OnEnable();
+    }
+
+    private void Update()
+    {
+        if (currentCoolTime > 0)
+            currentCoolTime -= Time.deltaTime;
+    }
 
     // 플레이어가 텔레포트에 들어왔을 때 실행하는 메소드
     private void OnTriggerEnter(Collider other)
@@ -41,7 +53,10 @@ public class PlayerTeleport : MonoBehaviour
 
             // 기존에 실행 중인 텍스트 표시 코루틴을 중지하고 다시 시작
             if (textDisplayCoroutine != null)
+            {
                 StopCoroutine(textDisplayCoroutine);
+                textDisplayCoroutine = null;
+            }
 
             // 슬라이더 코루틴을 시작하고 나중에 중단시키기 위해서 변수로 받음
             textDisplayCoroutine = StartCoroutine(AnimateSlider());
@@ -87,14 +102,18 @@ public class PlayerTeleport : MonoBehaviour
         textDisplayCoroutine = StartCoroutine(DisplayText());
 
         // 슬라이더가 1이 되었을 때 씬 이동
-        if (slider.value >= 1f)
+        if (slider.value >= 1f && currentCoolTime <= 0)
         {
             // 첫번째로 도서관에 간 경우 퀘스트 해결
             if (toScene == "Library" && !(bool)PlayerQuest.quest.questList["visitLib"])
+            {
+                GameManager.info.alert.PushAlert("\"도서관 방문\" 퀘스트 클리어!", true);
                 PlayerQuest.quest.NextQuest();
+            }
 
             slider.value = 0;
 
+            currentCoolTime = coolTime;
             SceneManager.LoadScene(toScene);    // 해당 씬으로 이동함
         }
     }
@@ -119,13 +138,6 @@ public class PlayerTeleport : MonoBehaviour
     private void MoveToTeleportTarget(Scene scene)
     {
         GameObject player = GameObject.Find("Model");
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 4.0f);
-
-        foreach (Collider collider in colliders)
-        {
-            if (collider.CompareTag("Player"))
-                isEnter = true;
-        }
 
         if (scene.name.Equals("Village"))
         {

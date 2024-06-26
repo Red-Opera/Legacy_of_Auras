@@ -10,8 +10,10 @@ public class PlayerMove : MonoBehaviour
     private float toSpeed;              // 목표 이동속도
     private float currentSpeed;         // 현재 이동속도
 
+    private CharacterController characterController;    
     private Rigidbody rigid;
     private Animator animator;
+    private Vector3 moveDirection;
 
     private bool isJumpAnimation = false;
     private bool isGrounded = true;
@@ -20,18 +22,21 @@ public class PlayerMove : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject.transform.parent);
 
-        rigid = GetComponent<Rigidbody>();
+        characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
 
-        Debug.Assert(rigid != null, "Error (Null Reference) : 해당 객체에 RigidBody가 존재하지 않습니다.");
+        Debug.Assert(characterController != null, "Error (Null Reference) : 해당 객체에 characterController가 존재하지 않습니다.");
         Debug.Assert(animator != null, "Error (Null Reference) : 해당 객체에 Animator가 존재하지 않습니다.");
     }
 
     public void Update()
     {
+        characterController.Move(moveDirection * Time.deltaTime);
+
         if (TypeStory.hasActivatedCanvas || ItemShopOpenClose.isShopOpen || PlayerGetAurasArrow.isGetting)
         {
             animator.SetBool("isWalk", false);
+            moveDirection = Vector3.zero;
             return;
         }
 
@@ -44,15 +49,16 @@ public class PlayerMove : MonoBehaviour
         if (ChatNPC.isEnd && Input.GetKeyDown(KeyCode.Space) && !isJumpAnimation && isGrounded && (animator.GetFloat("IdleMode") < 1))
             Jump();
 
-        // 이동
-        if (isGrounded && !isJumpAnimation)
-            Move();
+        // 이동 처리
+        Move();
+
+        SetGravity();
     }
 
     private void Jump()
     {
         animator.SetTrigger("Jump");                // 점프 트리거 발생
-        rigid.AddForce(transform.up * jumpPower);   // 위로 점프력만큼 위로 올림
+        moveDirection.y += jumpPower;               // 위로 점프력만큼 위로 올림
         isGrounded = false;                         // 현재 캐릭터가 땅에 있지 않음을 표시
     }
 
@@ -106,26 +112,39 @@ public class PlayerMove : MonoBehaviour
             }
 
             // 키보드 입력 방향으로 움직임
-            Vector3 moveDirection = new Vector3(x, 0, y);
+            moveDirection = new Vector3(x, 0, y);
             moveDirection = transform.TransformDirection(moveDirection); // 캐릭터 로컬 좌표계 기준으로 이동 방향 변환
             moveDirection *= currentSpeed;
             moveDirection.y = Physics.gravity.y;        // 공중으로 이동 금지
 
             if (SceneManager.GetActiveScene().name == "Forest")
                 moveDirection.y /= 10;
-
-            // 해당 방향으로 움직임
-            rigid.velocity = moveDirection;
         }
 
         // 만약 입력 키를 누르지 않았다면 Idle 상태로 돌아감
         else
+        {
             if (animator.GetBool("isWalk"))
+            {
                 animator.SetBool("isWalk", false);
+                characterController.Move(Vector3.zero);
+            }
+
+            moveDirection = Vector3.Lerp(moveDirection, Vector3.zero, Time.deltaTime * 2.0f); // 점진적으로 속도 감소
+        }
+    }
+
+    private void SetGravity()
+    {
+        if (characterController.isGrounded)
+            moveDirection.y = 0;
+
+        else
+            moveDirection.y += Physics.gravity.y * Time.deltaTime;
     }
 
     private void CheckIsGround()
     {
-        isGrounded = PlayerIsGround.isGround;
+        isGrounded = characterController.isGrounded;
     }
 }

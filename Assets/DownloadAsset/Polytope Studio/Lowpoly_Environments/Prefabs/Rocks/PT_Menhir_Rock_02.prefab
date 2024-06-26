@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 5831670394684494036}
   - component: {fileID: 7004474624027861508}
   - component: {fileID: 8975058473414284020}
+  - component: {fileID: 8928195366385248754}
   m_Layer: 0
   m_Name: PT_Menhir_Rock_02_LOD0
   m_TagString: Untagged
@@ -311,3 +312,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &8928195366385248754
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391035051546296263}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.69
+  m_Height: 3.09
+  m_Direction: 1
+  m_Center: {x: -0.16178173, y: 1.3193775, z: 0.13982798}

@@ -16,6 +16,7 @@ public class ChatNPC : MonoBehaviour
     private bool isTyping = false;              // 출력 여부
 
     private Animator animator;                  // 애니메이션을 실행할 객체
+    private Transform bubbleTransform;          // 말풍선 위치
 
     private void Start()
     {
@@ -25,8 +26,9 @@ public class ChatNPC : MonoBehaviour
         Debug.Assert(npcLookAtPlayer != null, "Error (Null Reference) : 플레이어를 보게하는 스크립트가 존재하지 않습니다.");
 
         player = GameObject.Find("Model");
+        bubbleTransform = textDisplay.transform.parent;
 
-        textDisplay.transform.gameObject.transform.parent.gameObject.SetActive(false);
+        bubbleTransform.gameObject.SetActive(false);
         textDisplay.gameObject.SetActive(false);
     }
 
@@ -52,11 +54,17 @@ public class ChatNPC : MonoBehaviour
     {
         // 도서관에 있는 NPC와 대화 퀘스트를 통과할 경우
         if (gameObject.name.Equals("LibWoman") && !(bool)PlayerQuest.quest.questList["chatLibWoman"])
+        {
+            GameManager.info.alert.PushAlert("\"도서관 주민과 대화\" 퀘스트 클리어!", true);
             PlayerQuest.quest.NextQuest();
+        }
 
         // 마을에 있는 NPC와 대화 퀘스트를 통과할 경우
         if (gameObject.name.Equals("NPC") && !(bool)PlayerQuest.quest.questList["chatNPC"])
+        {
+            GameManager.info.alert.PushAlert("\"주민과 대화\" 퀘스트 클리어!", true);
             PlayerQuest.quest.NextQuest();
+        }
 
         StartCoroutine(TypeSentence()); 
     }
@@ -64,7 +72,7 @@ public class ChatNPC : MonoBehaviour
     public IEnumerator TypeSentence()
     {
         textDisplay.gameObject.SetActive(true);
-        textDisplay.transform.gameObject.transform.parent.gameObject.SetActive(true);
+        bubbleTransform.gameObject.SetActive(true);
 
         currentCharacterIndex = 0;
 
@@ -122,7 +130,7 @@ public class ChatNPC : MonoBehaviour
             animator.SetTrigger("isEnd");
 
             // 모든 문장이 출력되면 텍스트 이미지를 비활성화
-            textDisplay.transform.gameObject.transform.parent.gameObject.SetActive(false);
+            bubbleTransform.gameObject.SetActive(false);
             textDisplay.gameObject.SetActive(false);
         }
     }

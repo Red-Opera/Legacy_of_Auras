@@ -131,16 +131,23 @@ public class BossSceneFilm : MonoBehaviour
         Quaternion initRotation = transform.rotation;
 
         float elapsedTime = 0.0f;
+        float duration = 2.0f;
 
-        while (elapsedTime < 2.0f)
+        while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
 
-            transform.position = Vector3.Lerp(initPosition, playerCamera.transform.position, elapsedTime);
-            transform.rotation = Quaternion.Slerp(initRotation, playerCamera.transform.rotation, elapsedTime);
+            transform.position = Vector3.Lerp(initPosition, playerCamera.transform.position, Mathf.Clamp01(elapsedTime));
+            transform.rotation = Quaternion.Slerp(initRotation, playerCamera.transform.rotation, Mathf.Clamp01(elapsedTime));
 
             yield return null;
         }
+
+        // 보간 완료 후 정확히 목표 지점에 위치 및 회전 설정
+        transform.position = playerCamera.transform.position;
+        transform.rotation = playerCamera.transform.rotation;
+
+        player.GetComponent<PlayerRotate>().SetRotation(Quaternion.identity);
 
         isFilmEnd = true;
         animator.SetBool("isAttackable", true);

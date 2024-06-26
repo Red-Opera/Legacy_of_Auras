@@ -4,37 +4,36 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public Camera camera;               // 플레이어 카메라
-    public GameObject bow;              // 플레이어 활
-    public GameObject arrow;            // 화살 오브젝트
-    public GameObject gun;              // 플레이어 총
-    public GameObject bullet;           // 총알 오브젝트
-    public GameObject aurasArrow;       // 오라의 화살
-    public GameObject emptyCartridge;   // 탄피 배출 이펙트
-    public PlayerGunShotUI gunUI;       // 총 UI을 관리하는 오브젝트
+    public static Transform targetMonster;                      // 현재 조준하고 있는 몬스터
 
-    public TextMeshProUGUI currentGunText;      // 탄창에 남은 총알의 개수
+    [SerializeField] private Camera camera;                     // 플레이어 카메라
+    [SerializeField] private GameObject bow;                    // 플레이어 활
+    [SerializeField] private GameObject arrow;                  // 화살 오브젝트
+    [SerializeField] private GameObject gun;                    // 플레이어 총
+    [SerializeField] private GameObject bullet;                 // 총알 오브젝트
+    [SerializeField] private GameObject aurasArrow;             // 오라의 화살
+    [SerializeField] private GameObject emptyCartridge;         // 탄피 배출 이펙트
+    [SerializeField] private PlayerGunShotUI gunUI;             // 총 UI을 관리하는 오브젝트
+    [SerializeField] private TextMeshProUGUI currentGunText;    // 탄창에 남은 총알의 개수
+    [SerializeField] private AudioClip gunSoundClip;            // 총 소리 클립
+    [SerializeField] private AudioClip noRemainBullet;          // 총알이 없을때 나는 소리
+    [SerializeField] private Transform camaraToMove;            // 카메라가 이동할 위치
+    [SerializeField] private Transform defCameraTrans;          // 기본 카메라 위치
 
-    public AudioClip gunSoundClip;              // 총 소리 클립
-    public AudioClip noRemainBullet;            // 총알이 없을때 나는 소리
+    [SerializeField] private float cmrMoveTime;                 // 카메라가 목표지점까지 이동하는데 걸리는 시간
+    [SerializeField] private float spawnRadius = 3f;            // 스폰 범위
+    [SerializeField] private float spawnDelay = 0.1f;           // 스폰 딜레이
+    [SerializeField] private float detectionRadius = 50.0f;     // 몬스터 탐색 반경
+    [SerializeField] private float fieldOfView = 60.0f;         // 시야각
 
+    public WeaponType weaponType;               // 현재 소유하고 있는 무기
     private Animator animator;                  // 플레이어의 애니메이터
-    private WeaponType weaponType;              // 현재 소유하고 있는 무기
-
-    public Transform camaraToMove;              // 카메라가 이동할 위치
-    public Transform defCameraTrans;            // 기본 카메라 위치
-
-    public float cmrMoveTime;                   // 카메라가 목표지점까지 이동하는데 걸리는 시간
-    private float cameraMoveStartTime;          // 카메라 이동 시작 시간
-    private bool isCameraMoving = false;        // 카메라 이동 중인지 여부
-    private bool isReady = false;               // 현재 화살을 준비하는지 여부
-
     private ParticleSystem gunFlash;            // 총 쏠때 번쩍임
     private PlayerGunReLoad reLoad;             // 총 로드 스크립트
 
-    public float spawnRadius = 3f;              // 스폰 범위
-    public float spawnDelay = 0.1f;             // 스폰 딜레이
-
+    private float cameraMoveStartTime;          // 카메라 이동 시작 시간
+    private bool isCameraMoving = false;        // 카메라 이동 중인지 여부
+    private bool isReady = false;               // 현재 화살을 준비하는지 여부
     private bool isAurasAttack = false;         // 현재 오라의 공격하고 있는지 여부
 
     public void Start()
@@ -96,6 +95,7 @@ public class PlayerAttack : MonoBehaviour
 
         // 화살쏘는데 잘보이도록 카메라 이동
         CameraMove();
+        StartCoroutine(FindClosestMonster());
 
         yield return new WaitForSeconds(1.0f);
 
@@ -150,7 +150,7 @@ public class PlayerAttack : MonoBehaviour
         animator.SetTrigger("CreateAuras");
 
         // 화살 개수만큼 반복
-        for (int i = 0; i < 40; i++)
+        for (int i = 0; i < 3; i++)
         {
             float randomX, randomY, randomZ;
 
@@ -231,5 +231,100 @@ public class PlayerAttack : MonoBehaviour
         // 카메라가 이동완료한 경우 카메라 이동 중지
         if (t >= cmrMoveTime)
             isCameraMoving = false;
+    }
+
+    private IEnumerator FindClosestMonster()
+    {
+        // 탐색 반경 내의 모든 객체를 가져옴
+        Collider[] objectsInRange = Physics.OverlapSphere(transform.position, detectionRadius);
+        Transform closestMonster = null;        // 가장 가까운 몬스터의 Transform
+        float closestDistance = Mathf.Infinity; // 가장 가까운 몬스터와의 거리
+
+        // 시야각의 절반 값을 계산
+        float halfFieldOfView = fieldOfView / 2.0f;
+
+        targetMonster = null;
+
+        // 탐색 반경 내의 각 객체를 검사
+        foreach (Collider obj in objectsInRange)
+        {
+            if (obj.CompareTag("Monster"))
+            {
+                // 객체와의 방향 벡터를 계산하고 플레이어 앞 방향과 객체와의 각도를 계산
+                Vector3 directionToMonster = (obj.transform.position - transform.position).normalized;
+                float angleToMonster = Vector3.Angle(transform.forward, directionToMonster);
+
+                // 객체가 시야각 내에 있는지 확인
+                if (angleToMonster <= halfFieldOfView)
+                {
+                    // 객체와의 거리를 계산
+                    float distanceToMonster = Vector3.Distance(transform.position, obj.transform.position);
+
+                    MonsterHPBar hp = obj.GetComponent<MonsterHPBar>();
+
+                    if (hp == null && obj.transform.parent != null)
+                        hp = obj.transform.parent.GetComponent<MonsterHPBar>();
+
+                    if (hp != null)
+                    {
+                        if (hp.currentHP <= 0)
+                            continue;
+
+                        // 현재까지 찾은 가장 가까운 몬스터보다 가까운지 확인
+                        if (distanceToMonster < closestDistance)
+                        {
+                            closestDistance = distanceToMonster;    // 가장 가까운 거리 갱신
+                            closestMonster = obj.transform;         // 가장 가까운 몬스터 갱신
+                        }
+                    }
+
+                    else
+                    {
+                        LassBossHpBar hpbar = obj.GetComponent<LassBossHpBar>();
+
+                        if (hpbar != null)
+                        {
+                            if (hpbar.currentHP <= 0)
+                                continue;
+
+                            // 현재까지 찾은 가장 가까운 몬스터보다 가까운지 확인
+                            if (distanceToMonster < closestDistance)
+                            {
+                                closestDistance = distanceToMonster;    // 가장 가까운 거리 갱신
+                                closestMonster = obj.transform;         // 가장 가까운 몬스터 갱신
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+
+        if (closestMonster == null)
+            yield break;
+
+        // 가장 가까운 몬스터의 crossHair를 선택
+        Transform crossHair = null;
+        
+        if (closestMonster.name != "sk_ch_mp_GrimReaper_01")
+            crossHair = closestMonster.Find("Crosshair").GetChild(0);
+
+        else
+            crossHair = closestMonster.parent.Find("Crosshair").GetChild(0);
+
+        targetMonster = closestMonster;
+
+        while (isReady)
+        {
+            if (crossHair == null)
+                yield return null;
+
+            if (!crossHair.gameObject.activeSelf)
+                crossHair.gameObject.SetActive(true);
+
+            yield return null;
+        }
+
+        crossHair.gameObject.SetActive(false);
     }
 }

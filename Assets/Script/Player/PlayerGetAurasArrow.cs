@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerGetAurasArrow : MonoBehaviour
 {
     public static bool isGetting = false;   // 현재 화살을 얻고 있는지 여부
-    public static bool isGetArrow = true;
+    public static bool isGetArrow = false;
 
     private Animator animator;              // 애니메이터 컴포넌트
     private float rotationSpeed = 0.5f;     // 회전 속도
@@ -22,11 +22,6 @@ public class PlayerGetAurasArrow : MonoBehaviour
         Debug.Assert(animator != null, "Error (Null Reference): 애니메이터가 존재하지 않습니다.");
 
         camera = GameObject.Find("MainCamera");
-    }
-
-    public void Update()
-    {
-        
     }
 
     private IEnumerator GetAurasArrow(Transform targetTransform)

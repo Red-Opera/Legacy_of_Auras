@@ -133,7 +133,10 @@ public class TypeStory : MonoBehaviour
             canvas.SetActive(true);
 
             if (!(bool)PlayerQuest.quest.questList["readBook"])
+            {
+                GameManager.info.alert.PushAlert("\"책 읽기\" 퀘스트 클리어!", true);
                 PlayerQuest.quest.NextQuest();
+            }
         }
 
         LookAtTarget();

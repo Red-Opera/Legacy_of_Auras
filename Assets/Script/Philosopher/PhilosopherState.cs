@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PhilosopherState : MonoBehaviour
 {
@@ -152,10 +153,20 @@ public class PhilosopherState : MonoBehaviour
 
             Vector3 spawnPosition = new Vector3(x, 1000f, z);
 
-            GameObject newZombie = Instantiate(zombie, spawnPosition, Quaternion.identity);
+            NavMeshHit hit;
+            GameObject newZombie = null;
+
+            if (NavMesh.SamplePosition(spawnPosition, out hit, 1000f, NavMesh.AllAreas))
+                newZombie = Instantiate(zombie, hit.position, Quaternion.identity);
+            
+            else
+            {
+                i--;
+                continue;
+            }
 
             Ray ray = new Ray(newZombie.transform.position, Vector3.down);
-            RaycastHit hit;
+            RaycastHit hit2;
 
             int failCount = 0;
             while (true)
@@ -163,12 +174,12 @@ public class PhilosopherState : MonoBehaviour
                 if (failCount >= 100)
                     break;
 
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                if (Physics.Raycast(ray, out hit2, Mathf.Infinity))
                 {
-                    if (hit.collider.CompareTag("Terrain"))
+                    if (hit2.collider.CompareTag("Terrain"))
                     {
-                        newZombie.transform.position = hit.point;
-                        Destroy(Instantiate(bloodEffect, hit.point, Quaternion.identity), 5.0f);
+                        newZombie.transform.position = hit2.point;
+                        Destroy(Instantiate(bloodEffect, hit2.point, Quaternion.identity), 5.0f);
                         break;
                     }
                 }

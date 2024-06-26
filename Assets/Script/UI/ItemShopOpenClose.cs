@@ -6,9 +6,17 @@ public class ItemShopOpenClose : MonoBehaviour
     public static bool isShopOpen = false;      // 현재 상점이 열려 있는지 여부
 
     private NPCLookAtPlayer lookAtPlayer;       // NPC가 플레이어를 바라보는 스크립트
+    private CharacterController playerControl;  // 플레이어 오브젝트
+    private GameObject levelUI;                 // level UI 오브젝트
 
     public void Start()
     {
+        playerControl = GameObject.Find("Model").GetComponent<CharacterController>();
+        Debug.Assert(playerControl != null, "Error (Null Reference) : 플레이어 콘트롤이 존재하지 않습니다.");
+
+        levelUI = GameObject.Find("LevelUI").gameObject;
+        Debug.Assert(levelUI != null, "Error (Null Reference) : 생성시 레벨 UI가 존재하지 않습니다.");
+
         lookAtPlayer = GetComponent<NPCLookAtPlayer>();
 
         shopUI.SetActive(false);
@@ -31,6 +39,7 @@ public class ItemShopOpenClose : MonoBehaviour
         if (!isShopOpen)
         {
             shopUI.SetActive(true);
+            levelUI.SetActive(false);
 
             isShopOpen = true;
         }
@@ -42,6 +51,7 @@ public class ItemShopOpenClose : MonoBehaviour
         if (isShopOpen)
         {
             shopUI.SetActive(false);
+            levelUI.SetActive(true);
 
             isShopOpen = false;
         }

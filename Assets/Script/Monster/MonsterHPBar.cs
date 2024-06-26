@@ -99,6 +99,8 @@ public class MonsterHPBar : MonoBehaviour
         animator.SetTrigger("IsDeath");
         isDeath = true;
 
+        LevelExp.GetExp(state.dropExp);
+
         while (true)
         {
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Death") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95 && !isDestroy)

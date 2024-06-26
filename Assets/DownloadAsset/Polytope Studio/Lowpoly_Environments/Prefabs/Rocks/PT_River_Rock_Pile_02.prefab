@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 4796835556367509877}
   - component: {fileID: 2437500246591982726}
   - component: {fileID: 1945505771005491725}
+  - component: {fileID: 8329146117167626200}
   m_Layer: 0
   m_Name: PT_River_Rock_Pile_02_LOD0
   m_TagString: Untagged
@@ -311,3 +312,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8329146117167626200
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3923666986999067674}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8208797, y: 0.1953599, z: 1.047795}
+  m_Center: {x: -0.02303201, y: 0.089582376, z: -0.0035108626}

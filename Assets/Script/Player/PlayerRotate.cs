@@ -1,5 +1,5 @@
+using System.Threading;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerRotate : MonoBehaviour
 {
@@ -52,7 +52,7 @@ public class PlayerRotate : MonoBehaviour
 
     public void Update()
     {
-        if (TypeStory.hasActivatedCanvas || ItemShopOpenClose.isShopOpen || PlayerGetAurasArrow.isGetting || !BossSceneFilm.isFilmEnd)
+        if (TypeStory.hasActivatedCanvas || ItemShopOpenClose.isShopOpen || PlayerGetAurasArrow.isGetting || !BossSceneFilm.isFilmEnd || QuestManager.isQuestUIOn)
             return;
 
         // 마우스 감도 가져오기
@@ -95,5 +95,12 @@ public class PlayerRotate : MonoBehaviour
         spineLookAt.transform.localPosition = spineDefultPos.transform.localPosition + camera.transform.localRotation * Vector3.forward / 10;
 
         armLookAt.transform.localPosition = armDefultPos.transform.localPosition + camera.transform.localRotation * Vector3.forward / 10;
+    }
+
+    public void SetRotation(Quaternion targetRotation)
+    {
+        // 카메라의 회전 값을 currentRotation에 역으로 계산하여 저장
+        currentRotation.y = targetRotation.eulerAngles.x;
+        currentRotation.x = transform.eulerAngles.y;
     }
 }

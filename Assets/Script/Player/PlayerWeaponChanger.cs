@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-public enum WeaponType { NULL, BOW, GUN, AURAS }
+public enum WeaponType { NULL, BOW, GUN, AURAS, ITEM1, ITEM2, ITEM3, ITEM4, ITEM5 }
 
 public class PlayerWeaponChanger : MonoBehaviour
 {
@@ -54,16 +54,16 @@ public class PlayerWeaponChanger : MonoBehaviour
         // 화살 상태가 아니고 숫자 1를 눌렸을 때 활로 바꿈 (단, 만약 플레이어가 아직 대화 중인 경우 무기를 바꿀 수 없음)
         if ((Input.GetKeyDown(KeyCode.Alpha1) && 
             !animator.GetBool("ArrowReady") && 
-            weaponType != WeaponType.GUN && weaponType != WeaponType.AURAS) || bowEquid)
+            (weaponType == WeaponType.NULL || weaponType == WeaponType.BOW)) || bowEquid)
             StartCoroutine(EquidUnEquidBow());
 
         else if (Input.GetKeyDown(KeyCode.Alpha2) && 
-                 weaponType != WeaponType.BOW && weaponType != WeaponType.AURAS && 
+                 (weaponType == WeaponType.NULL || weaponType == WeaponType.GUN) && 
                  gun.activeSelf && !animator.GetCurrentAnimatorStateInfo(1).IsName("ReloadGun"))
             EquidUnEquidGun();
 
-        else if (Input.GetKeyDown(KeyCode.Alpha3) && 
-            weaponType != WeaponType.BOW && weaponType != WeaponType.GUN && 
+        else if (Input.GetKeyDown(KeyCode.Alpha3) &&
+            (weaponType == WeaponType.NULL || weaponType == WeaponType.AURAS) && 
             PlayerGetAurasArrow.isGetArrow)
             StartCoroutine(ChangeAurasArrow());
     }

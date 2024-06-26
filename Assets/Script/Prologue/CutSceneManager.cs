@@ -16,10 +16,10 @@ public class CutSceneManager : MonoBehaviour
     public float delayTime = 1.0f;
 
     private uint lastCutNumber;         // 마지막 컷씬의 번호
-    private uint cutCount = 1;          // 현재 컷씬의 번호
+    private uint cutCount = 12;          // 현재 컷씬의 번호
 
     private uint lastScriptNumber;      // 마지막 시나리오 번호
-    private uint scriptCount = 1;       // 현재 시나리오 번호
+    private uint scriptCount = 12;       // 현재 시나리오 번호
 
     private bool isChangeCut = false;   // 현재 컷이 바뀌고 있는지 확인하는 변수
 
