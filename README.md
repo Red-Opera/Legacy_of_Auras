@@ -4,7 +4,7 @@
 <ul>
     <li>
         <h3>Game Genre</h3>
-        3D 디펜스 슈팅 게임
+        3D RPG 게임
     </li> 
     <li>
         <h3>Development Tools</h3>
