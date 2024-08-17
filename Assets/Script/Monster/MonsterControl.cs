@@ -5,8 +5,8 @@ using UnityEngine;
 public class MonsterControl : MonoBehaviour
 {
     public float lookAtDis = 25.0f;             // 플레이어를 인식할 수 있는 거리
-    public float lookAtAngle = 120.0f;          // 몬스터가 바라보는 각도 범위
-    public float attackDistance = 5.0f;         // 공격 가능한 거리
+    public float maxAngle = 120.0f;             // 몬스터가 바라보는 각도 범위
+    public float attackDistance = 6.5f;         // 공격 가능한 거리
     public float moveSpeed = 2.5f;              // 몬스터의 이동 속도
     public float rotationSpeed = 5.0f;          // 몬스터의 회전 속도
     public float waitMinTime = 1.0f;            // 공격 후 최소 대기시간
@@ -21,8 +21,6 @@ public class MonsterControl : MonoBehaviour
     private GameObject player;              // 플레이어 오브젝트
     private Animator animator;              // 이 오브젝트의 애니메이터
     private Rigidbody rigidbody;            // 물리 컴포넌트
-
-    private bool isAttacking = false;       // 공격 중인지 여부를 나타내는 변수
 
     public void Start()
     {
@@ -39,20 +37,22 @@ public class MonsterControl : MonoBehaviour
         StartCoroutine(IdleRotationCoroutine());    // Idle 상태에서 일정한 시간이 지나면 돌기 위한 메소드
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         AnimatorStateInfo nowState = animator.GetCurrentAnimatorStateInfo(0);
 
-        if (!nowState.IsName("Run") && !nowState.IsName("GroundStrike"))
+        if (!nowState.IsName("Run") && !nowState.IsName("GroundStrike") && !nowState.IsName("DestructionAxe") && !nowState.IsName("BurningFlameSlash") && !nowState.IsName("Death"))
         {
-            rigidbody.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX |
-                RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionX;
+            rigidbody.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX | 
+                                    RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionX;
+
             animator.applyRootMotion = false;
         }
 
         else
         {
             rigidbody.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
+
             animator.applyRootMotion = true;
         }
 
@@ -66,43 +66,47 @@ public class MonsterControl : MonoBehaviour
         Vector3 directionToPlayer = playerPosition - monsterPosition;               // 몬스터가 플레이어를 바라보는 방향을 얻음
         float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);  // 몬스터가 플레이어를 바라보는 각도를 계산합니다.
 
+        float distance = directionToPlayer.magnitude;
+
+        // 몬스터가 플레이어와 거리가 많이 떨어진 경우
+        if (distance > CreateMonster.instance.createSize)
+        {
+            CreateMonster.instance.MoveMonster(false, transform);
+            return;
+        }
+
         // 몬스터가 플레이어를 바라보는 각도가 lookAtAngle 이내이고, 플레이어와 몬스터 사이의 거리가 lookAtDis 이내라면 공격 상태로 넘어감
-        if ((angleToPlayer <= lookAtAngle * 0.5f || isAttacking) && directionToPlayer.magnitude <= lookAtDis)
+        if (angleToPlayer <= maxAngle * 0.5f && distance <= lookAtDis && !PlayerHPBar.isPlayerDeath)
         {
             animator.SetBool("IsFindPlayer", true);
 
-            // 몬스터와 플레이어 사이의 거리가 공격 가능한 거리보다 작으면 AttackAble을 true로 설정
-            if (directionToPlayer.magnitude <= attackDistance && angleToPlayer <= lookAtAngle * 0.5f)
+            if ((nowState.IsName("AttackWait") || nowState.IsName("Run")))
             {
-                // 공격할 수 있는 상태로 변하여 플레이어를 공격하도록 설정
-                animator.SetBool("AttackAble", true);
-                isAttacking = true;
+                directionToPlayer.y = 0;
+
+                Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer);
+
+                // 플레이어를 처음 볼때는 천천히 회전
+                if (angleToPlayer >= 10f)
+                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
+
+                // 이후에는 플레이어를 정확하게 바라봄
+                else
+                    transform.rotation = lookRotation;
             }
 
-            // 플레이어를 공격할 수 없는 상태가 된 경우
+            // 공격 범위 안으로 들어온 경우 플레이어를 공격하도록 설정
+            if (distance <= attackDistance && angleToPlayer <= maxAngle * 0.5f)
+                animator.SetBool("AttackAble", true);
+
+            // 공격 범위를 벗어난 경우 플레이어를 공격하지 못하도록 설정
             else
             {
-                // 플레이어를 공격하지 못하도록 설정
                 animator.SetBool("AttackAble", false);
+                float gravity = rigidbody.velocity.y + Physics.gravity.y * Time.deltaTime;
 
-                // 현재 공격 중이었고 다음 공격 대기 중일 때 플레이어를 보도록 설정
-                if (isAttacking || animator.GetCurrentAnimatorStateInfo(0).IsName("AttackWait"))
-                {
-                    // 플레이어를 향해 회전
-                    Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
-
-                    // 플레이어를 향해 선형 이동
-                    Vector3 moveDirection = directionToPlayer.normalized;
-                    transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
-                }
-
-                else
-                {
-                    // attackDistance 범위 안에 들어왔을 경우 회전만 수행
-                    Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
-                }
+                // 플레이어 향해 이동
+                rigidbody.angularVelocity = new Vector3(transform.forward.x * moveSpeed, gravity, transform.forward.z * moveSpeed);
             }
         }
 
@@ -111,7 +115,6 @@ public class MonsterControl : MonoBehaviour
         {
             animator.SetBool("IsFindPlayer", false);
             animator.SetBool("AttackAble", false);
-            isAttacking = false;
         }
     }
 
@@ -135,6 +138,7 @@ public class MonsterControl : MonoBehaviour
                 yield return new WaitForSeconds(waitTime);
                 animator.SetBool("IsEndWait", true);
             }
+
             yield return null;
         }
     }
@@ -162,14 +166,15 @@ public class MonsterControl : MonoBehaviour
 
             else if (isHit)
             {
-                // 플레이어가 있는 방향을 구합니다.
+                // 플레이어가 있는 방향을 구함
                 Vector3 targetDirection = player.transform.position - transform.position;
-                targetDirection.y = 0f; // 회전을 Y 축으로만 하려면 이 부분을 조절하세요.
+                targetDirection.y = 0f;
 
                 if (targetDirection != Vector3.zero)
                 {
-                    // 부드럽게 회전하기 위해 Lerp 함수를 사용합니다.
+                    // 부드럽게 회전하기 위해 Lerp 함수를 사용
                     Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+
                     transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * 2 * Time.deltaTime);
                 }
 
@@ -181,7 +186,7 @@ public class MonsterControl : MonoBehaviour
                 if (angle <= 5.0f)
                     isHit = false;
             }
-
+            
             yield return null;
         }
     }

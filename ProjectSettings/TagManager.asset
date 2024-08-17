@@ -11,6 +11,8 @@ TagManager:
   - MoneyBox
   - PlayerAttack
   - Shield
+  - WoodSound
+  - MetalSound
   layers:
   - Default
   - TransparentFX

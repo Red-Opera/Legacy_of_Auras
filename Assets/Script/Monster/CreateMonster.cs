@@ -1,71 +1,108 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CreateMonster : MonoBehaviour
 {
-    public GameObject createMonster;    // 생성할 몬스터
-    public int maxCreateMonster = 200;  // 최대로 생성가능한 몬스터 수
+    public static CreateMonster instance;
+    public float createSize;                // 생성 범위
+     
+    [SerializeField] private GameObject createMonster;  // 생성할 몬스터
+    [SerializeField] private int maxCreateMonster; // 최대로 생성가능한 몬스터 수
 
-    public static int nowCount = 0;     // 현재 몬스터 수
+    public static int nowCount = 0;         // 현재 몬스터 수
+
+    private GameObject player;
+    private Terrain terrain;
 
     public void Start()
     {
-        // 몬스터 생성 메서드 호출
-        SpawnMonsters();
-    }
+        player = GameObject.Find("Model");
 
-    public void Update()
-    {
-        // 최대로 만들어질 수 있는 몬스터의 수보다 적을 경우 생성
-        if (nowCount < maxCreateMonster)
-            SpawnMonsters();
-    }
-
-    private void SpawnMonsters()
-    {
         // Terrain 컴포넌트 가져오기
-        Terrain terrain = GetComponent<Terrain>();
+        terrain = GetComponent<Terrain>();
         Debug.Assert(terrain != null, "오류 (Null Reference): Terrain 컴포넌트가 존재하지 않습니다.");
 
+        SceneManager.sceneLoaded += Setting;
+        Setting(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+
+        // 몬스터 생성 메서드 호출
+        StartCoroutine(AutoSpawnMonsters());
+    }
+
+    public bool MoveMonster(bool isCreate, Transform target = null)
+    {
         // Terrain의 가로와 세로 크기 가져오기
         float terrainWidth = terrain.terrainData.size.x;
         float terrainHeight = terrain.terrainData.size.z;
 
-        int failStack = 0;
-        for (int i = nowCount; i < maxCreateMonster; i++)
+        for (int failStack = 0; failStack < maxCreateMonster * 2; failStack++)
         {
-            if (failStack >= maxCreateMonster * 2)
-                break;
-
             // Terrain 가로와 세로의 80% 범위 내에서 랜덤한 위치 계산
-            float randomX = Random.Range(0.1f * terrainWidth, 0.9f * terrainWidth);
-            float randomZ = Random.Range(0.1f * terrainHeight, 0.9f * terrainHeight);
+            float randomX = Random.Range(player.transform.position.x - createSize, player.transform.position.x + createSize);
+            float randomZ = Random.Range(player.transform.position.z - createSize, player.transform.position.z + createSize);
+
+            randomX = Mathf.Clamp(randomX, terrainWidth / 2 - 0.45f * terrainWidth, terrainWidth / 2 + 0.45f * terrainWidth);
+            randomZ = Mathf.Clamp(randomZ, terrainWidth / 2 - 0.45f * terrainWidth, terrainWidth / 2 + 0.45f * terrainWidth);
 
             // Terrain의 위치에 랜덤한 오프셋을 더한 스폰 위치 계산
-            Vector3 spawnPosition = terrain.transform.position + new Vector3(randomX, 50f, randomZ);
+            Vector3 spawnPosition = new Vector3(randomX, 50f, randomZ);
 
             // 몬스터 아래 방향으로 레이캐스트하여 지면 또는 다른 오브젝트 찾기
             RaycastHit hit;
             if (Physics.Raycast(spawnPosition, Vector3.down, out hit))
             {
-                // 레이가 충돌한 오브젝트가 몬스터 자체인 경우
+                // 레이가 충돌한 오브젝트가 Terrian인 경우 충돌 지정으로 배치함
                 if (hit.collider.gameObject == gameObject)
-                {
-                    // 몬스터의 y축 값을 레이 충돌 지점의 y축 값으로 설정
                     spawnPosition = new Vector3(spawnPosition.x, hit.point.y, spawnPosition.z);
-                }
-
-                else
-                {
-                    i--;
-                    failStack++;
-                    continue;
-                }
             }
 
-            // 스폰 위치에 몬스터 오브젝트 생성
-            Instantiate(createMonster, spawnPosition, Quaternion.identity);
+            // 성공적으로 배치할 수 있는 위치인 경우
+            if (hit.collider != null && hit.collider.gameObject.tag == "Terrain")
+            {
+                // 스폰 위치에 몬스터 오브젝트 생성
+                if (isCreate)
+                    Instantiate(createMonster, spawnPosition, Quaternion.identity);
+
+                else
+                    target.position = spawnPosition;
+
+                return true;
+            }
+
+            // 이동 실패한 경우
+            else if (!isCreate)
+            {
+                Destroy(target.gameObject);
+                nowCount--;
+            }
         }
 
-        nowCount = maxCreateMonster;
+        return false;
+    }
+
+    private IEnumerator AutoSpawnMonsters()
+    {
+        while (true)
+        {
+            for (; nowCount <= maxCreateMonster; nowCount++)
+            {
+                if (!MoveMonster(true))
+                    break;
+            }
+
+            yield return new WaitForSeconds(10.0f);
+        }
+    }
+
+    private void Setting(Scene scene, LoadSceneMode mode)
+    {
+        instance = this;
+        nowCount = 0;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= Setting;
     }
 }

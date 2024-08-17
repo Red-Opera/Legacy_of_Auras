@@ -8,11 +8,11 @@ public class InfoLookAtPlayer : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Model");
+        player = GameObject.Find("MainCamera").transform.GetChild(0).GetChild(0).gameObject;
         Debug.Assert(player != null, "Error (Null Reference) : 플레이어가 존재하지 않습니다.");
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         LookAtPlayer();
     }
@@ -20,8 +20,11 @@ public class InfoLookAtPlayer : MonoBehaviour
     // 체력 바가 플레이어를 바라보도록 해주는 메소드
     private void LookAtPlayer()
     {
-        Vector3 direction = player.transform.position - infoUI.transform.position;
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        infoUI.transform.rotation = rotation;
+        Vector3 rotation = infoUI.transform.rotation.eulerAngles;
+
+        infoUI.transform.LookAt(player.transform.position);
+
+        if (transform.childCount >= 1 && transform.GetChild(0).name == "MaxSize")
+            infoUI.transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
     }
 }

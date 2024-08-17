@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,56 +7,85 @@ using UnityEngine.UI;
 // 사용시 필요한 것 : UI를 출력하기 위해서 PrintText 메소드 출력, UI를 없애기 위해서 EndChat() 메소드 실행
 public class TalkOrReadText : MonoBehaviour
 {
-    public Text nameText;                   // 대화를 하는 오브젝트의 이름 텍스트
-    public Text contentText;                // 대화 내용 텍스트
-    public float printSpeed = 0.01f;        // 텍스트 출력 속도 (글자/초)
+    public static TalkOrReadText instance;
     public bool isPrinting = false;         // 대화 내용 출력 중인지 여부
+    public bool isUIClose = true;           // UI 초기 상태 (꺼짐)
+
+    [SerializeField] private GameObject dialog;         // 대화 오브젝트
+    [SerializeField] private Text nameText;             // 대화를 하는 오브젝트의 이름 텍스트
+    [SerializeField] private Text contentText;          // 대화 내용 텍스트
+    [SerializeField] private float printSpeed = 0.1f;   // 텍스트 출력 속도 (글자/초)
 
     private string printString;             // 출력할 문자열
     private string currentContent = "";     // 현재 출력 중인 대화 내용
     private int currentContentIndex = 0;    // 대화 내용에서 현재 출력 중인 문자의 인덱스
-    private bool isOff = true;              // UI 초기 상태 (꺼짐)
 
-    void Start()
+    private void Start()
     {
+        instance = this;
+
         // 게임 오브젝트의 자식 오브젝트를 비활성화
-        SetChildObjectsActive(false);
+        SetActive(false);
     }
 
-    void Update()
+    private void Update()
     {
-        // 대화 내용 출력 중인 경우
-        if (isPrinting)
-        {
-            // Space 키 또는 마우스 클릭으로 텍스트 출력을 바로 완료
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-                contentText.text = printString;
-        }
-
         // 텍스트 출력 처리
         UpdateTextDisplay();
     }
 
-    // UI를 출력하기 위한 메소드
-    public void PrintText(string name, string text)
+    // 할말을 한글자씩 출력하는 메소드
+    public static IEnumerator Talk(string name, List<string> content)
     {
-        isOff = false;                      // UI를 실행함
-        SetChildObjectsActive(true);        // UI를 킴
+        if (name == "")
+            name = "주인공";
+
+        for (int i = 0; i < content.Count; i++)
+        {
+            instance.PrintText(name, content[i]);
+
+            yield return null;
+            bool isPress = false;
+
+            // 대화 내용 출력 중인 경우
+            while (instance.isPrinting || !isPress)
+            {
+                isPress = Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0);
+
+                if (instance.isPrinting && isPress)
+                {
+                    instance.isPrinting = false;
+                    instance.contentText.text = content[i];
+                }
+
+                yield return null;
+            }
+
+            instance.isPrinting = false;
+        }
+
+        instance.EndChat();
+    }
+
+    // UI를 출력하기 위한 메소드
+    private void PrintText(string name, string text)
+    {
+        isUIClose = false;          // UI를 실행함
+        SetActive(true);            // UI를 킴
 
         printString = text;
 
-        nameText.text = name;               // 이름 출력하는 텍스트는 효과 없이 출력
-        StartPrintingText(text);            // 내용부분은 한글자씩 출력하는 이펙트하면서 출력
+        nameText.text = name;       // 이름 출력하는 텍스트는 효과 없이 출력
+        StartPrintingText(text);    // 내용부분은 한글자씩 출력하는 이펙트하면서 출력
     }
 
     // UI를 끄기 위한 메소드
-    public void EndChat()
+    private void EndChat()
     {
-        // 만약 UI가 켜져있다면 종료
-        if (!isOff)
-            SetChildObjectsActive(false);
+        // 대화 창 끔
+        SetActive(false);
 
-        isOff = true;               // UI 종료
+        isUIClose = true;           // UI 종료
         currentContent = "";        // 내용 초기화
         currentContentIndex = 0;
 
@@ -63,11 +94,9 @@ public class TalkOrReadText : MonoBehaviour
     }
 
     // UI를 키기 위한 메소드
-    private void SetChildObjectsActive(bool active)
+    private static void SetActive(bool active)
     {
-        // 자식 오브젝트 활성화/비활성화
-        foreach (Transform child in transform)
-            child.gameObject.SetActive(active);
+        instance.dialog.SetActive(active);
     }
 
     // 텍스트를 출력하기 위해 초기화하는 메소드

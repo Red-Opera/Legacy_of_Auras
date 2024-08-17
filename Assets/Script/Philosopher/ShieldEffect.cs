@@ -14,13 +14,13 @@ public class ShieldEffect : MonoBehaviour
 
     private GameObject playerCam;
     private MonsterHPBar hpBar;             // 체력을 관리하는 스크립트
-    private LassBossHpBar lastBossHpBar;    // 체력을 관리하는 스크립트
+    private LastBossHpBar lastBossHpBar;    // 체력을 관리하는 스크립트
 
     private int shieldMaxHp;                // 최대 쉴드 체력
     private int currentShieldHP;            // 현재 쉴드 체력
     private Coroutine disolveCoroutine;
 
-    void Start()
+    private void Start()
     {
         playerCam = GameObject.Find("Camera");
         renderer = GetComponent<MeshRenderer>();
@@ -28,7 +28,7 @@ public class ShieldEffect : MonoBehaviour
         hpBar = transform.parent.GetComponent<MonsterHPBar>();
 
         if (hpBar == null)
-            lastBossHpBar = transform.parent.GetComponent<LassBossHpBar>();
+            lastBossHpBar = transform.parent.GetComponent<LastBossHpBar>();
 
         if (hpBar != null)
             shieldMaxHp = (int)(hpBar.maxHP * createShieldHPPersent);
@@ -41,14 +41,9 @@ public class ShieldEffect : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void Update()
-    {
-        transform.forward = playerCam.transform.position - transform.position;
-    }
-
     private void FixedUpdate()
     {
-        //FindPlayerAttack();
+        transform.forward = playerCam.transform.position - transform.position;
     }
 
     public void HitShield(Vector3 hitPos)

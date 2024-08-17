@@ -43,6 +43,11 @@ public class NPCLookAtPlayer : MonoBehaviour
         // 플레이어와 일정 거리 안에 있고 E 키를 누르면 상호작용 시작
         if (distanceToPlayer < interactionDistance && ChatNPC.isEnd && Input.GetKeyDown(KeyCode.E) && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
+            QuestComplete complete = Resources.Load<QuestComplete>("Quest/QuestData");
+
+            if (PlayerQuest.quest.nowQuest != "chatLibWoman" && !complete.chatLibWoman)
+                return;
+
             ChatNPC.isEnd = false;
 
             chatNPC.StartChat();        // 플레이어와 대화

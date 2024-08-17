@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HighHpPotion
   m_EditorClassIdentifier: 
   Level: 0
-  HP: -50
+  HP: -20
   attack: 0
   attackSpeed: 0
   def: 0

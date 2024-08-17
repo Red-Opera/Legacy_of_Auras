@@ -15,6 +15,7 @@ public class PlayerMove : MonoBehaviour
     private Animator animator;
     private Vector3 moveDirection;
 
+    private string currentSceneName = "";
     private bool isJumpAnimation = false;
     private bool isGrounded = true;
 
@@ -27,13 +28,16 @@ public class PlayerMove : MonoBehaviour
 
         Debug.Assert(characterController != null, "Error (Null Reference) : 해당 객체에 characterController가 존재하지 않습니다.");
         Debug.Assert(animator != null, "Error (Null Reference) : 해당 객체에 Animator가 존재하지 않습니다.");
+
+        currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.sceneLoaded += PlayerMoveSceneLoaded;
     }
 
     public void Update()
     {
         characterController.Move(moveDirection * Time.deltaTime);
 
-        if (TypeStory.hasActivatedCanvas || ItemShopOpenClose.isShopOpen || PlayerGetAurasArrow.isGetting)
+        if (TypeStory.hasActivatedCanvas || ItemShopOpenClose.isShopOpen || PlayerGetAurasArrow.isGetting || PlayerHPBar.isPlayerDeath || !ChatNPC.isEnd || !BossSceneFilm.isFilmEnd)
         {
             animator.SetBool("isWalk", false);
             moveDirection = Vector3.zero;
@@ -77,13 +81,12 @@ public class PlayerMove : MonoBehaviour
         // 이동 입력 키를 입력 받음
         float x = Input.GetAxis("Horizontal"), y = Input.GetAxis("Vertical");
         float idleMode = animator.GetFloat("IdleMode");
-
         
         // 달리는 키를 눌렸을 때 목표 속도를 지정함
         toSpeed = defaultSpeed;
 
-        if (SceneManager.GetActiveScene().name == "Forest")
-            toSpeed *= 0.3f;
+        if (currentSceneName == "Forest")
+            toSpeed *= 0.4f;
 
         if (Input.GetKey(KeyCode.LeftShift) && (idleMode != 1.0f) && !(idleMode > 2.9f && idleMode < 3.1f))
             toSpeed *= runMulti;
@@ -99,7 +102,7 @@ public class PlayerMove : MonoBehaviour
                 animator.SetBool("isWalk", true);
 
             // 해당 방향에 맞는 애니메이션이 실행하도록 변수 조정
-            if (SceneManager.GetActiveScene().name != "Forest")
+            if (currentSceneName != "Forest")
             {
                 animator.SetFloat("PlayerFront", (x * currentSpeed) / defaultSpeed);
                 animator.SetFloat("PlayerLeft", (y * currentSpeed) / defaultSpeed);
@@ -117,7 +120,7 @@ public class PlayerMove : MonoBehaviour
             moveDirection *= currentSpeed;
             moveDirection.y = Physics.gravity.y;        // 공중으로 이동 금지
 
-            if (SceneManager.GetActiveScene().name == "Forest")
+            if (currentSceneName == "Forest")
                 moveDirection.y /= 10;
         }
 
@@ -146,5 +149,13 @@ public class PlayerMove : MonoBehaviour
     private void CheckIsGround()
     {
         isGrounded = characterController.isGrounded;
+    }
+
+    private void PlayerMoveSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        currentSceneName = SceneManager.GetActiveScene().name;
+
+        // 씬 이동 후 갑자기 이동하는 문제 변경
+        moveDirection = Vector3.zero;
     }
 }

@@ -57,20 +57,6 @@ public class MonsterHPBar : MonoBehaviour
         ApplyHp();
     }
 
-    public void Update()
-    {
-        if (gameObject.name != "LastBoss")
-            LookAtPlayer();
-    }
-
-    // 체력 바가 플레이어를 바라보도록 해주는 메소드
-    private void LookAtPlayer()
-    {
-        Vector3 direction = player.transform.position - HPCanvas.transform.position;
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        HPCanvas.transform.rotation = rotation;
-    }
-
     // 현재 체력을 반영한 메소드
     private void ApplyHp()
     {
@@ -128,10 +114,7 @@ public class MonsterHPBar : MonoBehaviour
         StartCoroutine(HPChangeUI.CreateChangeText(true, realDamage));
 
         if (realDamage <= 0)
-        {
-            damageSound.DamageSound(realDamage);
             return;
-        }
 
         if (currentHP - realDamage > 0)
         {
@@ -139,8 +122,6 @@ public class MonsterHPBar : MonoBehaviour
                 StartCoroutine(monsterControl.IdleRotationCoroutine(true));
 
             currentHP -= realDamage;
-
-            damageSound.DamageSound(realDamage);
         }
 
         else
@@ -148,6 +129,8 @@ public class MonsterHPBar : MonoBehaviour
             currentHP = 0;
             StartCoroutine(Death());
         }
+
+        damageSound.DamageSound(realDamage);
 
         ApplyHp();
     }

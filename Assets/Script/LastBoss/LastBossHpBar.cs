@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class LassBossHpBar : MonoBehaviour
+public class LastBossHpBar : MonoBehaviour
 {
     public GameObject slider;               // 체력 바 슬라이더
     public GameObject sliderColor;          // 체력 바 색깔
@@ -53,7 +53,7 @@ public class LassBossHpBar : MonoBehaviour
         Debug.Assert(shield != null, "Error (Null Reference): 쉴드가 존재하지 않습니다.");
 
         // 슬라이더 반영
-        ApplyHp();
+        StartCoroutine(ApplyHp());
     }
 
     // 현재 체력을 반영한 메소드

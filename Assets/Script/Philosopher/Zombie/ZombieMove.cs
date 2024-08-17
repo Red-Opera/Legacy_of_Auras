@@ -15,7 +15,7 @@ public class ZombieMove : MonoBehaviour
 
     private bool isStop = false;        // 이동을 멈춘 경우
 
-    void Start()
+    private void Start()
     {
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
@@ -33,7 +33,7 @@ public class ZombieMove : MonoBehaviour
             speed *= 3.0f;
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         if (!agent.enabled)
             agent.enabled = true;
@@ -47,7 +47,9 @@ public class ZombieMove : MonoBehaviour
         }
 
         // 항상 플레이어를 바라보도록 설정
-        transform.LookAt(player.transform.position);
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
 
         CloseWithPlayer();
 

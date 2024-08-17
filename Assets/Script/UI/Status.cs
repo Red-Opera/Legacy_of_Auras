@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -31,14 +32,15 @@ public class Status : MonoBehaviour
     }
 
     // 초를 시, 분, 초 형태로 변환하는 함수
-    string FormatPlayTime(float seconds)
+    string FormatPlayTime(double seconds)
     {
-        int minutes = Mathf.FloorToInt(seconds / 60);
-        int hours = Mathf.FloorToInt(minutes / 60);
+        int totalSeconds = (int)Math.Floor(seconds);
+        int minutes = totalSeconds / 60;
+        int hours = minutes / 60;
 
-        int remainingHours = hours % 24;
+        int remainingHours = hours;
         int remainingMinutes = minutes % 60;
-        int remainingSeconds = Mathf.FloorToInt(seconds % 60);
+        int remainingSeconds = totalSeconds % 60;
 
         return string.Format("{0:D2}:{1:D2}:{2:D2}", remainingHours, remainingMinutes, remainingSeconds);
     }

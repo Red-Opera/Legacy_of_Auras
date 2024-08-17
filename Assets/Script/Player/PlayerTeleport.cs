@@ -9,12 +9,14 @@ public class PlayerTeleport : MonoBehaviour
     public TextMeshProUGUI textUI;              // 텍스트를 표시할 UI 텍스트
     public string[] textToDisplay;              // 출력할 텍스트 배열
     public float delayBetweenText = 0.3f;       // 텍스트가 넘어가는 데 걸리는 시간 간격
+    public static bool isInStore = false;      // 상점에 들어가지 여부
 
     public GameObject loadingObject;            // Loading 오브젝트
     public Slider slider;                       // 슬라이더 바
     public float animationDuration = 3.0f;      // 다음 맵 이동하는데 걸리는 시간
     private static float coolTime = 1.0f;       // 다음 텔레포트까지 걸리는 시간
     private static float currentCoolTime = 1.0f;// 현재 쿨타임
+    private static bool isOnLoaded = false;     // 다음 씬에서 처리할 함수를 넣었는지 여부
 
     public string toScene = "";                 // 넘어갈 씬 이름
 
@@ -22,8 +24,8 @@ public class PlayerTeleport : MonoBehaviour
     private int currentTextIndex = 0;           // 현재 텍스트를 출력하는 인덱스
     private bool isTeleport = false;            // 현재 텔레포트를 하고 있는지 여부
 
-    private GameObject targetObject = null;     // 대상 씬에서 TeleportTarget 오브젝트를 찾음
-    private bool isEnter = false;               // 현재 텔레포트 안에 있는지 확인
+    private static GameObject targetObject = null;  // 대상 씬에서 TeleportTarget 오브젝트를 찾음
+    private bool isEnter = true;                    // 현재 텔레포트 안에 있는지 확인
 
     private void Start()
     {
@@ -114,7 +116,35 @@ public class PlayerTeleport : MonoBehaviour
             slider.value = 0;
 
             currentCoolTime = coolTime;
-            SceneManager.LoadScene(toScene);    // 해당 씬으로 이동함
+
+            if (gameObject.name == "InStoreTele")
+                isInStore = true;
+
+            else
+                isInStore = false;
+
+            MiniMap.currentMapName = toScene;
+
+            if (isInStore)
+                MiniMap.currentMapName = "Desolate Emporium";
+
+            else if (toScene == "Desert")
+                MiniMap.currentMapName = "Endless Barrens";
+
+            else if (toScene == "Forest")
+                MiniMap.currentMapName = "Verdant Vale";
+
+            else if (toScene == "Final")
+                MiniMap.currentMapName = "Infernal Abyss";
+
+            // 씬 로드 이벤트에 이벤트 핸들러 등록
+            if (!isOnLoaded)
+            {
+                SceneManager.sceneLoaded += OnSceneLoaded;
+                isOnLoaded = true;
+            }
+
+            StartCoroutine(Loading.instance.LoadScene(toScene));    // 해당 씬으로 이동함
         }
     }
 
@@ -139,6 +169,12 @@ public class PlayerTeleport : MonoBehaviour
     {
         GameObject player = GameObject.Find("Model");
 
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.parent.position = Vector3.zero;
+        player.transform.parent.localPosition = Vector3.zero;
+        player.transform.position = Vector3.zero;
+        player.transform.localPosition = Vector3.zero;
+
         if (scene.name.Equals("Village"))
         {
             if (GameManager.info.beforeSceneName.Equals("Prologue"))
@@ -147,10 +183,13 @@ public class PlayerTeleport : MonoBehaviour
             else if (GameManager.info.beforeSceneName.Equals("Library"))
                 targetObject = GameObject.Find("LibExitLocation");
 
-            else if (GameManager.info.beforeSceneName.Equals("Village") && gameObject.name == "InStoreTele" && isEnter)
+            else if (GameManager.info.beforeSceneName.Equals("Desert"))
+                targetObject = GameObject.Find("DesertExitLocaion");
+
+            else if (GameManager.info.beforeSceneName.Equals("Village") && isInStore)
                 targetObject = GameObject.Find("OutStoreExit");
 
-            else if (GameManager.info.beforeSceneName.Equals("Village") && gameObject.name == "OutStoreTele" && isEnter)
+            else if (GameManager.info.beforeSceneName.Equals("Village") && !isInStore)
                 targetObject = GameObject.Find("InStoreExit");
         }
 
@@ -179,7 +218,7 @@ public class PlayerTeleport : MonoBehaviour
         {
             if (GameManager.info.beforeSceneName.Equals("Forest"))
                 targetObject = GameObject.Find("StartLocation");
-        }    
+        }
 
         if (scene.name.Equals("Forest"))
             GameObject.Find("Model").transform.localScale = new Vector3(30.0f, 30.0f, 30.0f);
@@ -192,6 +231,8 @@ public class PlayerTeleport : MonoBehaviour
             player.transform.position = targetObject.transform.position;
             player.transform.rotation = targetObject.transform.rotation;
         }
+        player.GetComponent<CharacterController>().enabled = true;
+        PlayerRotate.SetRotation(new Vector2(targetObject.transform.rotation.eulerAngles.y, 0.0f));
 
         GameManager.info.beforeSceneName = scene.name;
     }
@@ -201,17 +242,22 @@ public class PlayerTeleport : MonoBehaviour
     {
         // 대상 씬이 로드되면 플레이어를 teleportTarget 위치로 이동
         MoveToTeleportTarget(scene);
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        isOnLoaded = false;
     }
 
     private void OnEnable()
     {
-        // 씬 로드 이벤트에 이벤트 핸들러 등록
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        if (!isOnLoaded)
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+            isOnLoaded = true;
+        }
     }
 
     private void OnDisable()
     {
         // 씬 로드 이벤트에서 이벤트 핸들러 제거
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+        
     }
 }

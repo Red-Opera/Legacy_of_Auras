@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1460571758306210351}
     m_Modifications:
     - target: {fileID: 183818, guid: 64d48cc8be380db4c9285fafe8c3c0a8, type: 3}
@@ -112,12 +113,21 @@ PrefabInstance:
       value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64d48cc8be380db4c9285fafe8c3c0a8, type: 3}
+--- !u!4 &1093909160200680237 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 457054, guid: 64d48cc8be380db4c9285fafe8c3c0a8, type: 3}
+  m_PrefabInstance: {fileID: 1093909160200260211}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1201912247419801235
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1460571758306210351}
     m_Modifications:
     - target: {fileID: 4145591156296750619, guid: 8206b722d11501a449d6a278cca2adfa, type: 3}
@@ -229,12 +239,21 @@ PrefabInstance:
       value: VFX_Fire_01_Big_Smoke
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8206b722d11501a449d6a278cca2adfa, type: 3}
+--- !u!4 &7648959028030751818 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8829451551789304537, guid: 8206b722d11501a449d6a278cca2adfa, type: 3}
+  m_PrefabInstance: {fileID: 1201912247419801235}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1427156454551475652
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d45903c636e86cf44a53b46a2e9be479, type: 3}
@@ -294,6 +313,24 @@ PrefabInstance:
       value: MonsterWeapon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d45903c636e86cf44a53b46a2e9be479, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1093909160200680237}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d45903c636e86cf44a53b46a2e9be479, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7648959028030751818}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d45903c636e86cf44a53b46a2e9be479, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2755914214668141382}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d45903c636e86cf44a53b46a2e9be479, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6961412473794675049}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d45903c636e86cf44a53b46a2e9be479, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8432623932411085836}
   m_SourcePrefab: {fileID: 100100000, guid: d45903c636e86cf44a53b46a2e9be479, type: 3}
 --- !u!4 &1460571758306210351 stripped
 Transform:
@@ -313,12 +350,33 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2238059122593327253}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: d45903c636e86cf44a53b46a2e9be479, type: 3}
+--- !u!114 &6961412473794675049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238059122593327253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad537aae5bfb7904c8bb640cf342ccd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 11400000, guid: fbc676d943705be49857e01d756da6de, type: 2}
 --- !u!114 &8432623932411085836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,3 +389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f908c9a52a6134c92819165cf9fceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 1.5
+  acceleration: 10
+  maxSpeed: 20

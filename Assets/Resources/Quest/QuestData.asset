@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd5c58b740d1f4a4f830ca03a4498566, type: 3}
   m_Name: QuestData
   m_EditorClassIdentifier: 
-  visitLib: 0
-  readBook: 0
-  chatLibWoman: 0
-  chatNPC: 0
-  visitDesert: 0
-  getGun: 0
+  visitLib: 1
+  readBook: 1
+  chatLibWoman: 1
+  chatNPC: 1
+  visitDesert: 1
+  getGun: 1
   visitForest: 0

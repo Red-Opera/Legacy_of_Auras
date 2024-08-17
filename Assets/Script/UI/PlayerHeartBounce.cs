@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class PlayerHeartBounce : MonoBehaviour
 {
-    public float maxScale;                  // 심장의 최대 크기
-    public float minRate;                   // 최소 주기 (단위 : 분)
-    public float maxRate;                   // 최대 주기 (단위 : 분)
+    public float maxScale;                          // 심장의 최대 크기
+    public float minRate;                           // 최소 주기 (단위 : 분)
+    public float maxRate;                           // 최대 주기 (단위 : 분)
 
-    public GameObject HeartImg;             // 하트 이미지
-    public PlayerState state;               // 플레이어 상태
-    public TextMeshProUGUI currentHP;       // 현재 체력을 나타내는 텍스트
+    public GameObject HeartImg;                     // 하트 이미지
+    public PlayerState state;                       // 플레이어 상태
+    public TextMeshProUGUI currentHP;               // 현재 체력을 나타내는 텍스트
+    [SerializeField] private TextMeshProUGUI maxHP; // 최대 체력을 나타내는 텍스트
 
-    private Vector3 defaultHeartimgScale;   // 이미지의 초기 크기
-    private float currentTime;              // 현재 주기의 시간
+    private Vector3 defaultHeartimgScale;           // 이미지의 초기 크기
+    private float currentTime;                      // 현재 주기의 시간
     public Material imgMaterial;
 
     void Start()
@@ -26,7 +27,7 @@ public class PlayerHeartBounce : MonoBehaviour
     void Update()
     {
         // 체력의 퍼센트를 구한 후 다음 주기의 시간을 구함
-        float persent = (float)Int32.Parse(currentHP.text) / state.HP;
+        float persent = (float)int.Parse(currentHP.text.Replace(",", "")) / int.Parse(maxHP.text.Replace(",", ""));
         float rate = 60 / Mathf.Lerp(maxRate, minRate, persent);
 
         // 크기 커지는 효과

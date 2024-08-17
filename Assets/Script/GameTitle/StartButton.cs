@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour
 {
+    [SerializeField] private GameObject loginObj;
+
     public SpriteRenderer titleImg;
     private CanvasGroup canvas;
     private AudioSource backgroundSound;
@@ -11,9 +13,12 @@ public class StartButton : MonoBehaviour
     private float fadeTime = 1f;
 
     public static bool isNextScene = false;
+    private static bool isStart = false;
 
     private void Start()
     {
+        Debug.Assert(loginObj != null, "Error (Null Reference) : 로그인 오브젝트가 존재하지 않습니다.");
+
         canvas = transform.parent.GetComponent<CanvasGroup>();
 
         if (canvas == null)
@@ -28,14 +33,19 @@ public class StartButton : MonoBehaviour
 
     private void Update()
     {
-
+        if (Login.isStart && !isStart)
+        {
+            isStart = true;
+            StartCoroutine(FadeOut());
+        }
     }
 
     public void LoadScene() 
     { 
-        isNextScene = true; 
-        
-        StartCoroutine(FadeOut()); 
+        isNextScene = true;
+
+        loginObj.SetActive(true);
+        Login.GameLogin();
     }
         
     private IEnumerator FadeOut()

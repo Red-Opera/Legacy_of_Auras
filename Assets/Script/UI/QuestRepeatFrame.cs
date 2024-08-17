@@ -42,7 +42,10 @@ public class QuestRepeatFrame : MonoBehaviour
 
             if (questInfo.name.Contains("Level"))
             {
-                while (clearCondition <= GameManager.info.playerState.Level)
+                if (currentQuest < questInfo.questTitleContents.Count - 1)
+                    
+
+                while (clearCondition <= GameManager.info.playerState.Level && currentQuest < questInfo.questTitleContents.Count - 1)
                 {
                     currentQuest++;
                     clearCondition = questInfo.questTitleContents[currentQuest].clearCondition;
@@ -51,7 +54,7 @@ public class QuestRepeatFrame : MonoBehaviour
 
             else if (questInfo.name.Contains("Kill"))
             {
-                while (clearCondition <= GameManager.info.playerState.kills)
+                while (clearCondition <= GameManager.info.playerState.kills && currentQuest < questInfo.questTitleContents.Count - 1)
                 {
                     currentQuest++;
                     clearCondition = questInfo.questTitleContents[currentQuest].clearCondition;
@@ -60,7 +63,7 @@ public class QuestRepeatFrame : MonoBehaviour
 
             else if (questInfo.name.Contains("Money"))
             {
-                while (clearCondition <= GameManager.info.playerState.money)
+                while (clearCondition <= GameManager.info.playerState.money && currentQuest < questInfo.questTitleContents.Count - 1)
                 {
                     currentQuest++;
                     clearCondition = questInfo.questTitleContents[currentQuest].clearCondition;
@@ -75,6 +78,7 @@ public class QuestRepeatFrame : MonoBehaviour
 
     public void UpdateQuest()
     {
+        isClear = false;
         OnEnable();
     }
 }

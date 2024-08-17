@@ -3,13 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class ArrowTrace : MonoBehaviour
 {
+    [HideInInspector] public MonsterState state;
+
     [SerializeField] private float accelerationRate = 4.0f;   // 가속도 비율
     [SerializeField] private float maxSpeed = 30.0f;          // 화살 속도
 
     private static GameObject player;
     private float currentSpeed;
 
-    void Start()
+    private void Start()
     {
         if (player == null)
             player = GameObject.Find("MonsterTarget");
@@ -18,7 +20,7 @@ public class ArrowTrace : MonoBehaviour
             transform.localScale *= 3.0f;
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         transform.LookAt(player.transform.position + new Vector3(0.0f, 1.0f, 0.0f));
 
@@ -28,5 +30,15 @@ public class ArrowTrace : MonoBehaviour
 
         // 이동
         transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "Model")
+        {
+            PlayerHPBar.SetDamage(state.attack);
+            Destroy(gameObject);
+        }
     }
 }

@@ -124,6 +124,7 @@ public class ItemShop : MonoBehaviour
             InventroyPosition.CallAddItem("ManaPotion", 1);
 
         // 구매소리를 재생히고 깃털 및 사인 애니메이션을 재생함
+        audioSource.volume = GameManager.info.soundVolume;
         audioSource.PlayOneShot(buySound);
         featherParticle.Play();
         StartCoroutine(signAnimation.Play(false));

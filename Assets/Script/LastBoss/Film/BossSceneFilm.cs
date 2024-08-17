@@ -3,54 +3,56 @@ using UnityEngine;
 
 public class BossSceneFilm : MonoBehaviour
 {
-    public static bool isFilmEnd = true;                        // ¿µÈ­°¡ ³¡³­ ¿©ºÎ
+    public static bool isFilmEnd = true;                        // ì˜í™”ê°€ ëë‚œ ì—¬ë¶€
 
-    [SerializeField] private GameObject boss;                   // ÃÖÁ¾ º¸½º ¿ÀºêÁ§Æ®
-    [SerializeField] private GameObject cameraPos;              // ¿µÈ­¿¡¼­ »ç¿ëÇÒ Ä«¸Ş¶ó
-    [SerializeField] private AudioClip openningSound;           // ¿µÈ­ ½ÃÀÛÇÒ ¶§ ³ª¿Ã ¼Ò¸®
+    [SerializeField] private GameObject boss;                   // ìµœì¢… ë³´ìŠ¤ ì˜¤ë¸Œì íŠ¸
+    [SerializeField] private GameObject cameraPos;              // ì˜í™”ì—ì„œ ì‚¬ìš©í•  ì¹´ë©”ë¼
+    [SerializeField] private AudioClip openningSound;           // ì˜í™” ì‹œì‘í•  ë•Œ ë‚˜ì˜¬ ì†Œë¦¬
+    [SerializeField] private AudioSource backgroundAudioSource; // ë°°ê²½ ìŒì•… ì „ìš© ì˜¤ë””ì˜¤ ì†ŒìŠ¤
 
-    [SerializeField] private float delayTargetLookPlayer;       // ÇÃ·¹ÀÌ¾îÂÊÀ¸·Î ÇâÇÒ¶§ ´ë±âÇÏ´Â ½Ã°£
-    [SerializeField] private float targetMovePlayer;            // ÇÃ·¹ÀÌ¾îÂÊÀ¸·Î ÇâÇÒ ¶§ ½Ã°£
+    [SerializeField] private float delayTargetLookPlayer;       // í”Œë ˆì´ì–´ìª½ìœ¼ë¡œ í–¥í• ë•Œ ëŒ€ê¸°í•˜ëŠ” ì‹œê°„
+    [SerializeField] private float targetMovePlayer;            // í”Œë ˆì´ì–´ìª½ìœ¼ë¡œ í–¥í•  ë•Œ ì‹œê°„
 
-    private Animator animator;                          // ÃÖÁ¾ º¸½º ¾Ö´Ï¸ŞÀÌÅÍ
-    private AudioSource audioSource;                    // ¿Àµğ¿À ¼Ò½º
-    private GameObject player;                          // ÇÃ·¹ÀÌ¾î ¿ÀºêÁ§Æ®
-    private Vector3 openningMovingStart = Vector3.zero; // ½ÃÀÛÇÒ ¶§ Ä«¸Ş¶óÀÇ ÃÊ±â À§Ä¡
+    private Animator animator;                          // ìµœì¢… ë³´ìŠ¤ ì• ë‹ˆë©”ì´í„°
+    private AudioSource audioSource;                    // ì˜¤ë””ì˜¤ ì†ŒìŠ¤
+    private GameObject player;                          // í”Œë ˆì´ì–´ ì˜¤ë¸Œì íŠ¸
+    private Vector3 openningMovingStart = Vector3.zero; // ì‹œì‘í•  ë•Œ ì¹´ë©”ë¼ì˜ ì´ˆê¸° ìœ„ì¹˜
 
-    private bool isIdle = false;                        // ÇöÀç ÃÖÁ¾ º¸½º°¡ IdleÀÎ °æ¿ì
-    private bool isLookPlayer = false;                  // Ä«¸Ş¶ó°¡ ÇÃ·¹ÀÌ¾î¸¦ º¸°í ÀÖ´Â °æ¿ì
-    private float nextCutRemain = 0.0f;                 // ´ÙÀ½ ÄÆ±îÁö ´ë±âÇÑ ½Ã°£
+    private bool isIdle = false;                        // í˜„ì¬ ìµœì¢… ë³´ìŠ¤ê°€ Idleì¸ ê²½ìš°
+    private bool isLookPlayer = false;                  // ì¹´ë©”ë¼ê°€ í”Œë ˆì´ì–´ë¥¼ ë³´ê³  ìˆëŠ” ê²½ìš°
+    private bool isOpenningSound = false;               // ì‹œì‘í•  ë•Œ 
+    private float nextCutRemain = 0.0f;                 // ë‹¤ìŒ ì»·ê¹Œì§€ ëŒ€ê¸°í•œ ì‹œê°„
 
-    void Start()
+    private void Start()
     {
-        Debug.Assert(boss != null, "Error (Null Reference) : º¸½º ¿ÀºêÁ§Æ®°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
-        Debug.Assert(cameraPos != null, "Error (Null Reference) : Ä«¸Ş¶ó°¡ ÀÌµ¿ÇÒ À§Ä¡°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+        Debug.Assert(boss != null, "Error (Null Reference) : ë³´ìŠ¤ ì˜¤ë¸Œì íŠ¸ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+        Debug.Assert(cameraPos != null, "Error (Null Reference) : ì¹´ë©”ë¼ê°€ ì´ë™í•  ìœ„ì¹˜ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 
         animator = boss.GetComponent<Animator>();
-        Debug.Assert(animator != null, "Error (Null Reference) : º¸½º ¾Ö´Ï¸ŞÀÌÅÍ°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+        Debug.Assert(animator != null, "Error (Null Reference) : ë³´ìŠ¤ ì• ë‹ˆë©”ì´í„°ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 
         audioSource = boss.GetComponent<AudioSource>();
-        Debug.Assert(audioSource != null, "Error (Null Reference) : º¸½º ¿Àµğ¿À ¼Ò½º°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+        Debug.Assert(audioSource != null, "Error (Null Reference) : ë³´ìŠ¤ ì˜¤ë””ì˜¤ ì†ŒìŠ¤ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 
         transform.position = cameraPos.transform.GetChild(0).position;
         transform.rotation = cameraPos.transform.GetChild(0).rotation;
 
         player = GameObject.Find("Model");
-        Debug.Assert(player != null, "Error (Null Reference) : ÇÃ·¹ÀÌ¾î°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+        Debug.Assert(player != null, "Error (Null Reference) : í”Œë ˆì´ì–´ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 
         player.GetComponent<PlayerWeaponChanger>().bowEquid = true;
 
         isFilmEnd = false;
     }
 
-    void Update()
+    private void Update()
     {
         AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
 
         if (isIdle)
             nextCutRemain += Time.deltaTime;
 
-        // Ã³À½ ½ÃÀÛÇÒ ¶§ Ä«¸Ş¶ó¸¦ À§¾Æ·¡·Î Áøµ¿ È¿°ú¸¦ ³ªÅ¸³¿
+        // ì²˜ìŒ ì‹œì‘í•  ë•Œ ì¹´ë©”ë¼ë¥¼ ìœ„ì•„ë˜ë¡œ ì§„ë™ íš¨ê³¼ë¥¼ ë‚˜íƒ€ëƒ„
         if (state.IsName("Openning") && state.normalizedTime > 0.2f && state.normalizedTime < 0.6f)
         {
             if (openningMovingStart == Vector3.zero)
@@ -58,11 +60,16 @@ public class BossSceneFilm : MonoBehaviour
 
             transform.position = openningMovingStart + new Vector3(0f, 2 * Mathf.Sin(Time.deltaTime * 2 * Mathf.PI * 60), 0f);
             
-            // ±«¼ºÀ» Áö¸£´Â ¼Ò¸®
-            audioSource.PlayOneShot(openningSound);
+            // ê´´ì„±ì„ ì§€ë¥´ëŠ” ì†Œë¦¬
+            if (!isOpenningSound)
+            {
+                audioSource.volume = GameManager.info.soundVolume * 0.8f;
+                audioSource.PlayOneShot(openningSound);
+                isOpenningSound = true;
+            }
         }
 
-        // Á¡Á¡ Èçµé¸®´Â Áøµ¿ÀÇ ÁøÆøÀÌ ÀÛ¾ÆÁöµµ·Ï ¼³Á¤
+        // ì ì  í”ë“¤ë¦¬ëŠ” ì§„ë™ì˜ ì§„í­ì´ ì‘ì•„ì§€ë„ë¡ ì„¤ì •
         else if (state.IsName("Openning") && state.normalizedTime >= 0.6f && state.normalizedTime <= 1.0f)
             transform.position = openningMovingStart + new Vector3(0f, 2 * Mathf.Sin(Time.deltaTime * 2 * Mathf.PI * (60 - (state.normalizedTime - 0.4f) * 60)), 0f);
 
@@ -106,21 +113,21 @@ public class BossSceneFilm : MonoBehaviour
 
             float t = Mathf.Pow(Mathf.Sin((elapsedTime * (Mathf.PI / 2)) / targetMovePlayer), 1 / 2.0f);
 
-            // º¸°£À» »ç¿ëÇÏ¿© ºÎµå·´°Ô ÀÌµ¿
+            // ë³´ê°„ì„ ì‚¬ìš©í•˜ì—¬ ë¶€ë“œëŸ½ê²Œ ì´ë™
             transform.position = Vector3.Lerp(initialPosition, targetPosition, t);
             transform.rotation = Quaternion.Slerp(initialRotation, targetRotation, t);
 
             yield return null;
         }
 
-        // ÀÌµ¿ÀÌ ¿Ï·áµÇ¸é isLookPlayer ÇÃ·¡±×¸¦ true·Î ¼³Á¤
+        // ì´ë™ì´ ì™„ë£Œë˜ë©´ isLookPlayer í”Œë˜ê·¸ë¥¼ trueë¡œ ì„¤ì •
         isLookPlayer = true;
 
-        // ¸¶Áö¸·À¸·Î ÇÃ·¹ÀÌ¾î ½ÃÁ¡À¸·Î º¯ÇÏµµ·Ï ¼³Á¤
+        // ë§ˆì§€ë§‰ìœ¼ë¡œ í”Œë ˆì´ì–´ ì‹œì ìœ¼ë¡œ ë³€í•˜ë„ë¡ ì„¤ì •
         StartCoroutine(FightPlayer());
     }
 
-    // ¸¶Áö¸· ÇÃ·¹ÀÌ¾î Ä«¸Ş¶ó¿¡ ¸Âµµ·Ï ¼³Á¤ÇÏ´Â ¸Ş¼Òµå
+    // ë§ˆì§€ë§‰ í”Œë ˆì´ì–´ ì¹´ë©”ë¼ì— ë§ë„ë¡ ì„¤ì •í•˜ëŠ” ë©”ì†Œë“œ
     private IEnumerator FightPlayer()
     {
         GameObject playerCamera = GameObject.Find("Camera");
@@ -143,7 +150,7 @@ public class BossSceneFilm : MonoBehaviour
             yield return null;
         }
 
-        // º¸°£ ¿Ï·á ÈÄ Á¤È®È÷ ¸ñÇ¥ ÁöÁ¡¿¡ À§Ä¡ ¹× È¸Àü ¼³Á¤
+        // ë³´ê°„ ì™„ë£Œ í›„ ì •í™•íˆ ëª©í‘œ ì§€ì ì— ìœ„ì¹˜ ë° íšŒì „ ì„¤ì •
         transform.position = playerCamera.transform.position;
         transform.rotation = playerCamera.transform.rotation;
 
@@ -154,6 +161,7 @@ public class BossSceneFilm : MonoBehaviour
 
         yield return null;
 
+        backgroundAudioSource.Play();
         gameObject.SetActive(false);
     }
 }

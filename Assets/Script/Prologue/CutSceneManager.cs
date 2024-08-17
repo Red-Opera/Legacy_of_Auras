@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public struct ScenarioArea 
 { 
@@ -16,10 +15,10 @@ public class CutSceneManager : MonoBehaviour
     public float delayTime = 1.0f;
 
     private uint lastCutNumber;         // 마지막 컷씬의 번호
-    private uint cutCount = 12;          // 현재 컷씬의 번호
+    private uint cutCount = 1;          // 현재 컷씬의 번호
 
     private uint lastScriptNumber;      // 마지막 시나리오 번호
-    private uint scriptCount = 12;       // 현재 시나리오 번호
+    private uint scriptCount = 1;       // 현재 시나리오 번호
 
     private bool isChangeCut = false;   // 현재 컷이 바뀌고 있는지 확인하는 변수
 
@@ -31,8 +30,14 @@ public class CutSceneManager : MonoBehaviour
     private Transform cutScene;                     // 컷씬 모음
     private Transform scenarioScript;               // 시나리오 모듬
 
-    public void Start()
+    private void Start()
     {
+        if (Login.playPrologue)
+        {
+            NextScene();
+            return;
+        }
+
         cutScene = transform.GetChild(0);           // 컷씬을 가져옴
         scenarioScript = transform.GetChild(1);     // 시나리오를 가져옴
 
@@ -69,7 +74,7 @@ public class CutSceneManager : MonoBehaviour
         isChangeCut = false;
     }
 
-    public void Update()
+    private void Update()
     {
         // 현재 텍스트 및 이미지 변환 중일 경우
         if (isChangeCut)
@@ -80,9 +85,18 @@ public class CutSceneManager : MonoBehaviour
             StartCoroutine(NextCut());
     }
 
+    private void NextScene()
+    {
+        Login.playPrologue = true;
+        StartCoroutine(Loading.instance.LoadScene("Village"));
+    }
+
     // 다음 컷으로 넘어갈때 처리하는 함수
     public IEnumerator NextCut()
     {
+        if (Login.playPrologue)
+            yield break;
+
         // 마우스 클릭 및 키보드 입력 금지
         isChangeCut = true;
 
@@ -98,7 +112,7 @@ public class CutSceneManager : MonoBehaviour
 
         // 만약 마지막 텍스트에서 클릭할 경우 다른 씬으로 넘어감
         if (lastScriptNumber == scriptCount - 1)
-            SceneManager.LoadScene("Village");
+            NextScene();
 
         // 다음 컷이 존재할 경우
         if (scriptCount - 1 != lastScriptNumber)

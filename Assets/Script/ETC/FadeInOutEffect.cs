@@ -1,10 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FadeInOutEffect : MonoBehaviour
 {
-    private MeshRenderer mesh;
+    [SerializeField] private float fadeTime = 1.0f;
+
+    private Image image;
     private SpriteRenderer sprite;
     private Text text;
 
@@ -13,31 +16,42 @@ public class FadeInOutEffect : MonoBehaviour
 
     private bool callFirst = true;
 
-    public void Awake()
+    private void Awake()
     {
-        mesh = GetComponent<MeshRenderer>();        // 만약 페이트 효과를 넣을 객체가 일반 색깔인 경우
-        sprite = GetComponent<SpriteRenderer>();    // 만약 페이트 효과를 넣을 객체가 텍스쳐인 경우
-        text = GetComponent<Text>();                // 만약 페이트 효과를 넣을 객체가 텍스트인 경우
+        image = GetComponent<Image>();    // 만약 페이트 효과를 넣을 객체가 일반 색깔인 경우
+        sprite = GetComponent<SpriteRenderer>();                // 만약 페이트 효과를 넣을 객체가 텍스쳐인 경우
+        text = GetComponent<Text>();                            // 만약 페이트 효과를 넣을 객체가 텍스트인 경우
 
         // 일반 컬러 또는 텍스쳐 또는 텍스쳐가 아닌 경우 에러 발생
-        bool isCheck = mesh == null && sprite == null && text == null;
+        bool isCheck = image == null && sprite == null && text == null;
         Debug.Assert(!isCheck, "Error (Null Reference) : 해당 객체에 MeshRenderer, sprite, text 중 하나가 존재하지 않습니다.");
     }
 
     // 페이드 아웃과 페이드 인하기 전에 색깔 지정
-    public void Initialization()
+    private void Initialization()
     {
         // 목적지 색깔 지정 (불투명 -> 투명)
         toColor = new Color(color.r, color.g, color.b, 0);
 
-        if (mesh != null)
-            color = mesh.material.color;
+        if (image != null)
+            color = image.color;
 
         else if (sprite != null)
-            color = sprite.material.color;
+            color = sprite.color;
 
         else
             color = text.color;
+    }
+
+    public void SceneLoadedFadeIn(Scene scene, LoadSceneMode mode)
+    {
+        StartCoroutine(FadeIn(fadeTime, true));
+    }
+
+    public void SceneUnLoadedFadeOut(Scene scene)
+    {
+        gameObject.SetActive(true);
+        StartCoroutine(FadeOut(fadeTime));
     }
 
     // 페이드 인
@@ -57,11 +71,11 @@ public class FadeInOutEffect : MonoBehaviour
             // 시간에 따라 투명도를 조절
             float t = elapsedTime / fadeTime;
 
-            if (mesh != null)
-                mesh.material.color = Color.Lerp(color, toColor, t);
+            if (image != null)
+                image.color = Color.Lerp(color, toColor, t);
 
             else if (sprite != null)
-                sprite.material.color = Color.Lerp(color, toColor, t);
+                sprite.color = Color.Lerp(color, toColor, t);
 
             else
                 text.color = Color.Lerp(color, toColor, t);
@@ -92,11 +106,11 @@ public class FadeInOutEffect : MonoBehaviour
             // 시간에 따라 투명도를 조절
             float t = elapsedTime / fadeTime;
 
-            if (mesh != null)
-                mesh.material.color = Color.Lerp(toColor, color, t);
+            if (image != null)
+                image.color = Color.Lerp(toColor, color, t);
 
             else if (sprite != null)
-                sprite.material.color = Color.Lerp(toColor, color, t);
+                sprite.color = Color.Lerp(toColor, color, t);
 
             else
                 text.color = Color.Lerp(toColor, color, t);

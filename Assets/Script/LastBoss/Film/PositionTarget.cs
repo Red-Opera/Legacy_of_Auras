@@ -5,15 +5,18 @@ public class PositionTarget : MonoBehaviour
     [SerializeField] private Transform toTarget;
     [SerializeField] private string toTargetString;
 
-    void Start()
+    private void Start()
     {
         if (toTarget == null)
             toTarget = GameObject.Find(toTargetString).transform;
     }
 
-    void Update()
+    private void FixedUpdate()
     {
-        transform.position = toTarget.position;
-        transform.rotation = toTarget.rotation;
+        if (toTarget != null)
+        {
+            transform.position = toTarget.position;
+            transform.rotation = toTarget.rotation;
+        }
     }
 }

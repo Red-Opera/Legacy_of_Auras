@@ -38,8 +38,9 @@ public class TypeStory : MonoBehaviour
     private bool isScenarioStarting = false;    // 현재 책이 펴지고 있는지 확인
 
     private AudioSource audioSource;            // 스피커
+    private QuestComplete complete;
 
-    void Start()
+    private void Start()
     {
         player = GameObject.Find("Model");
         camera = GameObject.Find("MainCamera");
@@ -53,10 +54,15 @@ public class TypeStory : MonoBehaviour
         scenario = GetComponent<ReadBookScenario>();
 
         audioSource = GetComponent<AudioSource>();
+
+        complete = Resources.Load<QuestComplete>("Quest/QuestData");
     }
 
-    void Update()
+    private void Update()
     {
+        if (PlayerQuest.quest.nowQuest != "readBook" && !complete.readBook)
+            return;
+
         // E 키를 누르면 lookAtTarget을 바라보도록 설정
         if (isLookingAtTarget && Input.GetKeyDown(KeyCode.E))
             if (!isScenarioStarting)
@@ -119,7 +125,10 @@ public class TypeStory : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
 
                 if (audioSource != null)
+                {
+                    audioSource.volume = GameManager.info.soundVolume;
                     audioSource.PlayOneShot(openBookSound);
+                }
                 
                 while (scenario.animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99)
                     yield return null;
@@ -147,7 +156,7 @@ public class TypeStory : MonoBehaviour
     }
 
     // 텍스트를 한 글자씩 출력하는 함수
-    void StartTyping()
+    private void StartTyping()
     {
         isTyping = true;
         textComponent.text = ""; // 텍스트 초기화
@@ -156,7 +165,7 @@ public class TypeStory : MonoBehaviour
     }
 
     // 문장을 한 글자씩 출력하는 코루틴
-    IEnumerator TypeSentence(string sentence)
+    private IEnumerator TypeSentence(string sentence)
     {
         for (int i = 0; i < sentence.Length; i++)
         {
@@ -200,7 +209,7 @@ public class TypeStory : MonoBehaviour
     }
 
     // 마우스 왼쪽 클릭을 통해 UI를 닫을 수 있도록 합니다.
-    void LateUpdate()
+    private void LateUpdate()
     {
         if (hasActivatedCanvas && !isTyping && currentSentenceIndex == sentences.Length && Input.GetMouseButtonDown(0))
         {
@@ -213,20 +222,19 @@ public class TypeStory : MonoBehaviour
     }
 
     // lookAtTarget을 바라보도록 설정
-    void LookAtTarget()
+    private void LookAtTarget()
     {
         if (!isRotating)
         {
-            PlayerRotate playerRotate = player.GetComponent<PlayerRotate>();
-            startRotation = playerRotate.currentRotation;
+            startRotation = PlayerRotate.currentRotation;
             endRotation = Vector2.zero; // (0, 0)으로 회전
             rotationStartTime = Time.time;
-            StartCoroutine(RotatePlayer(playerRotate));
+            StartCoroutine(RotatePlayer());
         }
     }
 
     // RotatePlayer 코루틴 수정
-    IEnumerator RotatePlayer(PlayerRotate playerRotate)
+    private IEnumerator RotatePlayer()
     {
         isRotating = true;
 
@@ -235,7 +243,7 @@ public class TypeStory : MonoBehaviour
             float journeyTime = Time.time - rotationStartTime;
             float fractionOfJourney = Mathf.Clamp01(journeyTime / rotationSpeed);
 
-            playerRotate.currentRotation = Vector2.Lerp(startRotation, endRotation + new Vector2(-90, 0), fractionOfJourney);
+            PlayerRotate.currentRotation = Vector2.Lerp(startRotation, endRotation + new Vector2(-90, 0), fractionOfJourney);
 
             // 카메라의 회전을 수정 (위아래 방향은 움직이지 않도록 함)
             Vector3 cameraEulerAngles = camera.transform.rotation.eulerAngles;
@@ -244,7 +252,7 @@ public class TypeStory : MonoBehaviour
             yield return null;
         }
 
-        playerRotate.currentRotation = endRotation + new Vector2(-90, 0); // 목표 회전값으로 설정
+        PlayerRotate.currentRotation = endRotation + new Vector2(-90, 0); // 목표 회전값으로 설정
         isRotating = false;
     }
 
@@ -260,7 +268,10 @@ public class TypeStory : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
 
             if (audioSource != null)
+            {
+                audioSource.volume = GameManager.info.soundVolume;
                 audioSource.PlayOneShot(closeBookSound);
+            }
 
             while (scenario.animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.99)
                 yield return null;

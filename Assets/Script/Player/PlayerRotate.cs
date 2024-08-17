@@ -1,4 +1,3 @@
-using System.Threading;
 using UnityEngine;
 
 public class PlayerRotate : MonoBehaviour
@@ -16,13 +15,13 @@ public class PlayerRotate : MonoBehaviour
     public static float sensitivityY = 2.0f;    // 마우스 감도(Y)
     public float maxYAngle = 80.0f;             // 위아래 각도 제한
 
-    public Vector2 currentRotation = Vector2.zero;
+    public static Vector2 currentRotation = Vector2.zero;
 
     private Transform headDefultPos;     // 플레이어 머리 오브젝트
     private Transform spineDefultPos;    // 플레이어 척추 오브젝트
     private Transform armDefultPos;      // 플레이어 팔 오브젝트
 
-    public void Start()
+    private void Start()
     {
         sensitivityX = GameManager.info.mouseSensitivityX;
         sensitivityY = GameManager.info.mouseSensitivityY;
@@ -50,9 +49,9 @@ public class PlayerRotate : MonoBehaviour
         Debug.Assert(weaponChanger != null, "Error (Null Reference) : 무기 변경 스크립트가 존재하지 않습니다.");
     }
 
-    public void Update()
+    private void Update()
     {
-        if (TypeStory.hasActivatedCanvas || ItemShopOpenClose.isShopOpen || PlayerGetAurasArrow.isGetting || !BossSceneFilm.isFilmEnd || QuestManager.isQuestUIOn)
+        if (TypeStory.hasActivatedCanvas || ItemShopOpenClose.isShopOpen || PlayerGetAurasArrow.isGetting || !BossSceneFilm.isFilmEnd || QuestManager.isQuestUIOn || !ChatNPC.isEnd)
             return;
 
         // 마우스 감도 가져오기
@@ -70,6 +69,10 @@ public class PlayerRotate : MonoBehaviour
 
         // 회전 적용
         camera.transform.eulerAngles = new Vector3(currentRotation.y, currentRotation.x, 0);
+
+        if (PlayerHPBar.isPlayerDeath)
+            return;
+
         transform.rotation = Quaternion.Euler(new Vector3(0, currentRotation.x, 0));
 
         // 머리와 척추 위치 업데이트
@@ -102,5 +105,11 @@ public class PlayerRotate : MonoBehaviour
         // 카메라의 회전 값을 currentRotation에 역으로 계산하여 저장
         currentRotation.y = targetRotation.eulerAngles.x;
         currentRotation.x = transform.eulerAngles.y;
+    }
+
+    public static void SetRotation(Vector2 targetRotation)
+    {
+        currentRotation.x = targetRotation.x;
+        currentRotation.y = targetRotation.y;
     }
 }

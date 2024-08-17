@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Level: 1
   HP: 50
-  attack: 5
+  attack: 25
   attackSpeed: 0
   def: 10
   dropMoney: 10

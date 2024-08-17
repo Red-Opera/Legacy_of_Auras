@@ -4,42 +4,39 @@ using UnityEngine.AI;
 
 public class PhilosopherState : MonoBehaviour
 {
-    public SkinnedMeshRenderer skinnedMeshRenderer; // 스킨
+    [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;   // 스킨
+    [SerializeField] private GameObject zombie;                         // 좀비 오브젝트
+    [SerializeField] private GameObject bloodEffect;                    // 좀비 생성 피 이펙트
+    [SerializeField] private GameObject arrow;                          // 화살 오브젝트
+    [SerializeField] private MonsterState state;                        // 몬스터 스탯
+    [SerializeField] private ShieldEffect shieldEffect;                 // 쉴드 이펙트
 
-    public int maxAttackType = 3;           // 공격 타입의 개수
-    public float waitMinTime = 1.0f;        // 공격 후 최소 대기시간
-    public float waitMaxTime = 5.0f;        // 공격 후 최대 대기시간
-    public float nextDelay = 5.0f;          // 다음 공격 대기 시간
-    public float amplitudePersent = 15.0f;  // 다음 공격 대기 시간 진폭
+    [SerializeField] private int maxAttackType = 3;             // 공격 타입의 개수
+    [SerializeField] private float waitMinTime = 1.0f;          // 공격 후 최소 대기시간
+    [SerializeField] private float waitMaxTime = 5.0f;          // 공격 후 최대 대기시간
+    [SerializeField] private float nextDelay = 5.0f;            // 다음 공격 대기 시간
+    [SerializeField] private float amplitudePersent = 15.0f;    // 다음 공격 대기 시간 진폭
+    [SerializeField] private int createMonsterCount = 3;        // 생성되는 몬스터 수
+    [SerializeField] private float spawnRadius = 10f;           // 좀비 스폰 범위
+    [SerializeField] private float healPersent = 10f;           // 체력 회복 퍼센트
+    [SerializeField] private int createArrowCount = 8;          // 생성되는 화살 개수
+    [SerializeField] private float spawnArrowDelay = 0.25f;     // 스폰 딜레이
 
-    private MonsterHPBar hpBar;             // HP 바 스크립트
+    private MonsterHPBar hpBar;                                 // HP 바 스크립트
     private Animator animator;
-    private Rigidbody rigidbody;            
-    private AnimatorStateInfo beforeState;  // 이전 애니메이션 상태
+    private Rigidbody rigidbody;                                
+    private GameObject player;                                  // 플레이어 오브젝트
+    private AnimatorStateInfo beforeState;                      // 이전 애니메이션 상태
 
-    private bool isAction = false;          // 해당 상태의 활동을 했는지 여부
-    private bool isIdle = false;            // 현재 Idle 상태인 여부
-    private bool isDeath = false;           // 현재 죽은 판정이 된 여부
-    private bool isCollision = false;       // 어떠한 것과 충돌했는지 여부
-    private bool isPlayerCollision = false; // 플레이어와 충돌했는지 여부
+    private bool isAction = false;                              // 해당 상태의 활동을 했는지 여부
+    private bool isIdle = false;                                // 현재 Idle 상태인 여부
+    private bool isDeath = false;                               // 현재 죽은 판정이 된 여부
+    private bool isCollision = false;                           // 어떠한 것과 충돌했는지 여부
+    private bool isPlayerCollision = false;                     // 플레이어와 충돌했는지 여부
 
-    public GameObject zombie;               // 좀비 오브젝트
-    public GameObject bloodEffect;          // 좀비 생성 피 이펙트
+    private int currentAction = 0;
 
-    public int createMonsterCount = 3;      // 생성되는 몬스터 수
-    public float spawnRadius = 10f;         // 좀비 스폰 범위
-
-    public float healPersent = 10f;         // 체력 회복 퍼센트
-
-    public GameObject arrow;                // 화살 오브젝트
-    public int createArrowCount = 8;        // 생성되는 화살 개수
-    public float spawnDelay = 0.25f;        // 스폰 딜레이
-
-    public ShieldEffect shieldEffect;       // 쉴드 이펙트
-
-    public GameObject player;               // 플레이어 오브젝트
-
-    void Start()
+    private void Start()
     {
         animator = GetComponent<Animator>();
         Debug.Assert(animator != null, "Error (Null Reference) : 해당 객체에 애니메이터가 존재하지 않습니다.");
@@ -58,15 +55,19 @@ public class PhilosopherState : MonoBehaviour
         StartCoroutine(ChangeAttackType());
     }
 
-    void Update()
+    private void FixedUpdate()
     {
-        if (!isPlayerCollision)
-            transform.LookAt(player.transform);
+        AnimatorStateInfo nowState = animator.GetCurrentAnimatorStateInfo(0);
+
+        if (!isPlayerCollision && !nowState.IsName("Death"))
+        {
+            Vector3 direction = (player.transform.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+        }
 
         if (transform.position.y < 0)
             transform.position += new Vector3(0, Time.deltaTime, 0);
-
-        AnimatorStateInfo nowState = animator.GetCurrentAnimatorStateInfo(0);
 
         if (nowState.IsName("Death") && isDeath)
             return;
@@ -203,8 +204,6 @@ public class PhilosopherState : MonoBehaviour
     // 화살 생성 메소드
     private IEnumerator CreateArrow()
     {
-        yield break;
-
         isAction = true;
 
         // 화살 개수만큼 반복
@@ -231,10 +230,11 @@ public class PhilosopherState : MonoBehaviour
 
             // 화살 생성
             GameObject newArrow = Instantiate(arrow, createPosition, Quaternion.identity);
-            newArrow.GetComponent<PlayerAurasArrow>().enabled = false;
+            Destroy(newArrow.GetComponent<PlayerAurasArrow>());
+            newArrow.GetComponent<ArrowTrace>().state = state;
 
             // 다음 화살을 생성할 때까지 대기
-            yield return new WaitForSeconds(spawnDelay);
+            yield return new WaitForSeconds(spawnArrowDelay);
         }
     }
 

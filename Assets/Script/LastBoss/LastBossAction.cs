@@ -5,20 +5,44 @@ using UnityEngine.SceneManagement;
 
 public class LastBossAction : MonoBehaviour
 {
-    [HideInInspector] public bool isAction = false;          // 해당 상태의 활동을 했는지 여부
+    [HideInInspector] public bool isAction = false;         // 해당 상태의 활동을 했는지 여부
 
-    public SkinnedMeshRenderer skinnedMeshRenderer; // 스킨
+    public SkinnedMeshRenderer skinnedMeshRenderer;         // 스킨
 
-    public int maxAttackType = 8;           // 공격 타입의 개수
-    public float waitMinTime = 1.0f;        // 공격 후 최소 대기시간
-    public float waitMaxTime = 5.0f;        // 공격 후 최대 대기시간
-    public float nextDelay = 5.0f;          // 다음 공격 대기 시간
-    public float amplitudePersent = 15.0f;  // 다음 공격 대기 시간 진폭
+    [SerializeField] private GameObject zombie;             // 좀비 오브젝트
+    [SerializeField] private GameObject bloodEffect;        // 좀비 생성 피 이펙트
+    [SerializeField] private GameObject arrow;              // 화살 오브젝트
+    [SerializeField] private ShieldEffect shieldEffect;     // 쉴드 이펙트
+    [SerializeField] private LastBossWingPosition wing;     // 날개를 관리하는 스크립트
+    [SerializeField] private GameObject fireAXE;            // 불타는 도끼 오브젝트
+    [SerializeField] private MonsterState state;            // 보스 스탯
+    [SerializeField] private GameObject explosion;          // 폭파 오브젝트
+    [SerializeField] private GameObject objectMid;          // 보스 중앙 위치를 나타내는 오브젝트
 
-    private LassBossHpBar hpBar;            // HP 바 스크립트
+    [SerializeField] private int maxAttackType = 8;             // 공격 타입의 개수
+    [SerializeField] private float waitMinTime = 1.0f;          // 공격 후 최소 대기시간
+    [SerializeField] private float waitMaxTime = 5.0f;          // 공격 후 최대 대기시간
+    [SerializeField] private float nextDelay = 5.0f;            // 다음 공격 대기 시간
+    [SerializeField] private float amplitudePersent = 15.0f;    // 다음 공격 대기 시간 진폭
+    [SerializeField] private int createMonsterCount = 3;        // 생성되는 몬스터 수
+    [SerializeField] private float spawnRadius = 10f;           // 좀비 스폰 범위
+    [SerializeField] private float healPersent = 10f;           // 체력 회복 퍼센트
+    [SerializeField] private int createArrowCount = 8;          // 생성되는 화살 개수
+    [SerializeField] private float spawnDelay = 0.25f;          // 스폰 딜레이
+    [SerializeField] private int explosionCount = 10;           // 죽을시 터지는 폭파 개수
+    [SerializeField] private float explosionRange = 15.0f;      // 터지는 범위
+    [SerializeField] private float minExplsionTime = 0.1f;      // 최소 터지는데 걸리는 시간
+    [SerializeField] private float maxExplsionTime = 0.6f;      // 최대 터지는데 걸리는 시간
+     
+    private LastBossHpBar hpBar;                    // HP 바 스크립트
     private Animator animator;
     private Rigidbody rigidbody;
-    private AnimatorStateInfo beforeState;  // 이전 애니메이션 상태
+    private AnimatorStateInfo beforeState;          // 이전 애니메이션 상태
+    private LastBossGroundPound groundPound;        // 지면 강타할 수 있도록하는 스크립트
+    private LastBossPixelate pixelate;              // 픽셀화하는 스크립트
+    private Collider collider;                      // 콜라이더 컴포넌트
+    private GameObject player;                      // 플레이어 오브젝트
+    private Animator playerAnimator;                // 플레이어 애니메이터
 
     private bool isIdle = false;            // 현재 Idle 상태인 여부
     private bool isDeath = false;           // 현재 죽은 판정이 된 여부
@@ -26,33 +50,11 @@ public class LastBossAction : MonoBehaviour
     private bool isMoveAttackLook = false;  // 한번 플레이어를 본적이 있는 여부
     private bool isCreateAXE = false;       // 한번 도끼를 생성한 적이 있는 여부
 
-    public GameObject zombie;               // 좀비 오브젝트
-    public GameObject bloodEffect;          // 좀비 생성 피 이펙트
-
-    public int createMonsterCount = 3;      // 생성되는 몬스터 수
-    public float spawnRadius = 10f;         // 좀비 스폰 범위
-
-    public float healPersent = 10f;         // 체력 회복 퍼센트
-
-    public GameObject arrow;                // 화살 오브젝트
-    public int createArrowCount = 8;        // 생성되는 화살 개수
-    public float spawnDelay = 0.25f;        // 스폰 딜레이
-
-    public ShieldEffect shieldEffect;       // 쉴드 이펙트
-
-    public GameObject player;               // 플레이어 오브젝트
-
-    [SerializeField] private LastBossWingPosition wing;     // 날개를 관리하는 스크립트
-    [SerializeField] private GameObject fireAXE;            // 불타는 도끼 오브젝트
-    private LastBossGroundPound groundPound;                // 지면 강타할 수 있도록하는 스크립트
-    private LastBossPixelate pixelate;                      // 픽셀화하는 스크립트
-    private MeshCollider collider;                          // 콜라이더 컴포넌트
-
-    void Start()
+    private void Start()
     {
         animator = GetComponent<Animator>();
         Debug.Assert(animator != null, "Error (Null Reference) : 해당 객체에 애니메이터가 존재하지 않습니다.");
-        hpBar = GetComponent<LassBossHpBar>();
+        hpBar = GetComponent<LastBossHpBar>();
         Debug.Assert(hpBar != null, "Error (Null Reference) : 체력 바 컴포넌트가 존재하지 않습니다.");
 
         Debug.Assert(zombie != null, "Error (Null Reference) : 생성할 좀비 오브젝트가 존재하지 않습니다.");
@@ -72,13 +74,16 @@ public class LastBossAction : MonoBehaviour
 
         Debug.Assert(wing != null, "Error (Null Reference) : 날개 스크립트가 존재하지 않습니다.");
 
-        collider = GetComponent<MeshCollider>();
+        collider = GetComponent<Collider>();
         Debug.Assert(collider != null, "Error (Null Reference) : 충돌 스크립트가 존재하지 않습니다.");
+
+        playerAnimator = GameObject.Find("Model").GetComponent<Animator>();
+        Debug.Assert(playerAnimator != null, "Error (Null Reference) : 플레이어 애니메이터가 존재하지 않습니다.");
 
         StartCoroutine(ChangeAttackType());
     }
 
-    void Update()
+    private void Update()
     {
         // 아직 보스 씬이 끝나지 않은 경우 어떠한 행동을 하지 않음
         if (!BossSceneFilm.isFilmEnd || groundPound.isGroundPound)
@@ -133,7 +138,7 @@ public class LastBossAction : MonoBehaviour
 
         // 지면 강타 공격일 경우
         else if (nowState.IsName("GroundPound"))
-            StartCoroutine(groundPound.StartAction());
+            StartCoroutine(groundPound.StartAction(player, state));
 
         // 플레이어에게 다가가 공격하는 공격일 경우
         else if (nowState.IsName("BurningFlameSlash"))
@@ -263,6 +268,7 @@ public class LastBossAction : MonoBehaviour
             // 화살 생성
             GameObject newArrow = Instantiate(arrow, createPosition, Quaternion.identity);
             Destroy(newArrow.GetComponent<PlayerAurasArrow>());
+            newArrow.GetComponent<ArrowTrace>().state = state;
 
             // 다음 화살을 생성할 때까지 대기
             yield return new WaitForSeconds(spawnDelay);
@@ -337,14 +343,52 @@ public class LastBossAction : MonoBehaviour
         isIdle = false;
     }
 
+    private IEnumerator CreateExplosionEffect()
+    {
+        int remainCount = explosionCount;
+
+        playerAnimator.SetTrigger("Blocking");
+
+        while (remainCount > 0)
+        {
+            float x = objectMid.transform.position.x + Random.Range(-explosionRange, explosionRange);
+            float y = objectMid.transform.position.y + Random.Range(-explosionRange, explosionRange);
+            float z = objectMid.transform.position.z + Random.Range(-explosionRange, explosionRange);
+
+            Vector3 createPos = new Vector3(x, y, z);
+
+            GameObject newExplosion = Instantiate(explosion);
+            newExplosion.transform.position = createPos;
+            newExplosion.transform.localScale = Vector3.one * 3;
+            newExplosion.GetComponent<ParticleSystem>().Play();
+
+            float nextDelay = Random.Range(minExplsionTime, maxExplsionTime);
+            remainCount--;
+
+            Destroy(newExplosion, 5.0f);
+
+            yield return new WaitForSeconds(nextDelay);
+        }
+
+        yield return new WaitForSeconds(0.5f);
+        playerAnimator.SetTrigger("BlockingEnd");
+
+        Destroy(gameObject);
+    }
+
     // 죽었을 때 발생하는 메소드
     private IEnumerator DeathTrigger(AnimatorStateInfo info)
     {
         isDeath = true;
-        Destroy(gameObject, info.length + 0.5f);
+
+        if (pixelate.isPixel)
+            StartCoroutine(pixelate.PixelToggle());
 
         while (true)
         {
+            if (skinnedMeshRenderer == null)
+                break;
+            
             for (int i = 0; i < skinnedMeshRenderer.materials.Length; i++)
             {
                 if (skinnedMeshRenderer.materials[i].HasFloat("_Persent"))
@@ -360,6 +404,8 @@ public class LastBossAction : MonoBehaviour
 
             yield return new WaitForSeconds(info.length / 50.0f);
         }
+
+        StartCoroutine(CreateExplosionEffect());
     }
 
     // 이동 공격후 플레이어와 충돌했을 경우 

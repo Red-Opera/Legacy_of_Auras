@@ -15,13 +15,15 @@ public class MonsterDamageSound : MonoBehaviour
 
     public void DamageSound(int damage)
     {
+        audio.volume = GameManager.info.soundVolume;
+
         if (damage <= 0)
         {
             audio.PlayOneShot(zeroDamage);
             return;
         }
 
-        if (name.Contains("Pirell"))
+        if (damageSound != null)
             audio.PlayOneShot(damageSound);
     }
 }

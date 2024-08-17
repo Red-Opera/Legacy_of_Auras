@@ -42,6 +42,13 @@ public class PlayerState : State
                 value = ConvertPersent<float>(value, (float)field.GetValue(this));
                 field.SetValue(this, (float)field.GetValue(this) + value);
             }
+
+            else if (field.FieldType == typeof(double))
+            {
+                double value = (double)field.GetValue(otherState);
+                value = ConvertPersent<double>(value, (double)field.GetValue(this));
+                field.SetValue(this, (double)field.GetValue(this) + value);
+            }
         }
     }
 
@@ -60,6 +67,9 @@ public class PlayerState : State
 
             else if (typeof(T) == typeof(float))
                 return (T)(object)((float)(Convert.ToDouble(left) * percent));
+
+            else if (typeof(T) == typeof(double))
+                return (T)(object)((double)(Convert.ToDouble(left) * percent));
         }
 
         // value가 양수이거나 T가 int 또는 float가 아닌 경우

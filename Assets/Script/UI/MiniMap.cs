@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class MiniMap : MonoBehaviour
 {
+    public static string currentMapName;
+
     [SerializeField] private SkinnedMeshRenderer skinRenderer;  // 캐릭터 Rederer
     [SerializeField] private Transform minimapCamerapos;        // 미니맵 카메라 위치
     [SerializeField] private TextMeshProUGUI multiple;          // 배율을 표시할 텍스트
@@ -14,11 +16,10 @@ public class MiniMap : MonoBehaviour
     [SerializeField] private float minDistance;                 // 최대 미니맵 배율
 
     private Transform playerTransform;
-    private string currentMapName;
     private float upYPos = 100.0f;
     private float currentYPos;
 
-    private void Start()
+    private void Awake()
     {
         Debug.Assert(skinRenderer != null, "Error (Null Reference) : 플레이어 skinRenderer가 존재하지 않습니다.");
 
@@ -26,6 +27,8 @@ public class MiniMap : MonoBehaviour
 
         currentYPos = skinRenderer.bounds.center.y + upYPos;
         multiple.text = (100 / upYPos).ToString("X#0.#");
+
+        ChangeMapName();
     }
 
     private void Update()
@@ -61,22 +64,13 @@ public class MiniMap : MonoBehaviour
     {
         currentMapName = mapEngName.text;
 
-        if (currentMapName == "Village")
-            mapName.text = "황폐화된 마을";
+        for (int i = 0; i < Loading.engToKoreaStatic.Count; i++)
+        {
+            if (currentMapName == Loading.engToKoreaStatic[i].eng)
+                mapName.text = Loading.engToKoreaStatic[i].korea;
+        }
 
-        else if (currentMapName == "Desolate Emporium")
-            mapName.text = "황폐화된 상점";
-
-        else if (currentMapName == "Library")
-            mapName.text = "도서관";
-
-        else if (currentMapName == "Endless Barrens")
-            mapName.text = "끝없는 불모지";
-
-        else if (currentMapName == "Verdant Vale")
-            mapName.text = "푸른 골짜기";
-
-        else if (currentMapName == "Infernal Abyss")
+        if (currentMapName == "Infernal Abyss")
             gameObject.SetActive(false);
     }
 

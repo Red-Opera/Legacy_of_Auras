@@ -6,10 +6,14 @@ public class LastBossWingPosition : MonoBehaviour
 
     [SerializeField] private GameObject lastBoss;               // 최종 보스 오브잭트
     [SerializeField] private AnimationCurve animationCurve;     // 원점에서 애니메이션 시간에 따라 위치해야할 정보
+    [SerializeField] private AudioClip bossWindSound;           // 보스 날개 소리
 
     private Animator animator;          // 애니메이터
+    private AudioSource audioSource;    // 오디오 소스
     private Vector3 defaultPosition;    // 원래 워치
     private Vector3 addPosition;        // 현재 원래 위치에서 추가로 이동한 위치
+
+    private bool isWing = false;
 
     void Start()
     {
@@ -17,6 +21,9 @@ public class LastBossWingPosition : MonoBehaviour
 
         animator = GetComponent<Animator>();
         Debug.Assert(animator != null, "Error (Null Reference) : 애니메이터가 존재하지 않습니다.");
+
+        audioSource = GetComponent<AudioSource>();
+        Debug.Assert(audioSource != null, "Error (Null Reference) : 오디오 소스가 존재하지 않습니다.");
 
         // 초기에는 현재 위치를 원점으로 설정
         addPosition = Vector3.zero;
@@ -41,6 +48,16 @@ public class LastBossWingPosition : MonoBehaviour
             // 애니메이션 진행도에 따라 추가 위치도 설정
             addPosition = new Vector3(0.0f, animationCurve.Evaluate(state.normalizedTime % 1), 0.0f) * 3.0f;
             lastBoss.transform.position = defaultPosition + addPosition;
+
+            // 날개짓할 때 소리 재생
+            if (state.normalizedTime % 1 <= 0.1)
+                isWing = false;
+
+            else if (!isWing && state.normalizedTime % 1 >= 0.27)
+            {
+                isWing = true;
+                audioSource.PlayOneShot(bossWindSound);
+            }
         }
 
         else

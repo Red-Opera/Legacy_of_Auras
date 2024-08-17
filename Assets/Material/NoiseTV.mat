@@ -145,7 +145,7 @@ Material:
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 50
-    - _RatePersent: 1
+    - _RatePersent: 0.68511766
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0

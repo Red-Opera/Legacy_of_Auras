@@ -9,7 +9,7 @@
     <li>
         <h3>Development Tools</h3>
         <p>개발 도구 : <img src="https://img.shields.io/badge/VisualStudio-5C2D91?style=flat&logo=VisualStudio&logoColor=white"/> <img src="https://img.shields.io/badge/Unity-000000?style=flat&logo=unity&logoColor=white"/> <img src="https://img.shields.io/badge/Blender-E87D0D?style=flat&logo=blender&logoColor=white"/></p>
-        <p>개발 언어 : <img src="https://img.shields.io/badge/C%23-239120?style=flat&logo=csharp&logoColor=white"/></p>
+        <p>개발 언어 : <img src="https://img.shields.io/badge/C%23-239120?style=flat&logo=csharp&logoColor=white"/> <img src="https://img.shields.io/badge/C++-00599C?style=flat&logo=cplusplus&logoColor=white"/> <img src="https://img.shields.io/badge/C-A8B9CC?style=flat&logo=C&logoColor=white"/></p>
     </li>
     <li>
         <h3>Development Period</h3>

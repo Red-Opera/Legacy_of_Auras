@@ -18,7 +18,7 @@ public class MonsterHPChangeUI : MonoBehaviour
         Debug.Assert(resultText != null, "Error (Null Reference): 데미지를 출력할 텍스트가 존재하지 않습니다.");
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         transform.LookAt(player.transform.position);
     }

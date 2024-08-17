@@ -10,11 +10,13 @@ public class LastBossGroundPound : MonoBehaviour
     [SerializeField] private AnimationCurve upSpeed;            // 올라가는 속도
     [SerializeField] private Animator wing;                     // 날개를 관리하는 애니메이터
     [SerializeField] private GameObject explosion;              // 폭파 효과 오브젝트
+    [SerializeField] private AudioClip explosionSound;          // 폭파 소리
     [SerializeField] private float attackRangeSize = 35.0f;     // 공격 범위 원 최대 사이즈
     [SerializeField] private float rotateTime = 2.0f;           // 아래로 내려가기전 회전 속도 (초)
 
     private Animator animator;
     private LastBossAction lastBossAction;  // 최종 보스의 행동을 처리하는 컴포넌트
+    private AudioSource audioSource;        // 오디오 소스
 
     public void Start()
     {
@@ -25,9 +27,12 @@ public class LastBossGroundPound : MonoBehaviour
 
         lastBossAction = GetComponent<LastBossAction>();
         Debug.Assert(animator != null, "Error (Null Reference) : 최종 보스 액션 씬 컴포넌트가 존재하지 않습니다.");
+
+        audioSource = GetComponent<AudioSource>();
+        Debug.Assert(audioSource != null, "Error (Null Reference) : 오디오 소스가 존재하지 않습니다.");
     }
 
-    public IEnumerator StartAction()
+    public IEnumerator StartAction(GameObject player, MonsterState state)
     {
         isGroundPound = true;
         wing.enabled = false;
@@ -124,6 +129,19 @@ public class LastBossGroundPound : MonoBehaviour
         GameObject newExplosion = Instantiate(explosion, transform);
         newExplosion.transform.parent = null;
         Destroy(newExplosion, 3f);
+
+        // 폭파 소리 출력
+        audioSource.PlayOneShot(explosionSound);
+
+        // 플레이어가 데미지를 받는지 계산
+        Vector3 playerPos = player.transform.position;
+        Vector3 dir = (playerPos - transform.position);
+        dir.y = 0;
+
+        float distance = dir.magnitude;
+
+        if (distance <= attackRangeSize / 2)
+            PlayerHPBar.SetDamage(state.attack);
 
         while (true)
         {

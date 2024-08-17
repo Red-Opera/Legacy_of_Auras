@@ -19,7 +19,7 @@
 대화창 이미지 : https://opengameart.org/content/4-svg-message-boxes
 전설 책 이미지 : https://opengameart.org/content/fantasy-book
 다음으로 넘기기 이펙트 : https://commons.wikimedia.org/wiki/File:Black_Arrow_Down.svg
-마을 플레이어 발소리 : https://freesound.org/people/morganpurkis/sounds/369778/
+마을 플레이어 발소리 : https://freesound.org/people/Nox_Sound/sounds/490951/
 도서관 플레이어 발소리 : https://freesound.org/people/VKProduktion/sounds/251788/
 도서관 배경 음악 : https://gongu.copyright.or.kr/gongu/wrt/wrt/view.do?wrtSn=13312584&menuNo=200020
 피렐의 모델 : https://sketchfab.com/3d-models/baphomet-151a369bf3c6417a988c282d71de9111
@@ -103,14 +103,23 @@ UI 알림 효과음 : https://freesound.org/people/plasterbrain/sounds/419493/
 현신의 오라의 화살 : https://sketchfab.com/3d-models/arrow-b3267d7bf1bf48748f335c294d57a916
 최종 보스 오브젝트 : https://desirefx.me/3d_models/demon-3-with-wings/
 최종 보스 날개 오브젝트 : https://sketchfab.com/3d-models/demon-wings-11-low-poly-animated-8ef7580f1f1a48c488a8bbcf61067bc5
-최종 보스 등장 씬 : https://freesound.org/people/JalynCatbtg/sounds/618192/
+최종 보스 등장 씬 : https://freesound.org/people/Sea%20Fury/sounds/48688/
 최종 보스 체력바 이미지 : https://opengameart.org/content/gold-skull
 씬 이름 출력 폰트 : https://www.1001freefonts.com/adine-kirnberg.font
 퀘스트 UI : https://opengameart.org/content/rpg-ui-1
 퀘스트 코인 UI 이미지 : https://iconduck.com/icons/313561/gold-coin
 퀘스트 경험치 UI 이미지 : https://opengameart.org/content/fantasy-xp-icon-animated
 퀘스트 체크 UI 이미지 : https://www.hiclipart.com/free-transparent-background-png-clipart-divvi/download
+상점 걷는 소리 : https://freesound.org/people/sgossner/sounds/197778/
+철 위에 걷는 소리 : https://freesound.org/people/hello_flowers/sounds/39473/
+보스 데미지 받는 소리 : https://www.chosic.com/free-music/cinematic/
+사막 지형 배경 음악 : https://www.chosic.com/download-audio/45427/
+보스 GroundPound 폭파 소리 : https://freesound.org/people/Zangrutz/sounds/155235/
+보스 날개 소리 : https://freesound.org/people/AgentDD/sounds/246225/
+보스전 배경 음악 : https://www.chosic.com/download-audio/59089/
+숲 배경 음악 : https://www.chosic.com/download-audio/59003/
 
-해야 할 일 : 마을 대화 구성, 마을 주민 구성, 마을 모습 구성, 플레이어가 해야할 일 지정
+해야 할 일 : 보스 몬스터 죽을 떄 처리, 플레이어 위치 저장
 
-완성 : 도서관 모습 구성, 텔레포트, 책 읽는 모습 구성, 다른 책을 가져가는 모습, 플레이어 사격 구성, 플레이어 능력치 구성, 플레이어가 이동해야 할 위치
+완성 :	도서관 모습 구성, 텔레포트, 책 읽는 모습 구성, 다른 책을 가져가는 모습, 플레이어 사격 구성, 플레이어 능력치 구성
+		플레이어가 이동해야 할 위치, 플레이어가 해야할 일 지정, 마을 대화 구성, 플레이어 죽을 때 리스폰, 설정, 마을 모습 구성, 몬스터 이동 이상하게 되는 문제 처리

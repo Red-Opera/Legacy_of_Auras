@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -58,8 +60,8 @@ public class PlayerAttack : MonoBehaviour
 
     public void Update()
     {
-        // 현재 아직 최종보스 영화가 끝나지 않은 경우
-        if (!BossSceneFilm.isFilmEnd)
+        // 현재 아직 최종보스 영화가 끝나지 않았거나 플레이어가 죽은 경우
+        if (!BossSceneFilm.isFilmEnd || PlayerHPBar.isPlayerDeath)
             return;
 
         // 지속적으로 어떠한 무기를 갖고 있는지 확인
@@ -107,8 +109,10 @@ public class PlayerAttack : MonoBehaviour
         newBow.transform.localPosition = new Vector3(-6.5f, 0.5f, -0.5f);
 
         // 소리 재생
-        AudioClip clip = bow.GetComponent<AudioSource>().clip;
-        bow.GetComponent<AudioSource>().PlayOneShot(clip);
+        AudioSource bowAudioSource = bow.GetComponent<AudioSource>();
+        AudioClip clip = bowAudioSource.clip;
+        bowAudioSource.volume = GameManager.info.soundVolume;
+        bowAudioSource.PlayOneShot(clip);
     }
 
     // 총 공격 메소드
@@ -117,9 +121,12 @@ public class PlayerAttack : MonoBehaviour
         if (reLoad.isReLoad)
             return;
 
+        AudioSource gunAudioSource = gun.GetComponent<AudioSource>();
+        gunAudioSource.volume = GameManager.info.soundVolume * 0.4f;
+
         if (int.Parse(currentGunText.text.ToString()) <= 0)
         {
-            gun.GetComponent<AudioSource>().PlayOneShot(noRemainBullet);
+            gunAudioSource.PlayOneShot(noRemainBullet);
             return;
         }
 
@@ -131,7 +138,7 @@ public class PlayerAttack : MonoBehaviour
         newBullet.transform.parent = null;
         newBullet.transform.localScale = new Vector3(20.0f, 20.0f, 20.0f);
 
-        gun.GetComponent<AudioSource>().PlayOneShot(gunSoundClip);
+        gunAudioSource.PlayOneShot(gunSoundClip);
 
         if (gunFlash == null)
             gunFlash = gun.transform.GetChild(0).GetComponent<ParticleSystem>();
@@ -140,6 +147,15 @@ public class PlayerAttack : MonoBehaviour
 
         GameObject newCartridge = Instantiate(emptyCartridge, gun.transform);
         newCartridge.transform.localRotation = Quaternion.Euler(0.0f, 90.0f, 0.0f);
+        newCartridge.transform.parent = null;
+
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName == "Forest")
+            newCartridge.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+
+        else
+            newCartridge.transform.localScale = Vector3.one;
+
         Destroy(newCartridge, 1.5f);
     }
 
@@ -173,7 +189,7 @@ public class PlayerAttack : MonoBehaviour
 
             // 화살 생성
             GameObject newArrow = Instantiate(aurasArrow, createPosition, Quaternion.identity);
-            newArrow.GetComponent<ArrowTrace>().enabled = false;
+            Destroy(newArrow.GetComponent<ArrowTrace>());
             newArrow.GetComponent<PlayerAurasArrow>().SetTarget();
             newArrow.tag = "PlayerAttack";
 
@@ -238,12 +254,15 @@ public class PlayerAttack : MonoBehaviour
         // 탐색 반경 내의 모든 객체를 가져옴
         Collider[] objectsInRange = Physics.OverlapSphere(transform.position, detectionRadius);
         Transform closestMonster = null;        // 가장 가까운 몬스터의 Transform
-        float closestDistance = Mathf.Infinity; // 가장 가까운 몬스터와의 거리
 
         // 시야각의 절반 값을 계산
         float halfFieldOfView = fieldOfView / 2.0f;
 
         targetMonster = null;
+
+        // 체력 낮은 순, 거리 가까운 순으로 반한하는 우선 순위 큐
+        PriorityQueue<IntFloatChar32> findCloseMonster = PriorityQueue<IntFloatChar32>.Create();
+        Dictionary<string, Transform> monsterToName = new Dictionary<string, Transform>();
 
         // 탐색 반경 내의 각 객체를 검사
         foreach (Collider obj in objectsInRange)
@@ -270,29 +289,26 @@ public class PlayerAttack : MonoBehaviour
                         if (hp.currentHP <= 0)
                             continue;
 
-                        // 현재까지 찾은 가장 가까운 몬스터보다 가까운지 확인
-                        if (distanceToMonster < closestDistance)
-                        {
-                            closestDistance = distanceToMonster;    // 가장 가까운 거리 갱신
-                            closestMonster = obj.transform;         // 가장 가까운 몬스터 갱신
-                        }
+                        string objName = (obj.name.Length >= 5 ? obj.name[..5] : obj.name) + "("+ obj.GetInstanceID() + ")";
+
+                        // 체력, 거리 순 큐로 입력
+                        findCloseMonster.push(new IntFloatChar32(-hp.currentHP, -distanceToMonster, objName));
+                        monsterToName.Add(objName, obj.transform);
                     }
 
                     else
                     {
-                        LassBossHpBar hpbar = obj.GetComponent<LassBossHpBar>();
+                        LastBossHpBar hpbar = obj.GetComponent<LastBossHpBar>();
 
                         if (hpbar != null)
                         {
                             if (hpbar.currentHP <= 0)
                                 continue;
 
-                            // 현재까지 찾은 가장 가까운 몬스터보다 가까운지 확인
-                            if (distanceToMonster < closestDistance)
-                            {
-                                closestDistance = distanceToMonster;    // 가장 가까운 거리 갱신
-                                closestMonster = obj.transform;         // 가장 가까운 몬스터 갱신
-                            }
+                            string objName = (obj.name.Length >= 5 ? obj.name[..5] : obj.name) + "(" + obj.GetInstanceID() + ")";
+
+                            findCloseMonster.push(new IntFloatChar32(-hpbar.currentHP, -distanceToMonster, objName));
+                            monsterToName.Add(objName, obj.transform);
                         }
                     }
                     
@@ -300,8 +316,14 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
-        if (closestMonster == null)
+        // 체력, 거리 순으로 작은 몬스터 정보를 가져옴
+        IntFloatChar32 clostMonsterInfo = findCloseMonster.top();
+
+        if (clostMonsterInfo.c == "")
             yield break;
+
+        // 해당 이름의 몬스터를 반환함
+        closestMonster = monsterToName[clostMonsterInfo.c];
 
         // 가장 가까운 몬스터의 crossHair를 선택
         Transform crossHair = null;

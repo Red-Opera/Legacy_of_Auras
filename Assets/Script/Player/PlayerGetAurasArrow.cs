@@ -15,7 +15,6 @@ public class PlayerGetAurasArrow : MonoBehaviour
     private float rotationStartTime;        // 회전 시작 시간
     private bool isRotating = false;        // 회전 중인지 여부
 
-
     public void Start()
     {
         animator = GetComponent<Animator>();
@@ -31,8 +30,7 @@ public class PlayerGetAurasArrow : MonoBehaviour
         if (isRotating)
             yield break;
 
-        PlayerRotate playerRotate = GetComponent<PlayerRotate>();
-        startRotation = playerRotate.currentRotation;
+        startRotation = PlayerRotate.currentRotation;
         endRotation = new Vector2(targetTransform.position.x - transform.position.x - 50, targetTransform.position.y - transform.position.y);
         rotationStartTime = Time.time;
 
@@ -43,7 +41,7 @@ public class PlayerGetAurasArrow : MonoBehaviour
             float journeyTime = Time.time - rotationStartTime;
             float fractionOfJourney = Mathf.Clamp01(journeyTime / rotationSpeed);
 
-            playerRotate.currentRotation = Vector2.Lerp(startRotation, endRotation, fractionOfJourney);
+            PlayerRotate.currentRotation = Vector2.Lerp(startRotation, endRotation, fractionOfJourney);
 
             // 카메라의 회전을 수정 (위아래 방향은 움직이지 않도록 함)
             Vector3 cameraEulerAngles = camera.transform.rotation.eulerAngles;
@@ -52,7 +50,7 @@ public class PlayerGetAurasArrow : MonoBehaviour
             yield return null;
         }
 
-        playerRotate.currentRotation = endRotation; // 목표 회전값으로 설정
+        PlayerRotate.currentRotation = endRotation; // 목표 회전값으로 설정
         isRotating = false;
 
         animator.SetTrigger("GetAurasArrow");

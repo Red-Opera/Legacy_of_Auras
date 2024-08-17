@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class LastBossPixelate : MonoBehaviour
 {
+    [HideInInspector] public bool isPixel = false;          // 현재 픽셀화가 되었는지 여부
+
     [SerializeField] private RenderTexture renderTexture;   // 픽셀화하는 이미지
 
     [SerializeField] private float pixelateTime = 2.0f;     // 픽셀화하는 시간
@@ -10,7 +12,6 @@ public class LastBossPixelate : MonoBehaviour
     private GameObject pixelCamera;     // 픽셀화를 출력하는 카메라
     private LastBossAction action;      // 최종 보스 행동 컴포넌트
     private Animator animator;          // 최종 보스 애니메이터
-    private bool isPixel = false;       // 현재 픽셀화가 되었는지 여부
 
     public void Start()
     {

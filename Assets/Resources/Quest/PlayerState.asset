@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57779c8a35f0cb45a52f8c2513506ee, type: 3}
   m_Name: PlayerState
   m_EditorClassIdentifier: 
-  Level: 18
-  HP: 270
-  attack: 5084
+  Level: 1000
+  HP: 11300
+  attack: 5020
   attackSpeed: 0
-  def: 47
-  money: 6898
-  exp: 140
+  def: 23
+  money: 6366
+  exp: 690
   bulletCount: 1800
   bulletCurrentMax: 30
-  playTotalTime: 17363.746
-  kills: 767
+  playTotalTime: 44610.492
+  kills: 1143

@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using MySqlConnector;
+using System;
 
 public class InventroyPosition : MonoBehaviour
 {
+    public static GameObject inventory = null;  // 아이템 인벤토리 슬롯
     public GameObject itemDisplay;              // 아이템을 전시하기 위한 오브젝트
     public static float switchTime = 0.1f;      // 두 아이템들이 바뀌는데 걸리는 시간
     public bool isSwitch = false;               // 현재 두 아이템이 바뀌는 여부
@@ -18,6 +21,7 @@ public class InventroyPosition : MonoBehaviour
     public List<Sprite> spriteData = new List<Sprite>();
     private Dictionary<string, Sprite> sprites;
 
+    private static bool isItemAdd = false;
     private bool isOn = true;
 
     private void Awake()
@@ -45,7 +49,14 @@ public class InventroyPosition : MonoBehaviour
         foreach (Sprite sprite in spriteData)
             sprites.Add(sprite.name, sprite);
 
+        inventory = gameObject;
+
         OnAddItem += AddItem;
+    }
+
+    private void Start()
+    {
+        StartGameAddItem();
     }
 
     private void Update()
@@ -139,6 +150,74 @@ public class InventroyPosition : MonoBehaviour
         displayPos[moveIndex].GetChild(0).localPosition = Vector3.zero; // 보장을 위해 최종 위치 설정
 
         isSwitch = false;
+    }
+
+    private void StartGameAddItem()
+    {
+        if (Login.currentLoginName == "" || isItemAdd)
+            return;
+
+        isItemAdd = true;
+
+        string query = "SELECT * FROM PlayerItem WHERE Name = @Name";   // SQL 쿼리 문자열을 작성하여 PlayerLogin 테이블에서 특정 ID를 검색
+        MySqlCommand cmd = new MySqlCommand(query, Login.conn);
+        cmd.Parameters.AddWithValue("@Name", Login.currentLoginName);
+
+        int[] itemNums = { 0, 0, 0, 0, 0, 0 };
+        int[] counts = { 0, 0, 0, 0, 0, 0 };
+
+        try
+        {
+            Login.conn.Open();
+
+            // 쿼리를 실행하고 MySqlDataReader 객체를 생성하여 결과를 읽어옴
+            using MySqlDataReader dataReader = cmd.ExecuteReader();
+
+            if (dataReader.Read())
+            {
+                for (int i = 1; i <= 5; i++)
+                {
+                    if (dataReader["ItemNum" + i] == DBNull.Value)
+                        continue;
+
+                    int itemNum = dataReader.GetInt32("ItemNum" + i);
+                    int count = dataReader.GetInt32("Count" + i);
+
+                    itemNums[i] = itemNum;
+                    counts[i] = count;
+                }
+            }
+
+            else
+            {
+                Debug.LogWarning("No player item data found for current login name.");
+            }
+        }
+
+        catch (Exception ex)
+        {
+            Debug.LogError($"Failed to execute query for PlayerInfo: " + ex.Message);
+        }
+
+        finally
+        {
+            Login.conn.Close();
+        }
+
+        for (int i = 1; i <= 5; i++)
+        {
+            if (itemNums[i] == 0)
+                continue;
+
+            string itemName = "";
+            if (itemNums[i] == 1)
+                itemName = "HPPotion";
+
+            else if (itemNums[i] == 2)
+                itemName = "ManaPotion";
+
+            CallAddItem(itemName, counts[i]);
+        }
     }
 
     // 아이템을 추가하거나 생성하는 함수

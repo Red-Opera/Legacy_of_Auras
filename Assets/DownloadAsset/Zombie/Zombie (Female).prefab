@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 4724715213277822099}
   - component: {fileID: 2773229992915209311}
   - component: {fileID: 1203287790378946337}
+  - component: {fileID: 8497638914190353553}
   m_Layer: 0
   m_Name: AttackTrend
   m_TagString: Untagged
@@ -245,6 +246,50 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.05, y: 0.05, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8497638914190353553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3287960473173415168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad537aae5bfb7904c8bb640cf342ccd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 11400000, guid: 09dbe8811911d854a9b31be1ba1dec21, type: 2}
+--- !u!1 &5614438880925450149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3469328836078517684}
+  m_Layer: 0
+  m_Name: ArrowTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3469328836078517684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5614438880925450149}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4308598378746554447}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7060403009867645240
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +302,7 @@ GameObject:
   - component: {fileID: 8587176752114746206}
   - component: {fileID: 8994027631870354716}
   - component: {fileID: 6977786493667218726}
+  - component: {fileID: 3416535791776187621}
   m_Layer: 0
   m_Name: AttackTrend
   m_TagString: Untagged
@@ -444,6 +490,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.05, y: 0.05, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3416535791776187621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7060403009867645240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad537aae5bfb7904c8bb640cf342ccd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 11400000, guid: 09dbe8811911d854a9b31be1ba1dec21, type: 2}
 --- !u!1 &7895002198223514272
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +515,7 @@ GameObject:
   - component: {fileID: 3930855600513554252}
   - component: {fileID: 6961157626517554344}
   - component: {fileID: 6794506418200284831}
+  - component: {fileID: 2847605516990910469}
   m_Layer: 0
   m_Name: AttackTrend
   m_TagString: Untagged
@@ -643,6 +703,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.05, y: 0.05, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2847605516990910469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7895002198223514272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad537aae5bfb7904c8bb640cf342ccd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 11400000, guid: 09dbe8811911d854a9b31be1ba1dec21, type: 2}
 --- !u!1001 &1421344307932995548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -853,6 +926,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d1ae8a9d5b538e24a968cc1ed89be049, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1339560448657499688}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d1ae8a9d5b538e24a968cc1ed89be049, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3469328836078517684}
     - targetCorrespondingSourceObject: {fileID: -1070350730909333850, guid: d1ae8a9d5b538e24a968cc1ed89be049, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2188068268739144922}
@@ -1045,10 +1121,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 0
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1081,7 +1157,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1261,7 +1337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d821a3941285f2446bd25fb2f1e9129c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageSound: {fileID: 0}
+  damageSound: {fileID: 8300000, guid: dc3784003009b704ebf97bfb7644722b, type: 3}
   zeroDamage: {fileID: 8300000, guid: 062d4aedad967b8408ec07a128d9137c, type: 3}
 --- !u!136 &325446718031826738
 CapsuleCollider:

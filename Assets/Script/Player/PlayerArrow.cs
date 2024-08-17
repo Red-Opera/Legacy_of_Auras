@@ -52,13 +52,13 @@ public class PlayerArrow : MonoBehaviour
         transform.parent = null;
         transform.localRotation = Quaternion.identity;
 
-
         if (PlayerAttack.targetMonster == null)
         {
             // 화살이 중력에 의해 떨어지도록 설정
             rigid = gameObject.AddComponent<Rigidbody>();
             rigid.drag = 2f;
             rigid.angularDrag = 0.0f;
+            rigid.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
             rigid.AddForce(front * speed * 60.0f);
         }
@@ -73,7 +73,9 @@ public class PlayerArrow : MonoBehaviour
         Destroy(gameObject, 10.0f);
 
         // 소리 재생
-        GetComponent<AudioSource>().PlayOneShot(launchSound);
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.volume = GameManager.info.soundVolume;
+        audioSource.PlayOneShot(launchSound);
     }
 
     // 공격하는 몬스터가 있을 경우 그 몬스터를 향해 날라가는 스크립트
@@ -81,8 +83,7 @@ public class PlayerArrow : MonoBehaviour
     {
         yield return null;
 
-        SkinnedMeshRenderer monsterRender = PlayerAttack.targetMonster.GetComponentInChildren<SkinnedMeshRenderer>();
-        Vector3 targetCenter = monsterRender.bounds.center;
+        Vector3 targetCenter = PlayerAttack.targetMonster.Find("ArrowTarget").position;
 
         while (true)
         {
@@ -122,25 +123,34 @@ public class PlayerArrow : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void SetDamgage(GameObject target)
     {
         if (isDestoryed)
             return;
 
         // 화살이 몬스터에게 맞은 경우
-        if (collision.gameObject.CompareTag("Monster"))
+        if (target.gameObject.CompareTag("Monster"))
         {
             // 충돌한 객체가 Monster 태그를 가진 경우
-            MonsterHPBar monsterHPBar = collision.gameObject.GetComponent<MonsterHPBar>();
+            MonsterHPBar monsterHPBar = target.gameObject.GetComponent<MonsterHPBar>();
 
-            if (monsterHPBar == null)
-                monsterHPBar = collision.gameObject.transform.parent.GetComponent<MonsterHPBar>();
+            if (monsterHPBar == null && target.transform.parent != null)
+                monsterHPBar = target.gameObject.transform.parent.GetComponent<MonsterHPBar>();
 
             // MonsterHPBar 컴포넌트가 있다면 SetDamage을 실행
             if (monsterHPBar != null)
                 monsterHPBar.SetDamage(addDamage);
 
-            GetComponent<AudioSource>().PlayOneShot(hitSound);
+            else if (monsterHPBar == null)
+            {
+                LastBossHpBar bossHPBar = target.transform.GetComponent<LastBossHpBar>();
+                bossHPBar.SetDamage(addDamage);
+            }
+
+            AudioSource audioSource = GetComponent<AudioSource>();
+            audioSource.volume = GameManager.info.soundVolume;
+            audioSource.PlayOneShot(hitSound);
+
             GetComponent<MeshCollider>().enabled = false;
             GetComponent<MeshRenderer>().enabled = false;
 
@@ -158,5 +168,15 @@ public class PlayerArrow : MonoBehaviour
             Destroy(gameObject, 0.4f);
             isDestoryed = true;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        SetDamgage(collision.gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        SetDamgage(other.gameObject);
     }
 }

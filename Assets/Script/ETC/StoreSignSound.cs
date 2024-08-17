@@ -10,16 +10,16 @@ public class StoreSignSound : MonoBehaviour
     private bool firstSoundPlayed;  // 첫 번째 사운드 재생 여부를 나타내는 플래그
     private bool secondSoundPlayed; // 두 번째 사운드 재생 여부를 나타내는 플래그
 
-    void Start()
+    private void Start()
     {
         // 객체의 Animator 컴포넌트를 저장
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
 
-        audioSource.volume = 0.5f;
+        audioSource.volume = 0.5f * GameManager.info.soundVolume;
     }
 
-    void Update()
+    private void Update()
     {
         // 현재 애니메이션 클립의 정규화된 진행 상태를 얻음 (0에서 1 사이의 값)
         float normalizedTime = animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1;

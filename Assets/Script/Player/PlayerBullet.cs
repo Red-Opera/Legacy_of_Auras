@@ -45,7 +45,7 @@ public class PlayerBullet : MonoBehaviour
     {
         // 화살이 중력에 의해 떨어지도록 설정
         rigid = gameObject.AddComponent<Rigidbody>();
-        rigid.useGravity = false;
+        rigid.useGravity = true;
         rigid.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         rigid.drag = 2f;
         rigid.angularDrag = 0.0f;
@@ -94,7 +94,7 @@ public class PlayerBullet : MonoBehaviour
                 }
             }
 
-            LassBossHpBar lassBossHpBar = collision.transform.GetComponent<LassBossHpBar>();
+            LastBossHpBar lassBossHpBar = collision.transform.GetComponent<LastBossHpBar>();
 
             if (lassBossHpBar == null)
             {
@@ -112,7 +112,10 @@ public class PlayerBullet : MonoBehaviour
             else
                 lassBossHpBar.SetDamage(addDamage);
 
-            GetComponent<AudioSource>().PlayOneShot(hitSound);
+            AudioSource audioSource = GetComponent<AudioSource>();
+            audioSource.volume = GameManager.info.soundVolume;
+            audioSource.PlayOneShot(hitSound);
+
             GetComponent<MeshCollider>().enabled = false;
             GetComponent<MeshRenderer>().enabled = false;
 
