@@ -1,5 +1,11 @@
 # Legacy of Auras
 
+<h2 id="Play">게임 영상</h2>
+<a href="https://youtu.be/FSupUDrgXiA">
+    <img src="https://github.com/Red-Opera/Legacy_of_Auras/assets/121187608/d4765f51-e7ef-4ae5-95e3-a6c9b7c45786" width="100%" height="100%"/>
+</a>
+이미지를 클릭하면 영상이 재생됩니다.
+
 <h2 id="Outline">게임 개요</h2>
 <ul>
     <li>
